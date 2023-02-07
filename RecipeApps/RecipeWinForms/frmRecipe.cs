@@ -1,4 +1,5 @@
 ﻿using CPUFramework;
+using CPUWindowsFormFramework;
 using System.Data;
 
 namespace RecipeWinForms
@@ -12,13 +13,22 @@ namespace RecipeWinForms
 
         public void ShowForm(int recipeid)
         {
-            string sql = ";with x as(\r\n    SELECT NumOfIng = COUNT(ir.IngredientID), r.RecipeID\r\n    from IngredientRecipe ir\r\n    join Recipe r\r\n    on r.RecipeID = ir.RecipeID\r\n    group by r.RecipeID\r\n),\r\ny as(\r\n    SELECT NumOfSteps = COUNT(i.InstructionID), r.RecipeID\r\n    from Instruction i\r\n    join Recipe r\r\n    on r.RecipeID = i.RecipeID\r\n    group by r.RecipeID \r\n)\r\nSELECT r.RecipeName, r.Calories, x.NumOfIng, y.NumOfSteps \r\nfrom Recipe r\r\njoin Users u\r\non u.UserID = r.UserID\r\njoin x\r\non x.RecipeID = r.RecipeID\r\njoin y\r\non y.RecipeID = r.RecipeID\r\n WHERE r.Recipeid = " + recipeid;
+            string sql = "SELECT Users = u.FirstName +' '+ u.LastName, c.CuisineType, r.RecipeName, r.Calories, r.DateCreated, r.DatePublished, r.DateArchived, r.RecipeStatus FROM Recipe r JOIN Users u on u.UserID = r.UserID join Cuisine c on c.CuisineID = r.CuisineID WHERE r.Recipeid = " + recipeid;
             DataTable dt = SQLUtility.GetDataTable(sql);
-            txtRecipe.DataBindings.Add("Text", dt, "recipename");
-            txtCalories.DataBindings.Add("Text", dt, "calories");
-            lblDataIngredients.DataBindings.Add("Text", dt, "numofing");
-            lblDataSteps.DataBindings.Add("Text", dt, "numofsteps");
+            WindowsFormUtility.SetControlBinding(txtRecipeName, dt);
+            WindowsFormUtility.SetControlBinding(txtCalories, dt);
+            //WindowsFormUtility.SetControlBinding(lblDataIngredients, dt);
+            //WindowsFormUtility.SetControlBinding(lblDataSteps, dt);
+            //WindowsFormUtility.SetListBinding(lstUsers, dt, "Users");//?
+            //WindowsFormUtility.SetListBinding(lstCuisineType, dt, "Cuisine");
+            WindowsFormUtility.SetControlBinding(dtpDateCreated, dt);
+            WindowsFormUtility.SetControlBinding(dtpDatePublished, dt);
+            WindowsFormUtility.SetControlBinding(dtpDateArchived, dt);
+            WindowsFormUtility.SetControlBinding(txtRecipeStatus, dt);
+            //lblDataIngredients.DataBindings.Add("Text", dt, "numofing");
+            //lblDataSteps.DataBindings.Add("Text", dt, "numofsteps");
             this.Show();
         }
     }
 }
+
