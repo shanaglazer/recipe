@@ -9,6 +9,7 @@ namespace RecipeWinForms
         {
             InitializeComponent();
             btnSearch.Click += BtnSearch_Click;
+            btnNew.Click += BtnNew_Click;
             gRecipes.CellDoubleClick += GRecipes_CellDoubleClick;
             FormatGrid();
         }
@@ -31,7 +32,11 @@ namespace RecipeWinForms
 
         private void ShowRecipeForm(int rowindex)
         {
-            int id = (int)gRecipes.Rows[rowindex].Cells["recipeId"].Value;
+            int id = 0;
+            if (rowindex > -1)
+            {
+                id = (int)gRecipes.Rows[rowindex].Cells["RecipeId"].Value;
+            }
             frmRecipe frm = new();
             frm.ShowForm(id);
         }
@@ -41,10 +46,15 @@ namespace RecipeWinForms
             ShowRecipeForm(e.RowIndex);
         }
 
+        private void BtnNew_Click(object? sender, EventArgs e)
+        {
+            ShowRecipeForm(-1);
+        }
+
         private void BtnSearch_Click(object? sender, EventArgs e)
         {
             SearchForRecipeName(txtRecipe.Text);
             txtRecipe.Text = "";
         }
     }
-}
+} 
