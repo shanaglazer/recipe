@@ -18,7 +18,7 @@ drop table if exists Users
 go
 
 create table dbo.Users(
-    UserID int not null IDENTITY primary key,
+    UsersID int not null IDENTITY primary key,
     FirstName varchar(30) not null 
         CONSTRAINT ck_Users_FirstName_cannnot_be_blank check(FirstName <> ''),
     LastName varchar(30) not null
@@ -39,8 +39,8 @@ go
 
 create table dbo.Recipe(
     RecipeID int not null IDENTITY PRIMARY KEY,
-    UserID int not null 
-        constraint f_Users_Recipe FOREIGN KEY REFERENCES Users(UserID),
+    UsersID int not null 
+        constraint f_Users_Recipe FOREIGN KEY REFERENCES Users(UsersID),
     CuisineID int not null 
         constraint f_Cuisine_Recipe FOREIGN KEY REFERENCES Cuisine(CuisineID),
     RecipeName varchar(50) not null 
@@ -109,8 +109,8 @@ go
 
 create table dbo.Cookbook(
     CookbookID int not null IDENTITY PRIMARY KEY,
-    UserID int not null 
-        CONSTRAINT f_Users_Cookbook FOREIGN KEY REFERENCES Users(UserID),
+    UsersID int not null 
+        CONSTRAINT f_Users_Cookbook FOREIGN KEY REFERENCES Users(UsersID),
     Active bit not null,
     BookName varchar(30) not null 
         constraint u_Cookbook_BookName unique 
@@ -137,8 +137,8 @@ go
 
 create table dbo.Meal(
     MealID int not null IDENTITY PRIMARY KEY,
-    UserID int not null
-        CONSTRAINT f_User_Meal FOREIGN KEY REFERENCES users(UserID),
+    UsersID int not null
+        CONSTRAINT f_User_Meal FOREIGN KEY REFERENCES users(UsersID),
     Active bit not null,
     DateCreated date not null,
     MealName varchar(30) unique 

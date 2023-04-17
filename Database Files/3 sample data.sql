@@ -31,14 +31,14 @@ union select 'English'
 union select 'Asian'
 union select 'Chinese'
 
-insert Recipe(UserID, CuisineID, RecipeName, Calories, DateCreated, DatePublished, DateArchived)
-select u.UserID, (select c.CuisineID from Cuisine c where c.CuisineType = 'American'), 'Chocolate Chip Cookies', 390, '05-09-2017', '05-28-2017', null FROM Users u WHERE u.UserName = 'sp123'
-union select u.UserID, (select c.CuisineID from Cuisine c where c.CuisineType = 'French'), 'Apple Yogurt Smoothie', 165, '12-12-2020', null, null FROM Users u WHERE u.UserName = 'EdenHa'
-union select u.UserID, (select c.CuisineID from Cuisine c where c.CuisineType = 'English'), 'Cheese Bread', 99, '07-13-21', null, '08-24-21' FROM Users u WHERE u.UserName = 'MichalHofman'
-union select u.UserID, (select c.CuisineID from Cuisine c where c.CuisineType = 'American'), 'Butter Muffins', 240, '05-09-2017', '05-28-2017', null FROM Users u WHERE u.UserName = 'LibfroindE'
-union select u.UserID, (select c.CuisineID from Cuisine c where c.CuisineType = 'Asian'), 'Grilled Chicken', 50, '11-14-2018', '11-28-2018', '04-13-2020' FROM Users u WHERE u.UserName = 'FA'
-union select u.UserID, (select c.CuisineID from Cuisine c where c.CuisineType = 'Israeli'), 'Shawarma', 120, '07-26-2020', '08-15-2020', null FROM Users u WHERE u.UserName = 'FA'
-union select u.UserID, (select c.CuisineID from Cuisine c where c.CuisineType = 'Chinese'), 'Rice with Chili sauce', 180, '05-09-2017', '05-28-2017', null FROM Users u WHERE u.UserName = 'EdenHa'
+insert Recipe(UsersID, CuisineID, RecipeName, Calories, DateCreated, DatePublished, DateArchived)
+select u.UsersID, (select c.CuisineID from Cuisine c where c.CuisineType = 'American'), 'Chocolate Chip Cookies', 390, '05-09-2017', '05-28-2017', null FROM Users u WHERE u.UserName = 'sp123'
+union select u.UsersID, (select c.CuisineID from Cuisine c where c.CuisineType = 'French'), 'Apple Yogurt Smoothie', 165, '12-12-2020', null, null FROM Users u WHERE u.UserName = 'EdenHa'
+union select u.UsersID, (select c.CuisineID from Cuisine c where c.CuisineType = 'English'), 'Cheese Bread', 99, '07-13-21', null, '08-24-21' FROM Users u WHERE u.UserName = 'MichalHofman'
+union select u.UsersID, (select c.CuisineID from Cuisine c where c.CuisineType = 'American'), 'Butter Muffins', 240, '05-09-2017', '05-28-2017', null FROM Users u WHERE u.UserName = 'LibfroindE'
+union select u.UsersID, (select c.CuisineID from Cuisine c where c.CuisineType = 'Asian'), 'Grilled Chicken', 50, '11-14-2018', '11-28-2018', '04-13-2020' FROM Users u WHERE u.UserName = 'FA'
+union select u.UsersID, (select c.CuisineID from Cuisine c where c.CuisineType = 'Israeli'), 'Shawarma', 120, '07-26-2020', '08-15-2020', null FROM Users u WHERE u.UserName = 'FA'
+union select u.UsersID, (select c.CuisineID from Cuisine c where c.CuisineType = 'Chinese'), 'Rice with Chili sauce', 180, '05-09-2017', '05-28-2017', null FROM Users u WHERE u.UserName = 'EdenHa'
 
 insert Ingredient(IngredientType)
 select 'Flour'
@@ -187,8 +187,8 @@ on r.RecipeName = y.Recipe
     union select 'FA', 1, 'Cook a Storm', 25.99, '09-25-21'
     union select 'MichalHofman', 1, 'In the pot', 42.00, '05-21-22'
 )
-INSERT Cookbook(UserID, Active, BookName, Price, DateCreated)
-select u.UserID, z.Active, z.BName, z.Price, z.DateCreated
+INSERT Cookbook(UsersID, Active, BookName, Price, DateCreated)
+select u.UsersID, z.Active, z.BName, z.Price, z.DateCreated
 FROM z
 join Users u
 on u.UserName = z.UserName
@@ -216,8 +216,8 @@ on r.RecipeName = x.Recipe
     union select 'FA', 0, '12-5-20', 'Best Brunch'
     union select 'LibfroindE', 0, '04-07-19', 'Easy Lunch'
 )
-insert Meal(UserID, Active, DateCreated, MealName)
-SELECT u.UserID, x.Active, x.DateCreated, x.MealName
+insert Meal(UsersID, Active, DateCreated, MealName)
+SELECT u.UsersID, x.Active, x.DateCreated, x.MealName
 FROM x
 join Users u
 on u.UserName = x.UserN

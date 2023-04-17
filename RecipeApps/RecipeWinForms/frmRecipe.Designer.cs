@@ -218,6 +218,7 @@
             this.dtpDatePublished.Name = "dtpDatePublished";
             this.dtpDatePublished.Size = new System.Drawing.Size(323, 29);
             this.dtpDatePublished.TabIndex = 18;
+            this.dtpDatePublished.ValueChanged += new System.EventHandler(this.dtpDatePublished_ValueChanged);
             // 
             // dtpDateArchived
             // 

@@ -14,7 +14,7 @@ namespace RecipeWinForms
             btnDel.Click += BtnDel_Click;
         }
 
-
+        //dto zarih hachlafa le txt paamaim!!!!!! frmrecipe
         public void ShowForm(int recipeid)
         {
             string sql = "SELECT Users = u.FirstName +' '+ u.LastName, c.CuisineType, r.RecipeName, r.Calories, r.DateCreated, r.DatePublished, r.DateArchived, r.RecipeStatus FROM Recipe r JOIN Users u on u.UserID = r.UserID join Cuisine c on c.CuisineID = r.CuisineID WHERE r.Recipeid = " + recipeid;
@@ -22,7 +22,7 @@ namespace RecipeWinForms
             WindowsFormUtility.SetControlBinding(txtRecipeName, dtRecipe);
             WindowsFormUtility.SetControlBinding(txtCalories, dtRecipe);
             //WindowsFormUtility.SetListBinding(lstUsers, dtRecipe, "Users");
-            //WindowsFormUtility.SetListBinding(lstCuisineType, dtRecipe, "Cuisine");
+            WindowsFormUtility.SetListBinding(lstCuisineType, dtRecipe, "Cuisine");
             WindowsFormUtility.SetControlBinding(dtpDateCreated, dtRecipe);
             WindowsFormUtility.SetControlBinding(dtpDatePublished, dtRecipe);
             WindowsFormUtility.SetControlBinding(dtpDateArchived, dtRecipe);
@@ -32,15 +32,15 @@ namespace RecipeWinForms
 
         private void Save()
         {
-            DataRow r = dtRecipe.Rows[0];
-            int id = (int)r["recipeId"];
+            DataRow r = dtRecipe.Rows[0];//yesh po beaya!!!
+            int id = (int)r["recipeId"];//yesh po beaya!!!
 
             string sql = "";
             if (id > 0)
             {
                 sql = string.Join(Environment.NewLine, $"update recipe set",
                     //$"Userid = '{r["Userid"]}',",
-                    //$"Cuisineid = '{r["Cuisineid"]}',",
+                    $"Cuisineid = '{r["Cuisineid"]}',",
                     $"recipeName = '{r["RecipeName"]}',",
                     $"Calories = '{r["Calories"]}',",
                     $"DateCreated = '{r["DateCreated"]}',",
@@ -74,6 +74,10 @@ namespace RecipeWinForms
             Save();
         }
 
+        private void dtpDatePublished_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 
