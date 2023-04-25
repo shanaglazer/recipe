@@ -41,13 +41,13 @@
             this.lblRecipeStatus = new System.Windows.Forms.Label();
             this.lstCuisineType = new System.Windows.Forms.ComboBox();
             this.dtpDateCreated = new System.Windows.Forms.DateTimePicker();
-            this.dtpDatePublished = new System.Windows.Forms.DateTimePicker();
-            this.dtpDateArchived = new System.Windows.Forms.DateTimePicker();
             this.tblSaveDelete = new System.Windows.Forms.TableLayoutPanel();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnDel = new System.Windows.Forms.Button();
-            this.lstUsers = new System.Windows.Forms.ComboBox();
             this.txtRecipeStatus = new System.Windows.Forms.TextBox();
+            this.txtDatePublished = new System.Windows.Forms.TextBox();
+            this.txtDateArchived = new System.Windows.Forms.TextBox();
+            this.lstUserName = new System.Windows.Forms.ComboBox();
             this.tblMain.SuspendLayout();
             this.tblSaveDelete.SuspendLayout();
             this.SuspendLayout();
@@ -69,11 +69,11 @@
             this.tblMain.Controls.Add(this.lblRecipeStatus, 0, 9);
             this.tblMain.Controls.Add(this.lstCuisineType, 1, 5);
             this.tblMain.Controls.Add(this.dtpDateCreated, 1, 6);
-            this.tblMain.Controls.Add(this.dtpDatePublished, 1, 7);
-            this.tblMain.Controls.Add(this.dtpDateArchived, 1, 8);
             this.tblMain.Controls.Add(this.tblSaveDelete, 1, 10);
-            this.tblMain.Controls.Add(this.lstUsers, 1, 4);
             this.tblMain.Controls.Add(this.txtRecipeStatus, 1, 9);
+            this.tblMain.Controls.Add(this.txtDatePublished, 1, 7);
+            this.tblMain.Controls.Add(this.txtDateArchived, 1, 8);
+            this.tblMain.Controls.Add(this.lstUserName, 1, 4);
             this.tblMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tblMain.Location = new System.Drawing.Point(0, 0);
             this.tblMain.Margin = new System.Windows.Forms.Padding(4);
@@ -198,7 +198,7 @@
             this.lstCuisineType.FormattingEnabled = true;
             this.lstCuisineType.Location = new System.Drawing.Point(126, 112);
             this.lstCuisineType.Name = "lstCuisineType";
-            this.lstCuisineType.Size = new System.Drawing.Size(121, 29);
+            this.lstCuisineType.Size = new System.Drawing.Size(134, 29);
             this.lstCuisineType.TabIndex = 15;
             // 
             // dtpDateCreated
@@ -209,25 +209,6 @@
             this.dtpDateCreated.Name = "dtpDateCreated";
             this.dtpDateCreated.Size = new System.Drawing.Size(323, 29);
             this.dtpDateCreated.TabIndex = 17;
-            // 
-            // dtpDatePublished
-            // 
-            this.dtpDatePublished.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dtpDatePublished.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDatePublished.Location = new System.Drawing.Point(126, 182);
-            this.dtpDatePublished.Name = "dtpDatePublished";
-            this.dtpDatePublished.Size = new System.Drawing.Size(323, 29);
-            this.dtpDatePublished.TabIndex = 18;
-            this.dtpDatePublished.ValueChanged += new System.EventHandler(this.dtpDatePublished_ValueChanged);
-            // 
-            // dtpDateArchived
-            // 
-            this.dtpDateArchived.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dtpDateArchived.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDateArchived.Location = new System.Drawing.Point(126, 217);
-            this.dtpDateArchived.Name = "dtpDateArchived";
-            this.dtpDateArchived.Size = new System.Drawing.Size(323, 29);
-            this.dtpDateArchived.TabIndex = 19;
             // 
             // tblSaveDelete
             // 
@@ -265,14 +246,6 @@
             this.btnDel.Text = "Delete";
             this.btnDel.UseVisualStyleBackColor = true;
             // 
-            // lstUsers
-            // 
-            this.lstUsers.FormattingEnabled = true;
-            this.lstUsers.Location = new System.Drawing.Point(126, 77);
-            this.lstUsers.Name = "lstUsers";
-            this.lstUsers.Size = new System.Drawing.Size(121, 29);
-            this.lstUsers.TabIndex = 21;
-            // 
             // txtRecipeStatus
             // 
             this.txtRecipeStatus.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -280,6 +253,30 @@
             this.txtRecipeStatus.Name = "txtRecipeStatus";
             this.txtRecipeStatus.Size = new System.Drawing.Size(323, 29);
             this.txtRecipeStatus.TabIndex = 22;
+            // 
+            // txtDatePublished
+            // 
+            this.txtDatePublished.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtDatePublished.Location = new System.Drawing.Point(126, 182);
+            this.txtDatePublished.Name = "txtDatePublished";
+            this.txtDatePublished.Size = new System.Drawing.Size(323, 29);
+            this.txtDatePublished.TabIndex = 23;
+            // 
+            // txtDateArchived
+            // 
+            this.txtDateArchived.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtDateArchived.Location = new System.Drawing.Point(126, 217);
+            this.txtDateArchived.Name = "txtDateArchived";
+            this.txtDateArchived.Size = new System.Drawing.Size(323, 29);
+            this.txtDateArchived.TabIndex = 24;
+            // 
+            // lstUserName
+            // 
+            this.lstUserName.FormattingEnabled = true;
+            this.lstUserName.Location = new System.Drawing.Point(126, 77);
+            this.lstUserName.Name = "lstUserName";
+            this.lstUserName.Size = new System.Drawing.Size(134, 29);
+            this.lstUserName.TabIndex = 25;
             // 
             // frmRecipe
             // 
@@ -313,12 +310,12 @@
         private Label lblRecipeStatus;
         private ComboBox lstCuisineType;
         private DateTimePicker dtpDateCreated;
-        private DateTimePicker dtpDatePublished;
-        private DateTimePicker dtpDateArchived;
         private TableLayoutPanel tblSaveDelete;
         private Button btnSave;
         private Button btnDel;
-        private ComboBox lstUsers;
         private TextBox txtRecipeStatus;
+        private TextBox txtDatePublished;
+        private TextBox txtDateArchived;
+        private ComboBox lstUserName;
     }
 }
