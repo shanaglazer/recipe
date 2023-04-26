@@ -1,6 +1,7 @@
 ﻿using CPUFramework;
 using CPUWindowsFormFramework;
 using System.Data;
+using System.Linq;
 
 namespace RecipeWinForms
 {
@@ -15,15 +16,13 @@ namespace RecipeWinForms
         }
 
         public void ShowForm(int recipeid)
-        {//Users = u.FirstName +' '+ u.LastName
+        {
             string sql = "SELECT r.recipeid, u.usersid, u.username, c.cuisineid, c.CuisineType, r.RecipeName, r.Calories, r.DateCreated, r.DatePublished, r.DateArchived, r.RecipeStatus FROM Recipe r JOIN Users u on u.UsersID = r.UsersID join Cuisine c on c.CuisineID = r.CuisineID WHERE r.Recipeid = " + recipeid;
             dtRecipe = SQLUtility.GetDataTable(sql);
+
             DataTable dtcuisine = SQLUtility.GetDataTable("select cuisineid, cuisinetype from cuisine");
             DataTable dtusers = SQLUtility.GetDataTable("select usersid, username from users");
-            //if (recipeid == 0)
-            //{
-            //    dtRecipe.Rows.Add();
-            //}
+            
             WindowsFormUtility.SetControlBinding(txtRecipeName, dtRecipe);
             WindowsFormUtility.SetControlBinding(txtCalories, dtRecipe);
             WindowsFormUtility.SetListBinding(lstUserName, dtusers, dtRecipe, "Users");
@@ -32,20 +31,18 @@ namespace RecipeWinForms
             WindowsFormUtility.SetControlBinding(txtDatePublished, dtRecipe);
             WindowsFormUtility.SetControlBinding(txtDateArchived, dtRecipe);
             WindowsFormUtility.SetControlBinding(txtRecipeStatus, dtRecipe);
+            
             this.Show();
         }
 
         private void Save(DataTable dtRecipe)
         {
+            //be-new lo motze datarow venofel al ze
             DataRow r = dtRecipe.Rows[0];
-            //baaya - ha id lo nimtza batavla. tzarih lehosif sql lehvie et hashem?
             int id = (int)r["recipeId"];
 
             var datecreated = ((DateTime)r["DateCreated"]).ToString("yyyy-MM-dd h:mm");
-            //lehosif im zeh null
-            var datepublished = ((DateTime)r["DatePublished"]).ToString("yyyy-MM-dd h:mm");
-            var datearchived = ((DateTime)r["DateArchived"]).ToString("yyyy-MM-dd h:mm");
-
+            
             string sql = "";
             if (id > 0)
             {
@@ -54,15 +51,13 @@ namespace RecipeWinForms
                     $"Cuisineid = '{r["Cuisineid"]}',",
                     $"recipeName = '{r["RecipeName"]}',",
                     $"Calories = '{r["Calories"]}',",
-                    $"DateCreated = '{datecreated}',",
-                    $"DatePublished = '{datepublished}',",
-                    $"DateArchived = '{datearchived}'",
+                    $"DateCreated = '{datecreated}'",
                     $"where Recipeid = {r["Recipeid"]}");
             }
             else
             {
-                sql = "insert recipe(usersid, CuisineId, RecipeName, Calories, DateCreated, DatePublished, DateArchived, RecipeStatus)";
-                sql += $"Select '{r["usersid"]}', {r["CuisineId"]}, '{r["RecipeName"]}', '{r["Calories"]}', '{r["DateCreated"]}', {r["DatePublished"]}, {r["DateArchived"]}, {r["RecipeStatus"]}";
+                sql = "insert recipe(usersid, CuisineId, RecipeName, Calories, DateCreated)";
+                sql += $"Select '{r["usersid"]}', {r["CuisineId"]}, '{r["RecipeName"]}', '{r["Calories"]}', '{r["DateCreated"]}'";
             }
             SQLUtility.ExecuteSQL(sql);
         }
