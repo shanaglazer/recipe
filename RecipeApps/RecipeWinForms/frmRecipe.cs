@@ -60,7 +60,7 @@ namespace RecipeWinForms
             else
             {
                 sql = "insert recipe(usersid, CuisineId, RecipeName, Calories, DateCreated)";
-                sql += $"Select '{r["usersid"]}', {r["CuisineId"]}, '{r["RecipeName"]}', '{r["Calories"]}', '{r["DateCreated"]}'";
+                sql += $"Select '{r["usersid"]}', {r["CuisineId"]}, '{r["RecipeName"]}', '{r["Calories"]}', '{datecreated}'";
             }
             SQLUtility.ExecuteSQL(sql);
         }
