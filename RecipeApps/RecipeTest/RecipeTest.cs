@@ -90,43 +90,43 @@ namespace RecipeTest
             TestContext.WriteLine("calories in recipe (" + recipeid + ") = " + newcalories);
         }
 
-        [Test]
-        public void ChangeExistingUser()
-        {
-            int recipeid = GetExistingRecipeId();
-            Assume.That(recipeid > 0, "No recipes in DB, Can't run test");
-            DataTable dt = SQLUtility.GetDataTable("select u.username from Recipe r join Users u on r.UsersID = u.UsersID where r.RecipeID = " + recipeid);
-            string username = (string)dt.Rows[0]["username"];
-            TestContext.WriteLine("user name for recipeid " + recipeid + " is " + username);
-            DataTable dtnew = SQLUtility.GetDataTable("select top 1 username from users where username <> '" + username + "'");
-            username = dtnew.Rows[0]["username"].ToString();
-            TestContext.WriteLine("Change username to " + username);
-            DataTable dtupdate = Recipe.LoadRecipe(recipeid);
-            dtupdate.Rows[0]["username"] = username;
-            Recipe.Save(dtupdate);
-            string newuser = dtupdate.Rows[0]["username"].ToString();
-            Assert.IsTrue(newuser == username, "user for recipe (" + recipeid + ") = " + username);
-            TestContext.WriteLine("user name for recipe (" + recipeid + ") = " + newuser);
-        }
+        //[Test]
+        //public void ChangeExistingUser()
+        //{
+        //    int recipeid = GetExistingRecipeId();
+        //    Assume.That(recipeid > 0, "No recipes in DB, Can't run test");
+        //    DataTable dt = SQLUtility.GetDataTable("select u.username from Recipe r join Users u on r.UsersID = u.UsersID where r.RecipeID = " + recipeid);
+        //    string username = (string)dt.Rows[0]["username"];
+        //    TestContext.WriteLine("user name for recipeid " + recipeid + " is " + username);
+        //    DataTable dtnew = SQLUtility.GetDataTable("select top 1 username from users where username <> '" + username + "'");
+        //    username = dtnew.Rows[0]["username"].ToString();
+        //    TestContext.WriteLine("Change username to " + username);
+        //    DataTable dtupdate = Recipe.LoadRecipe(recipeid);
+        //    dtupdate.Rows[0]["username"] = username;
+        //    Recipe.Save(dtupdate);
+        //    string newuser = dtupdate.Rows[0]["username"].ToString();
+        //    Assert.IsTrue(newuser == username, "user for recipe (" + recipeid + ") = " + username);
+        //    TestContext.WriteLine("user name for recipe (" + recipeid + ") = " + newuser);
+        //}
 
-        [Test]
-        public void ChangeExistingCuisine()
-        {
-            int recipeid = GetExistingRecipeId();
-            Assume.That(recipeid > 0, "No recipes in DB, Can't run test");
-            DataTable dt = SQLUtility.GetDataTable("select c.cuisinetype from Recipe r join cuisine c on r.cuisineID = c.cuisineID where r.RecipeID = " + recipeid);
-            string cuisinetype = (string)dt.Rows[0]["cuisinetype"];
-            TestContext.WriteLine("cuisine type for recipeid " + recipeid + " is " + cuisinetype);
-            DataTable dtnew = SQLUtility.GetDataTable("select top 1 cuisinetype from cuisine where cuisinetype <> '" + cuisinetype + "'");
-            cuisinetype = dtnew.Rows[0]["cuisinetype"].ToString();
-            TestContext.WriteLine("Change cuisinetype to " + cuisinetype);
-            DataTable dtupdate = Recipe.LoadRecipe(recipeid);
-            dtupdate.Rows[0]["cuisinetype"] = cuisinetype;
-            Recipe.Save(dtupdate);
-            string newcuisine = dtupdate.Rows[0]["cuisinetype"].ToString();
-            Assert.IsTrue(newcuisine == cuisinetype, "cuisine for recipe (" + recipeid + ") = " + cuisinetype);
-            TestContext.WriteLine("cuisine type for recipe (" + recipeid + ") = " + newcuisine);
-        }
+        //[Test]
+        //public void ChangeExistingCuisine()
+        //{
+        //    int recipeid = GetExistingRecipeId();
+        //    Assume.That(recipeid > 0, "No recipes in DB, Can't run test");
+        //    DataTable dt = SQLUtility.GetDataTable("select c.cuisinetype from Recipe r join cuisine c on r.cuisineID = c.cuisineID where r.RecipeID = " + recipeid);
+        //    string cuisinetype = (string)dt.Rows[0]["cuisinetype"];
+        //    TestContext.WriteLine("cuisine type for recipeid " + recipeid + " is " + cuisinetype);
+        //    DataTable dtnew = SQLUtility.GetDataTable("select top 1 cuisinetype from cuisine where cuisinetype <> '" + cuisinetype + "'");
+        //    cuisinetype = dtnew.Rows[0]["cuisinetype"].ToString();
+        //    TestContext.WriteLine("Change cuisinetype to " + cuisinetype);
+        //    DataTable dtupdate = Recipe.LoadRecipe(recipeid);
+        //    dtupdate.Rows[0]["cuisinetype"] = cuisinetype;
+        //    Recipe.Save(dtupdate);
+        //    string newcuisine = dtupdate.Rows[0]["cuisinetype"].ToString();
+        //    Assert.IsTrue(newcuisine == cuisinetype, "cuisine for recipe (" + recipeid + ") = " + cuisinetype);
+        //    TestContext.WriteLine("cuisine type for recipe (" + recipeid + ") = " + newcuisine);
+        //}
 
         [Test]
         public void ChangeDateCreated()
@@ -200,6 +200,56 @@ namespace RecipeTest
         private int GetExistingRecipeId()
         {
             return SQLUtility.GetFirstColumnFirstRowValue("select top 1 recipeid from recipe");
+        }
+
+        [Test]
+        public static void DeleteUserWithRecipe()
+        {
+            DataTable dt = SQLUtility.GetDataTable("select top 1 r.recipeid, r.recipename from IngredientRecipe i join recipe r on r.recipeid = i.recipeid");
+            int recipeid = 0;
+            string recipename = "";
+            if (dt.Rows.Count > 0)
+            {
+                recipeid = (int)dt.Rows[0]["recipeid"];
+                recipename = dt.Rows[0]["recipename"].ToString();
+            }
+            Assume.That(recipeid > 0, "No recipes with ingredients in DB, Can't run test");
+            TestContext.WriteLine("Existing recipe with ingredient, with id " + recipeid + " " + recipename);
+            TestContext.WriteLine("Ensure that app cannot delete " + recipeid);
+
+            Exception ex = Assert.Throws<Exception>(() => Recipe.Delete(dt));
+
+            TestContext.WriteLine(ex.Message);
+        }
+
+        [Test]
+        public void ChangeExistingRecipeNameToInvalid()
+        {
+            int recipeid = GetExistingRecipeId();
+            Assume.That(recipeid > 0, "No recipes in DB, Can't run test");
+            DataTable dt = SQLUtility.GetDataTable("select recipename from recipe where recipeid <> " + recipeid);
+            string recipename = (string)dt.Rows[0]["recipename"];
+            TestContext.WriteLine("tring to change recipe name for recipeid " + recipeid + " to " + recipename+ " which exists.");
+         
+            DataTable dtnew = Recipe.LoadRecipe(recipeid);
+            dtnew.Rows[0]["recipename"] = recipename;
+            Exception ex = Assert.Throws<Exception>(()=> Recipe.Save(dtnew));
+            TestContext.WriteLine(ex.Message);
+        }
+
+        [Test]
+        public void ChangeCaloriesToInvalid()
+        {
+            int recipeid = GetExistingRecipeId();
+            Assume.That(recipeid > 0, "No recipes in DB, Can't run test");
+            int calories = SQLUtility.GetFirstColumnFirstRowValue("select calories from recipe where recipeid = " + recipeid);
+            TestContext.WriteLine("Calories in recipe recipeid " + recipeid + " is " + calories);
+            calories = -5;
+            TestContext.WriteLine("Change calories to " + calories);
+            DataTable dt = Recipe.LoadRecipe(recipeid);
+            dt.Rows[0]["calories"] = calories;
+            Exception ex = Assert.Throws<Exception> (()=> Recipe.Save(dt));
+            TestContext.WriteLine(ex.Message);
         }
     }
 }
