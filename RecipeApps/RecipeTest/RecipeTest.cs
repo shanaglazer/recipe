@@ -203,7 +203,7 @@ namespace RecipeTest
         }
 
         [Test]
-        public static void DeleteUserWithRecipe()
+        public static void DeleteRecipeWithIngredient()
         {
             DataTable dt = SQLUtility.GetDataTable("select top 1 r.recipeid, r.recipename from IngredientRecipe i join recipe r on r.recipeid = i.recipeid");
             int recipeid = 0;
@@ -249,6 +249,26 @@ namespace RecipeTest
             DataTable dt = Recipe.LoadRecipe(recipeid);
             dt.Rows[0]["calories"] = calories;
             Exception ex = Assert.Throws<Exception> (()=> Recipe.Save(dt));
+            TestContext.WriteLine(ex.Message);
+        }
+
+        [Test]
+        public static void DeleteRecipeWithRecipeBook()
+        {
+            DataTable dt = SQLUtility.GetDataTable("select top 1 r.recipeid, r.recipename from BookRecipe b join recipe r on r.recipeid = b.recipeid");
+            int recipeid = 0;
+            string recipename = "";
+            if (dt.Rows.Count > 0)
+            {
+                recipeid = (int)dt.Rows[0]["recipeid"];
+                recipename = dt.Rows[0]["recipename"].ToString();
+            }
+            Assume.That(recipeid > 0, "No recipes in cookbooks in DB, Can't run test");
+            TestContext.WriteLine("Existing recipe in cookbook, with id " + recipeid + " " + recipename);
+            TestContext.WriteLine("Ensure that app cannot delete " + recipeid);
+
+            Exception ex = Assert.Throws<Exception>(() => Recipe.Delete(dt));
+
             TestContext.WriteLine(ex.Message);
         }
     }

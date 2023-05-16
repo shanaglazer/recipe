@@ -63,6 +63,11 @@ namespace RecipeWinForms
 
         private void Delete()
         {
+            var response = MessageBox.Show("Are you sure you whant to delte recipe?", "Hearty Hearth", MessageBoxButtons.YesNo);
+            if(response == DialogResult.No)
+            {
+                return;
+            }
             Application.UseWaitCursor = true;
             try
             {
