@@ -52,6 +52,7 @@ namespace RecipeWinForms
             try
             {
                 Recipe.Save(dtRecipe);
+                bindsource.ResetBindings(false);
             }
             catch(Exception ex)
             {
