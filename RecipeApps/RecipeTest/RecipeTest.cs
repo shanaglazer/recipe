@@ -275,7 +275,7 @@ namespace RecipeTest
         [Test]
         public static void DeleteDraftRecipe()
         {
-            DataTable dt = SQLUtility.GetDataTable("select top 1 r.recipeid, r.recipename from Recipe r where r.recipestatus = 'Draft'");
+            DataTable dt = SQLUtility.GetDataTable("select top 1 r.recipeid, r.recipename from Recipe r where r.recipestatus = 'Draft' or (r.recipestatus = 'Archive' and getdate() > dateadd(day, 30, r.datearchived))");
             int recipeid = 0;
             string recipename = "";
             if (dt.Rows.Count > 0)
