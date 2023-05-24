@@ -17,7 +17,6 @@ begin
     join meal m
     on m.MealID = c.MealID
     WHERE m.MealID = @MealId
-    group by r.Calories
 	
 	return @return
 
