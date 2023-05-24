@@ -33,8 +33,8 @@
             this.lblSearch = new System.Windows.Forms.Label();
             this.txtRecipe = new System.Windows.Forms.TextBox();
             this.btnSearch = new System.Windows.Forms.Button();
-            this.gRecipes = new System.Windows.Forms.DataGridView();
             this.btnNew = new System.Windows.Forms.Button();
+            this.gRecipes = new System.Windows.Forms.DataGridView();
             this.tblMain.SuspendLayout();
             this.tblSearch.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gRecipes)).BeginInit();
@@ -53,7 +53,7 @@
             this.tblMain.RowCount = 2;
             this.tblMain.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tblMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tblMain.Size = new System.Drawing.Size(457, 337);
+            this.tblMain.Size = new System.Drawing.Size(703, 470);
             this.tblMain.TabIndex = 0;
             // 
             // tblSearch
@@ -107,16 +107,6 @@
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = false;
             // 
-            // gRecipes
-            // 
-            this.gRecipes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gRecipes.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gRecipes.Location = new System.Drawing.Point(3, 68);
-            this.gRecipes.Name = "gRecipes";
-            this.gRecipes.RowTemplate.Height = 25;
-            this.gRecipes.Size = new System.Drawing.Size(451, 266);
-            this.gRecipes.TabIndex = 1;
-            // 
             // btnNew
             // 
             this.btnNew.Anchor = System.Windows.Forms.AnchorStyles.Left;
@@ -129,11 +119,21 @@
             this.btnNew.Text = "New";
             this.btnNew.UseVisualStyleBackColor = false;
             // 
+            // gRecipes
+            // 
+            this.gRecipes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gRecipes.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gRecipes.Location = new System.Drawing.Point(3, 68);
+            this.gRecipes.Name = "gRecipes";
+            this.gRecipes.RowTemplate.Height = 25;
+            this.gRecipes.Size = new System.Drawing.Size(697, 399);
+            this.gRecipes.TabIndex = 1;
+            // 
             // frmSearch
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(457, 337);
+            this.ClientSize = new System.Drawing.Size(703, 470);
             this.Controls.Add(this.tblMain);
             this.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Margin = new System.Windows.Forms.Padding(4);

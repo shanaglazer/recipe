@@ -39,9 +39,9 @@ namespace RecipeWinForms
             WindowsFormUtility.SetListBinding(lstUserName, dtusers, dtRecipe, "Users");
             WindowsFormUtility.SetListBinding(lstCuisineType, dtcuisine, dtRecipe, "Cuisine");
             WindowsFormUtility.SetControlBinding(dtpDateCreated, bindsource);
-            WindowsFormUtility.SetControlBinding(txtDatePublished, bindsource);
-            WindowsFormUtility.SetControlBinding(txtDateArchived, bindsource);
-            WindowsFormUtility.SetControlBinding(txtRecipeStatus, bindsource);
+            WindowsFormUtility.SetControlBinding(lblDatePublished, bindsource);
+            WindowsFormUtility.SetControlBinding(lblDateArchived, bindsource);
+            WindowsFormUtility.SetControlBinding(lblRecipeStatus, bindsource);
             
             this.Show();
         }

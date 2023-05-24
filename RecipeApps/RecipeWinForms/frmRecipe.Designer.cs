@@ -36,18 +36,18 @@
             this.lblUser = new System.Windows.Forms.Label();
             this.lblCuisine = new System.Windows.Forms.Label();
             this.lblDateCreated = new System.Windows.Forms.Label();
-            this.lblDatePublished = new System.Windows.Forms.Label();
+            this.lblPublished = new System.Windows.Forms.Label();
             this.lblDateArchive = new System.Windows.Forms.Label();
-            this.lblRecipeStatus = new System.Windows.Forms.Label();
+            this.lblStatus = new System.Windows.Forms.Label();
             this.lstCuisineType = new System.Windows.Forms.ComboBox();
             this.dtpDateCreated = new System.Windows.Forms.DateTimePicker();
             this.tblSaveDelete = new System.Windows.Forms.TableLayoutPanel();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnDel = new System.Windows.Forms.Button();
-            this.txtRecipeStatus = new System.Windows.Forms.TextBox();
-            this.txtDatePublished = new System.Windows.Forms.TextBox();
-            this.txtDateArchived = new System.Windows.Forms.TextBox();
             this.lstUserName = new System.Windows.Forms.ComboBox();
+            this.lblDatePublished = new System.Windows.Forms.Label();
+            this.lblDateArchived = new System.Windows.Forms.Label();
+            this.lblRecipeStatus = new System.Windows.Forms.Label();
             this.tblMain.SuspendLayout();
             this.tblSaveDelete.SuspendLayout();
             this.SuspendLayout();
@@ -64,16 +64,16 @@
             this.tblMain.Controls.Add(this.lblUser, 0, 4);
             this.tblMain.Controls.Add(this.lblCuisine, 0, 5);
             this.tblMain.Controls.Add(this.lblDateCreated, 0, 6);
-            this.tblMain.Controls.Add(this.lblDatePublished, 0, 7);
+            this.tblMain.Controls.Add(this.lblPublished, 0, 7);
             this.tblMain.Controls.Add(this.lblDateArchive, 0, 8);
-            this.tblMain.Controls.Add(this.lblRecipeStatus, 0, 9);
+            this.tblMain.Controls.Add(this.lblStatus, 0, 9);
             this.tblMain.Controls.Add(this.lstCuisineType, 1, 5);
             this.tblMain.Controls.Add(this.dtpDateCreated, 1, 6);
             this.tblMain.Controls.Add(this.tblSaveDelete, 1, 10);
-            this.tblMain.Controls.Add(this.txtRecipeStatus, 1, 9);
-            this.tblMain.Controls.Add(this.txtDatePublished, 1, 7);
-            this.tblMain.Controls.Add(this.txtDateArchived, 1, 8);
             this.tblMain.Controls.Add(this.lstUserName, 1, 4);
+            this.tblMain.Controls.Add(this.lblDatePublished, 1, 7);
+            this.tblMain.Controls.Add(this.lblDateArchived, 1, 8);
+            this.tblMain.Controls.Add(this.lblRecipeStatus, 1, 9);
             this.tblMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tblMain.Location = new System.Drawing.Point(0, 0);
             this.tblMain.Margin = new System.Windows.Forms.Padding(4);
@@ -90,7 +90,7 @@
             this.tblMain.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tblMain.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tblMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tblMain.Size = new System.Drawing.Size(452, 370);
+            this.tblMain.Size = new System.Drawing.Size(710, 382);
             this.tblMain.TabIndex = 0;
             // 
             // lblRName
@@ -121,7 +121,7 @@
             this.txtRecipeName.Location = new System.Drawing.Point(127, 4);
             this.txtRecipeName.Margin = new System.Windows.Forms.Padding(4);
             this.txtRecipeName.Name = "txtRecipeName";
-            this.txtRecipeName.Size = new System.Drawing.Size(321, 29);
+            this.txtRecipeName.Size = new System.Drawing.Size(579, 29);
             this.txtRecipeName.TabIndex = 6;
             // 
             // txtCalories
@@ -130,7 +130,7 @@
             this.txtCalories.Location = new System.Drawing.Point(127, 41);
             this.txtCalories.Margin = new System.Windows.Forms.Padding(4);
             this.txtCalories.Name = "txtCalories";
-            this.txtCalories.Size = new System.Drawing.Size(321, 29);
+            this.txtCalories.Size = new System.Drawing.Size(579, 29);
             this.txtCalories.TabIndex = 7;
             // 
             // lblUser
@@ -163,35 +163,35 @@
             this.lblDateCreated.TabIndex = 10;
             this.lblDateCreated.Text = "Date Created:";
             // 
-            // lblDatePublished
+            // lblPublished
             // 
-            this.lblDatePublished.AutoSize = true;
-            this.lblDatePublished.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblDatePublished.Location = new System.Drawing.Point(3, 179);
-            this.lblDatePublished.Name = "lblDatePublished";
-            this.lblDatePublished.Size = new System.Drawing.Size(117, 35);
-            this.lblDatePublished.TabIndex = 11;
-            this.lblDatePublished.Text = "Date Published:";
+            this.lblPublished.AutoSize = true;
+            this.lblPublished.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblPublished.Location = new System.Drawing.Point(3, 179);
+            this.lblPublished.Name = "lblPublished";
+            this.lblPublished.Size = new System.Drawing.Size(117, 21);
+            this.lblPublished.TabIndex = 11;
+            this.lblPublished.Text = "Date Published:";
             // 
             // lblDateArchive
             // 
             this.lblDateArchive.AutoSize = true;
             this.lblDateArchive.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblDateArchive.Location = new System.Drawing.Point(3, 214);
+            this.lblDateArchive.Location = new System.Drawing.Point(3, 200);
             this.lblDateArchive.Name = "lblDateArchive";
-            this.lblDateArchive.Size = new System.Drawing.Size(117, 35);
+            this.lblDateArchive.Size = new System.Drawing.Size(117, 21);
             this.lblDateArchive.TabIndex = 12;
             this.lblDateArchive.Text = "Date Archive:";
             // 
-            // lblRecipeStatus
+            // lblStatus
             // 
-            this.lblRecipeStatus.AutoSize = true;
-            this.lblRecipeStatus.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblRecipeStatus.Location = new System.Drawing.Point(3, 249);
-            this.lblRecipeStatus.Name = "lblRecipeStatus";
-            this.lblRecipeStatus.Size = new System.Drawing.Size(117, 35);
-            this.lblRecipeStatus.TabIndex = 13;
-            this.lblRecipeStatus.Text = "Recipe Status:";
+            this.lblStatus.AutoSize = true;
+            this.lblStatus.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblStatus.Location = new System.Drawing.Point(3, 221);
+            this.lblStatus.Name = "lblStatus";
+            this.lblStatus.Size = new System.Drawing.Size(117, 21);
+            this.lblStatus.TabIndex = 13;
+            this.lblStatus.Text = "Recipe Status:";
             // 
             // lstCuisineType
             // 
@@ -207,7 +207,7 @@
             this.dtpDateCreated.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpDateCreated.Location = new System.Drawing.Point(126, 147);
             this.dtpDateCreated.Name = "dtpDateCreated";
-            this.dtpDateCreated.Size = new System.Drawing.Size(323, 29);
+            this.dtpDateCreated.Size = new System.Drawing.Size(581, 29);
             this.dtpDateCreated.TabIndex = 17;
             // 
             // tblSaveDelete
@@ -218,12 +218,12 @@
             this.tblSaveDelete.Controls.Add(this.btnSave, 0, 0);
             this.tblSaveDelete.Controls.Add(this.btnDel, 1, 0);
             this.tblSaveDelete.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tblSaveDelete.Location = new System.Drawing.Point(126, 287);
+            this.tblSaveDelete.Location = new System.Drawing.Point(126, 245);
             this.tblSaveDelete.Name = "tblSaveDelete";
             this.tblSaveDelete.RowCount = 1;
             this.tblSaveDelete.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tblSaveDelete.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tblSaveDelete.Size = new System.Drawing.Size(323, 80);
+            this.tblSaveDelete.Size = new System.Drawing.Size(581, 134);
             this.tblSaveDelete.TabIndex = 20;
             // 
             // btnSave
@@ -231,7 +231,7 @@
             this.btnSave.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnSave.Location = new System.Drawing.Point(3, 3);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(155, 74);
+            this.btnSave.Size = new System.Drawing.Size(284, 128);
             this.btnSave.TabIndex = 0;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
@@ -239,36 +239,12 @@
             // btnDel
             // 
             this.btnDel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnDel.Location = new System.Drawing.Point(164, 3);
+            this.btnDel.Location = new System.Drawing.Point(293, 3);
             this.btnDel.Name = "btnDel";
-            this.btnDel.Size = new System.Drawing.Size(156, 74);
+            this.btnDel.Size = new System.Drawing.Size(285, 128);
             this.btnDel.TabIndex = 1;
             this.btnDel.Text = "Delete";
             this.btnDel.UseVisualStyleBackColor = true;
-            // 
-            // txtRecipeStatus
-            // 
-            this.txtRecipeStatus.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtRecipeStatus.Location = new System.Drawing.Point(126, 252);
-            this.txtRecipeStatus.Name = "txtRecipeStatus";
-            this.txtRecipeStatus.Size = new System.Drawing.Size(323, 29);
-            this.txtRecipeStatus.TabIndex = 22;
-            // 
-            // txtDatePublished
-            // 
-            this.txtDatePublished.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtDatePublished.Location = new System.Drawing.Point(126, 182);
-            this.txtDatePublished.Name = "txtDatePublished";
-            this.txtDatePublished.Size = new System.Drawing.Size(323, 29);
-            this.txtDatePublished.TabIndex = 23;
-            // 
-            // txtDateArchived
-            // 
-            this.txtDateArchived.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtDateArchived.Location = new System.Drawing.Point(126, 217);
-            this.txtDateArchived.Name = "txtDateArchived";
-            this.txtDateArchived.Size = new System.Drawing.Size(323, 29);
-            this.txtDateArchived.TabIndex = 24;
             // 
             // lstUserName
             // 
@@ -278,11 +254,38 @@
             this.lstUserName.Size = new System.Drawing.Size(134, 29);
             this.lstUserName.TabIndex = 25;
             // 
+            // lblDatePublished
+            // 
+            this.lblDatePublished.AutoSize = true;
+            this.lblDatePublished.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblDatePublished.Location = new System.Drawing.Point(126, 179);
+            this.lblDatePublished.Name = "lblDatePublished";
+            this.lblDatePublished.Size = new System.Drawing.Size(581, 21);
+            this.lblDatePublished.TabIndex = 26;
+            // 
+            // lblDateArchived
+            // 
+            this.lblDateArchived.AutoSize = true;
+            this.lblDateArchived.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblDateArchived.Location = new System.Drawing.Point(126, 200);
+            this.lblDateArchived.Name = "lblDateArchived";
+            this.lblDateArchived.Size = new System.Drawing.Size(581, 21);
+            this.lblDateArchived.TabIndex = 27;
+            // 
+            // lblRecipeStatus
+            // 
+            this.lblRecipeStatus.AutoSize = true;
+            this.lblRecipeStatus.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblRecipeStatus.Location = new System.Drawing.Point(126, 221);
+            this.lblRecipeStatus.Name = "lblRecipeStatus";
+            this.lblRecipeStatus.Size = new System.Drawing.Size(581, 21);
+            this.lblRecipeStatus.TabIndex = 28;
+            // 
             // frmRecipe
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(452, 370);
+            this.ClientSize = new System.Drawing.Size(710, 382);
             this.Controls.Add(this.tblMain);
             this.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Margin = new System.Windows.Forms.Padding(4);
@@ -305,17 +308,17 @@
         private Label lblUser;
         private Label lblCuisine;
         private Label lblDateCreated;
-        private Label lblDatePublished;
+        private Label lblPublished;
         private Label lblDateArchive;
-        private Label lblRecipeStatus;
+        private Label lblStatus;
         private ComboBox lstCuisineType;
         private DateTimePicker dtpDateCreated;
         private TableLayoutPanel tblSaveDelete;
         private Button btnSave;
         private Button btnDel;
-        private TextBox txtRecipeStatus;
-        private TextBox txtDatePublished;
-        private TextBox txtDateArchived;
         private ComboBox lstUserName;
+        private Label lblDatePublished;
+        private Label lblDateArchived;
+        private Label lblRecipeStatus;
     }
 }
