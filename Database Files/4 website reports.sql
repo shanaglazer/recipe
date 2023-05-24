@@ -71,7 +71,7 @@ y as(
 SELECT r.RecipeName, r.Calories, x.NumOfIng, x.NumOfIng, y.NumOfSteps, Picture = concat('Recipe-', REPLACE(r.RecipeName, ' ', '-'), '.jpg')
 from Recipe r
 join Users u
-on u.UserID = r.UserID
+on u.UsersID = r.UsersID
 join x
 on x.RecipeID = r.RecipeID
 join y
