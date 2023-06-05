@@ -54,7 +54,7 @@ create table dbo.Recipe(
     RecipeStatus as 
             CASE 
                when (DatePublished is null) and (DateArchived is null) then 'Draft'
-               when (DatePublished is not null) and (DateArchived is null) then 'on site'
+               when (DatePublished is not null) and (DateArchived is null) then 'On site'
                when (DateArchived is not null) then 'Archive'
             end,
     CONSTRAINT ck_Recipe_DateCreated_before_DatePublished CHECK(DateCreated < DatePublished),
