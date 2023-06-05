@@ -1,7 +1,5 @@
-﻿using CPUFramework;
-using CPUWindowsFormFramework;
+﻿using CPUWindowsFormFramework;
 using System.Data;
-using System.Linq;
 using RecipeSystem;
 
 namespace RecipeWinForms

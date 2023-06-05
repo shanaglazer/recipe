@@ -11,9 +11,10 @@ namespace RecipeWinForms
             mnuDashboard.Click += MnuDashboard_Click;
             mnuNewRecipe.Click += MnuNewRecipe_Click;
             mnuRecipeList.Click += MnuRecipeList_Click;
+            mnuCloneRecie.Click += MnuCloneRecie_Click;
         }
 
-       
+        //mdi - eih lesader?
 
         public void OpenForm(Type frmtype, int pkvalue = 0)
         {
@@ -35,6 +36,11 @@ namespace RecipeWinForms
                 else if (frmtype == typeof(frmRecipesSummary))
                 {
                     frmRecipesSummary f = new();
+                    newfrm = f;
+                }
+                else if (frmtype == typeof(frmClone))
+                {
+                    frmClone f = new();
                     newfrm = f;
                 }
                 if (newfrm != null)
@@ -72,6 +78,11 @@ namespace RecipeWinForms
         private void MnuRecipeList_Click(object? sender, EventArgs e)
         {
             OpenForm(typeof(frmRecipesSummary));
+        }
+
+        private void MnuCloneRecie_Click(object? sender, EventArgs e)
+        {
+            OpenForm(typeof(frmClone));
         }
     }
 }

@@ -6,6 +6,7 @@ namespace RecipeWinForms
 {
     public partial class frmDashboard : Form
     {
+        //lesader btn!
         public frmDashboard()
         {
             InitializeComponent();

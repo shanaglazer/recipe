@@ -1,4 +1,8 @@
-create or alter procedure dbo.RecipeGet(@All bit = 0, @RecipeId int = 0, @RecipeName varchar(50) = '')
+create or alter procedure dbo.RecipeGet(
+	@All bit = 0, 
+	@RecipeId int = 0, 
+	@RecipeName varchar(50) = '', 
+	@IncludeBlank bit = 0)
 as
 begin
     select @RecipeName = nullif(@RecipeName, '')
@@ -8,12 +12,14 @@ begin
     where @All = 1
     or r.RecipeName like '%' + @RecipeName + '%'
     or r.RecipeID = @RecipeId
+	union  select 0,0,0,'',0,'','','',''
+	where @IncludeBlank =1
 	order by r.recipename
 end
 go
 
 /*
-exec RecipeGet
+exec RecipeGet @Includeblank = 1
 
 exec RecipeGet @RecipeName = ''
 exec RecipeGet @RecipeName = 'a'
