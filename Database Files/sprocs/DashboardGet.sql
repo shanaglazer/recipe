@@ -20,14 +20,13 @@ begin
 		    SELECT Cookbooks = COUNT(*)
 		    FROM Cookbook c
 		)
-		SELECT RecipesNumber = x.Recipes, MealsNumber = y.Meals, CookbooksNumber = z.Cookbooks
-		from x
-		cross join y
-		cross join z
+		SELECT ItemType = 'recipes', CountItem = x.Recipes from x cross join y cross join z
+		union select ItemType = 'meals', CountItem = y.Meals from x cross join y cross join z
+		union select ItemType = 'cookbooks', CountItem = z.Cookbooks from x  cross join y cross join z
 
 	return @return
 end
 go
 
-exec DashboardGet
+--exec DashboardGet
 

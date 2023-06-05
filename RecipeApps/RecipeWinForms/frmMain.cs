@@ -9,7 +9,9 @@ namespace RecipeWinForms
         {
             InitializeComponent();
             mnuDashboard.Click += MnuDashboard_Click;
+            mnuNewRecipe.Click += MnuNewRecipe_Click;
         }
+
 
         public void OpenForm(Type frmtype, int pkvalue = 0)
         {
@@ -23,10 +25,12 @@ namespace RecipeWinForms
                     newfrm = f;
                 }
                 //livdok legabei keshetzarih liftoah frm lefi pk!!!!
-                //else if (frmtype == typeof(frmSearch))
-                //{
-                //    frmSearch f = new();
-                //    newfrm = f;
+                else if (frmtype == typeof(frmRecipe))
+                {
+                    frmRecipe f = new();
+                    newfrm = f;
+                }
+
                 if (newfrm != null)
                 {
                     //newfrm.MdiParent = this;
@@ -52,6 +56,11 @@ namespace RecipeWinForms
         private void MnuDashboard_Click(object? sender, EventArgs e)
         {
             OpenForm(typeof(frmDashboard));
+        }
+
+        private void MnuNewRecipe_Click(object? sender, EventArgs e)
+        {
+            OpenForm(typeof(frmRecipe));
         }
     }
 }

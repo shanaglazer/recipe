@@ -1,4 +1,6 @@
-﻿using System.Data;
+﻿using CPUFramework;
+using System.Data;
+using System.Data.SqlClient;
 
 namespace RecipeWinForms
 {
@@ -17,22 +19,24 @@ namespace RecipeWinForms
 
         private void BindData()
         {
-            
+            DataTable dt = GetDashboard();
+            SetLabelText(dt, "recipes", lblRecipesNumber);
+            SetLabelText(dt, "meals", lblMealsNumber);
+            SetLabelText(dt, "cookbooks", lblCookbooksNumber);
         }
 
-        //private void BindData()
-        //{
-        //    DataTable dt = DataMaintenance.GetDashboard();
-        //    SetButtonText(dt, "president", btnPresident);
-        //    SetButtonText(dt, "olympic", btnOlympics);
-        //}
-
-        private void SetLabelText(DataTable dt, string dashboardtype, Label lbl)
+        private static DataTable GetDashboard()
         {
-            var rows = dt.Select($"DashboardType = '{dashboardtype}'");
+            SqlCommand cmd = SQLUtility.GetSqlCommand("DashboardGet");
+            return SQLUtility.GetDataTable(cmd);
+        }
+
+        private void SetLabelText(DataTable dt, string CountItem, Label lbl)
+        {
+            var rows = dt.Select($"ItemType = '{CountItem}'");
             if (rows.Length > 0)
             {
-                lbl.Text = rows[0]["DashboardText"].ToString();
+                lbl.Text = rows[0]["CountItem"].ToString();
             }
         }
 

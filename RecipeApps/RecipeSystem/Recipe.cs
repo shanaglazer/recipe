@@ -68,5 +68,12 @@ namespace RecipeSystem
             SQLUtility.ExecuteSQL(cmd);
             //SQLUtility.ExecuteSQL(sql);
         }
+
+
+        public static DataTable GetRecipeSummary()
+        {
+            SqlCommand cmd = SQLUtility.GetSqlCommand("RecipeSummaryGet");
+            return SQLUtility.GetDataTable(cmd);
+        }
     }
 }
