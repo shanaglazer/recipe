@@ -15,13 +15,14 @@ namespace RecipeWinForms
 {
     public partial class frmRecipesSummary : Form
     {
-        //lehitza ihie al shura bagrid 
-        //lehitza ou btn liftoah amud pratim
+        //enter lo oved!
         public frmRecipesSummary()
         {
             InitializeComponent();
             this.Activated += FrmRecipesSummary_Activated;
             gRecipe.CellDoubleClick += GRecipe_CellDoubleClick;
+            this.KeyDown += FrmRecipesSummary_KeyDown;
+            btnNewRecipe.Click += BtnNewRecipe_Click;
         }
 
 
@@ -30,17 +31,19 @@ namespace RecipeWinForms
             int id = 0;
             if (rowindex > -1)
             {
-                id = WindowsFormUtility.GetIdFromGrid(gRecipe, rowindex, "RecipeId");
+                id = (int)gRecipe.Rows[rowindex].Cells["RecipeId"].Value;
             }
-            if (this.MdiParent != null && this.MdiParent is frmMain)
-            {
-                ((frmMain)this.MdiParent).OpenForm(typeof(frmRecipe), id);
-            }
+            frmRecipe frm = new();
+            frm.ShowForm(id);
+            //if (this.MdiParent != null && this.MdiParent is frmMain)
+            //{
+            //    ((frmMain)this.MdiParent).OpenForm(typeof(frmRecipe), id);
+            //}
         }
 
         private void GRecipe_CellDoubleClick(object? sender, DataGridViewCellEventArgs e)
         {
-            //liftoah frm pratim
+            ShowRecipeForm(e.RowIndex);
         }
 
         private void FrmRecipesSummary_Activated(object? sender, EventArgs e)
@@ -51,7 +54,22 @@ namespace RecipeWinForms
         private void BindData()
         {
             gRecipe.DataSource = Recipe.GetRecipeSummary();
-            WindowsFormUtility.FormatGridForEdit(gRecipe, "Recipe");
+            WindowsFormUtility.FormatGrid(gRecipe, "Recipe");
+        }
+
+        private void FrmRecipesSummary_KeyDown(object? sender, KeyEventArgs e)
+        {
+            //lo oved!
+            if(e.KeyCode == Keys.Enter && gRecipe.SelectedRows.Count > 0)
+            {
+                ShowRecipeForm(gRecipe.SelectedRows[0].Index);
+                e.SuppressKeyPress = true;
+            }
+        }
+
+        private void BtnNewRecipe_Click(object? sender, EventArgs e)
+        {
+            ShowRecipeForm(-1);
         }
     }
 }

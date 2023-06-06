@@ -5,13 +5,13 @@ create or alter proc dbo.RecipeSummaryGet(@message varchar(500) = '' output)
 as 
 begin
 
-	select r.RecipeName, r.RecipeStatus, UserName = concat(u.FirstName, ' ', u.LastName), r.Calories, NumOfIng = COUNT(ir.IngredientID)
+	select r.RecipeID, r.RecipeName, r.RecipeStatus, UserName = concat(u.FirstName, ' ', u.LastName), r.Calories, NumOfIng = COUNT(ir.IngredientID)
 	from Recipe r
 	join Users u
 	on u.UsersID = r.UsersID
 	join IngredientRecipe ir
 	on ir.RecipeID = r.RecipeID
-	group by r.RecipeName, r.RecipeStatus, u.FirstName, u.LastName, r.Calories
+	group by r.RecipeID, r.RecipeName, r.RecipeStatus, u.FirstName, u.LastName, r.Calories
 	order by r.RecipeStatus desc
 
 end

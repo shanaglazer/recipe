@@ -1,6 +1,7 @@
 ﻿using CPUWindowsFormFramework;
 using System.Data;
 using RecipeSystem;
+using CPUFramework;
 
 namespace RecipeWinForms
 {
@@ -14,9 +15,20 @@ namespace RecipeWinForms
             btnSave.Click += BtnSave_Click;
             btnDel.Click += BtnDel_Click;
 
-            DateTime currenttime = new();
-            currenttime = DateTime.Now;
-            dtpDateCreated.Value = currenttime;
+            //DateTime currenttime = new();
+            //currenttime = DateTime.Now;
+            //dtpDateCreated.Value = currenttime;
+        }
+
+        private string GetRecipeName()
+        {
+            string value = "Recipe";
+            int pkvalue = SQLUtility.GetValueFromFirstRowAsInt(dtRecipe, "RecipeId");
+            if (pkvalue > 0)
+            {
+                value = value + " - " + SQLUtility.GetValueFromFirstRowAsString(dtRecipe, "RecipeName");
+            }
+            return value;
         }
 
         public void ShowForm(int recipeid)
@@ -36,11 +48,12 @@ namespace RecipeWinForms
             WindowsFormUtility.SetControlBinding(txtCalories, bindsource);
             WindowsFormUtility.SetListBinding(lstUserName, dtusers, dtRecipe, "Users");
             WindowsFormUtility.SetListBinding(lstCuisineType, dtcuisine, dtRecipe, "Cuisine");
-            WindowsFormUtility.SetControlBinding(dtpDateCreated, bindsource);
-            WindowsFormUtility.SetControlBinding(txtDatePublished, bindsource);
-            WindowsFormUtility.SetControlBinding(txtDateArchived, bindsource);
-            WindowsFormUtility.SetControlBinding(txtRecipeStatus, bindsource);
-            
+            WindowsFormUtility.SetControlBinding(lblRecipeStatus, bindsource);
+            WindowsFormUtility.SetControlBinding(lblDateCreated, bindsource);
+            WindowsFormUtility.SetControlBinding(lblDatePublished, bindsource);
+            WindowsFormUtility.SetControlBinding(lblDateArchived, bindsource);
+
+            this.Text = GetRecipeName();
             this.Show();
         }
 
