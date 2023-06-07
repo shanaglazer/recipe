@@ -7,8 +7,11 @@ namespace RecipeWinForms
 {
     public partial class frmRecipe : Form
     {
-        DataTable dtRecipe;
+        DataTable dtRecipe = new();
+        DataTable dtingredientrecipe = new();
         BindingSource bindsource = new();
+        int recipeid = 0;
+
         public frmRecipe()
         {
             InitializeComponent();
@@ -52,9 +55,31 @@ namespace RecipeWinForms
             WindowsFormUtility.SetControlBinding(lblDateCreated, bindsource);
             WindowsFormUtility.SetControlBinding(lblDatePublished, bindsource);
             WindowsFormUtility.SetControlBinding(lblDateArchived, bindsource);
-
             this.Text = GetRecipeName();
+            LoadIngredientRecipe();
             this.Show();
+            SetButtonsEnabledBasedOnNewRecord();
+        }
+
+        private void LoadIngredientRecipe()
+        {
+            string deletecolname = "deletecol";
+            dtingredientrecipe = IngredientRecipe.LoadByRecipeId(recipeid, "IngredientRecipe");
+            gIngredient.Columns.Clear();
+            gIngredient.DataSource = dtingredientrecipe;
+            WindowsFormUtility.AddComboboxToGrid(gIngredient, DataMaintenance.GetDataList("Ingredient"), "Ingredient", "IngredientType");
+            WindowsFormUtility.AddDeleteButtonToGrid(gIngredient, deletecolname);
+            WindowsFormUtility.FormatGridForEdit(gIngredient, "IngredientRecipe"); //bli amudot shel id
+        }
+
+        private void SetButtonsEnabledBasedOnNewRecord()
+        {
+            //lo oved bchadash
+            bool b = recipeid == 0 ? false : true;
+            btnChangeStatus.Enabled = b;
+            btnDel.Enabled = b;
+            btnSaveSteps.Enabled = b;
+            btnSaveIngredient.Enabled = b;
         }
 
         private void Save()
