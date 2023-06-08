@@ -34,8 +34,9 @@ namespace RecipeWinForms
             return value;
         }
 
-        public void ShowForm(int recipeid)
+        public void ShowForm(int recipeidval)
         {
+            recipeid = recipeidval;
             dtRecipe = Recipe.LoadRecipe(recipeid);
             bindsource.DataSource = dtRecipe;
 
