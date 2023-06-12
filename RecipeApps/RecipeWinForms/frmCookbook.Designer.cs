@@ -34,21 +34,21 @@
             this.lblUserName = new System.Windows.Forms.Label();
             this.lblPrice = new System.Windows.Forms.Label();
             this.lblActive = new System.Windows.Forms.Label();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.tblgrid = new System.Windows.Forms.TableLayoutPanel();
+            this.btnSaveRecipe = new System.Windows.Forms.Button();
+            this.gData = new System.Windows.Forms.DataGridView();
             this.txtCookbookName = new System.Windows.Forms.TextBox();
             this.cbActive = new System.Windows.Forms.CheckBox();
             this.lstUser = new System.Windows.Forms.ComboBox();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.tblPrice = new System.Windows.Forms.TableLayoutPanel();
             this.lblDate = new System.Windows.Forms.Label();
             this.txtPrice = new System.Windows.Forms.TextBox();
             this.txtDateCreated = new System.Windows.Forms.TextBox();
             this.btnSave = new System.Windows.Forms.Button();
-            this.btnSaveRecipe = new System.Windows.Forms.Button();
-            this.gData = new System.Windows.Forms.DataGridView();
             this.tblMain.SuspendLayout();
-            this.tableLayoutPanel1.SuspendLayout();
-            this.tableLayoutPanel2.SuspendLayout();
+            this.tblgrid.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gData)).BeginInit();
+            this.tblPrice.SuspendLayout();
             this.SuspendLayout();
             // 
             // tblMain
@@ -61,11 +61,11 @@
             this.tblMain.Controls.Add(this.lblUserName, 0, 2);
             this.tblMain.Controls.Add(this.lblPrice, 0, 3);
             this.tblMain.Controls.Add(this.lblActive, 0, 4);
-            this.tblMain.Controls.Add(this.tableLayoutPanel1, 0, 5);
+            this.tblMain.Controls.Add(this.tblgrid, 0, 5);
             this.tblMain.Controls.Add(this.txtCookbookName, 1, 1);
             this.tblMain.Controls.Add(this.cbActive, 1, 4);
             this.tblMain.Controls.Add(this.lstUser, 1, 2);
-            this.tblMain.Controls.Add(this.tableLayoutPanel2, 1, 3);
+            this.tblMain.Controls.Add(this.tblPrice, 1, 3);
             this.tblMain.Controls.Add(this.btnSave, 0, 0);
             this.tblMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tblMain.Location = new System.Drawing.Point(0, 0);
@@ -135,22 +135,44 @@
             this.lblActive.Text = "Active";
             this.lblActive.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // tableLayoutPanel1
+            // tblgrid
             // 
-            this.tableLayoutPanel1.ColumnCount = 2;
-            this.tblMain.SetColumnSpan(this.tableLayoutPanel1, 2);
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Controls.Add(this.btnSaveRecipe, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.gData, 0, 1);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 196);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(715, 270);
-            this.tableLayoutPanel1.TabIndex = 6;
+            this.tblgrid.ColumnCount = 2;
+            this.tblMain.SetColumnSpan(this.tblgrid, 2);
+            this.tblgrid.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tblgrid.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tblgrid.Controls.Add(this.btnSaveRecipe, 0, 0);
+            this.tblgrid.Controls.Add(this.gData, 0, 1);
+            this.tblgrid.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tblgrid.Location = new System.Drawing.Point(3, 196);
+            this.tblgrid.Name = "tblgrid";
+            this.tblgrid.RowCount = 2;
+            this.tblgrid.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tblgrid.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tblgrid.Size = new System.Drawing.Size(715, 270);
+            this.tblgrid.TabIndex = 6;
+            // 
+            // btnSaveRecipe
+            // 
+            this.btnSaveRecipe.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.btnSaveRecipe.AutoSize = true;
+            this.btnSaveRecipe.Location = new System.Drawing.Point(3, 3);
+            this.btnSaveRecipe.Name = "btnSaveRecipe";
+            this.btnSaveRecipe.Size = new System.Drawing.Size(115, 36);
+            this.btnSaveRecipe.TabIndex = 1;
+            this.btnSaveRecipe.Text = "Save";
+            this.btnSaveRecipe.UseVisualStyleBackColor = true;
+            // 
+            // gData
+            // 
+            this.gData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.tblgrid.SetColumnSpan(this.gData, 2);
+            this.gData.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gData.Location = new System.Drawing.Point(3, 45);
+            this.gData.Name = "gData";
+            this.gData.RowTemplate.Height = 25;
+            this.gData.Size = new System.Drawing.Size(709, 222);
+            this.gData.TabIndex = 2;
             // 
             // txtCookbookName
             // 
@@ -180,22 +202,22 @@
             this.lstUser.Size = new System.Drawing.Size(355, 29);
             this.lstUser.TabIndex = 9;
             // 
-            // tableLayoutPanel2
+            // tblPrice
             // 
-            this.tableLayoutPanel2.ColumnCount = 2;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Controls.Add(this.lblDate, 1, 0);
-            this.tableLayoutPanel2.Controls.Add(this.txtPrice, 0, 1);
-            this.tableLayoutPanel2.Controls.Add(this.txtDateCreated, 1, 1);
-            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(363, 115);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 2;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(355, 54);
-            this.tableLayoutPanel2.TabIndex = 10;
+            this.tblPrice.ColumnCount = 2;
+            this.tblPrice.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tblPrice.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tblPrice.Controls.Add(this.lblDate, 1, 0);
+            this.tblPrice.Controls.Add(this.txtPrice, 0, 1);
+            this.tblPrice.Controls.Add(this.txtDateCreated, 1, 1);
+            this.tblPrice.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tblPrice.Location = new System.Drawing.Point(363, 115);
+            this.tblPrice.Name = "tblPrice";
+            this.tblPrice.RowCount = 2;
+            this.tblPrice.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tblPrice.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tblPrice.Size = new System.Drawing.Size(355, 54);
+            this.tblPrice.TabIndex = 10;
             // 
             // lblDate
             // 
@@ -235,28 +257,6 @@
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
             // 
-            // btnSaveRecipe
-            // 
-            this.btnSaveRecipe.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.btnSaveRecipe.AutoSize = true;
-            this.btnSaveRecipe.Location = new System.Drawing.Point(3, 3);
-            this.btnSaveRecipe.Name = "btnSaveRecipe";
-            this.btnSaveRecipe.Size = new System.Drawing.Size(115, 36);
-            this.btnSaveRecipe.TabIndex = 1;
-            this.btnSaveRecipe.Text = "Save";
-            this.btnSaveRecipe.UseVisualStyleBackColor = true;
-            // 
-            // gData
-            // 
-            this.gData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.tableLayoutPanel1.SetColumnSpan(this.gData, 2);
-            this.gData.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gData.Location = new System.Drawing.Point(3, 45);
-            this.gData.Name = "gData";
-            this.gData.RowTemplate.Height = 25;
-            this.gData.Size = new System.Drawing.Size(709, 222);
-            this.gData.TabIndex = 2;
-            // 
             // frmCookbook
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
@@ -269,11 +269,11 @@
             this.Text = "Cookbook";
             this.tblMain.ResumeLayout(false);
             this.tblMain.PerformLayout();
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel1.PerformLayout();
-            this.tableLayoutPanel2.ResumeLayout(false);
-            this.tableLayoutPanel2.PerformLayout();
+            this.tblgrid.ResumeLayout(false);
+            this.tblgrid.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gData)).EndInit();
+            this.tblPrice.ResumeLayout(false);
+            this.tblPrice.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -286,11 +286,11 @@
         private Label lblUserName;
         private Label lblPrice;
         private Label lblActive;
-        private TableLayoutPanel tableLayoutPanel1;
+        private TableLayoutPanel tblgrid;
         private TextBox txtCookbookName;
         private CheckBox cbActive;
         private ComboBox lstUser;
-        private TableLayoutPanel tableLayoutPanel2;
+        private TableLayoutPanel tblPrice;
         private Label lblDate;
         private TextBox txtPrice;
         private TextBox txtDateCreated;
