@@ -108,7 +108,7 @@
             this.tblMain.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tblMain.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tblMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tblMain.Size = new System.Drawing.Size(871, 500);
+            this.tblMain.Size = new System.Drawing.Size(741, 467);
             this.tblMain.TabIndex = 0;
             // 
             // lblRName
@@ -361,7 +361,7 @@
             this.tbChildRecord.Location = new System.Drawing.Point(3, 322);
             this.tbChildRecord.Name = "tbChildRecord";
             this.tbChildRecord.SelectedIndex = 0;
-            this.tbChildRecord.Size = new System.Drawing.Size(975, 175);
+            this.tbChildRecord.Size = new System.Drawing.Size(975, 142);
             this.tbChildRecord.TabIndex = 28;
             // 
             // tbIngredients
@@ -370,7 +370,7 @@
             this.tbIngredients.Location = new System.Drawing.Point(4, 30);
             this.tbIngredients.Name = "tbIngredients";
             this.tbIngredients.Padding = new System.Windows.Forms.Padding(3);
-            this.tbIngredients.Size = new System.Drawing.Size(967, 141);
+            this.tbIngredients.Size = new System.Drawing.Size(967, 108);
             this.tbIngredients.TabIndex = 0;
             this.tbIngredients.Text = "Ingredients";
             this.tbIngredients.UseVisualStyleBackColor = true;
@@ -388,7 +388,7 @@
             this.tblIngredient.RowCount = 2;
             this.tblIngredient.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tblIngredient.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tblIngredient.Size = new System.Drawing.Size(961, 135);
+            this.tblIngredient.Size = new System.Drawing.Size(961, 102);
             this.tblIngredient.TabIndex = 0;
             // 
             // btnSaveIngredient
@@ -407,7 +407,7 @@
             this.gIngredient.Location = new System.Drawing.Point(3, 40);
             this.gIngredient.Name = "gIngredient";
             this.gIngredient.RowTemplate.Height = 25;
-            this.gIngredient.Size = new System.Drawing.Size(955, 92);
+            this.gIngredient.Size = new System.Drawing.Size(955, 59);
             this.gIngredient.TabIndex = 1;
             // 
             // tbSteps
@@ -416,7 +416,7 @@
             this.tbSteps.Location = new System.Drawing.Point(4, 24);
             this.tbSteps.Name = "tbSteps";
             this.tbSteps.Padding = new System.Windows.Forms.Padding(3);
-            this.tbSteps.Size = new System.Drawing.Size(967, 233);
+            this.tbSteps.Size = new System.Drawing.Size(967, 177);
             this.tbSteps.TabIndex = 1;
             this.tbSteps.Text = "Steps";
             this.tbSteps.UseVisualStyleBackColor = true;
@@ -434,7 +434,7 @@
             this.tblSteps.RowCount = 2;
             this.tblSteps.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tblSteps.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tblSteps.Size = new System.Drawing.Size(961, 227);
+            this.tblSteps.Size = new System.Drawing.Size(961, 171);
             this.tblSteps.TabIndex = 0;
             // 
             // btnSaveSteps
@@ -453,14 +453,14 @@
             this.gSteps.Location = new System.Drawing.Point(3, 37);
             this.gSteps.Name = "gSteps";
             this.gSteps.RowTemplate.Height = 25;
-            this.gSteps.Size = new System.Drawing.Size(955, 187);
+            this.gSteps.Size = new System.Drawing.Size(955, 131);
             this.gSteps.TabIndex = 1;
             // 
             // frmRecipe
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(871, 500);
+            this.ClientSize = new System.Drawing.Size(741, 467);
             this.Controls.Add(this.tblMain);
             this.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Margin = new System.Windows.Forms.Padding(4);

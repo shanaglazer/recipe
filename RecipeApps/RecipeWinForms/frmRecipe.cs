@@ -9,6 +9,7 @@ namespace RecipeWinForms
     {
         DataTable dtRecipe = new();
         DataTable dtingredientrecipe = new();
+        DataTable dtinstruction = new();
         BindingSource bindsource = new();
         int recipeid = 0;
 
@@ -57,21 +58,37 @@ namespace RecipeWinForms
             WindowsFormUtility.SetControlBinding(lblDatePublished, bindsource);
             WindowsFormUtility.SetControlBinding(lblDateArchived, bindsource);
             this.Text = GetRecipeName();
-            LoadIngredientRecipe();
+            LoadRecipeInfo(dtingredientrecipe, "IngredientRecipe", gIngredient, "Ingredient", "IngredientType");
+            //LoadRecipeInfo(dtinstruction, "Instruction", gSteps, "Instruction", "IngredientType");
             this.Show();
             SetButtonsEnabledBasedOnNewRecord();
         }
 
-        private void LoadIngredientRecipe()
+        private void LoadRecipeInfo(DataTable dt, string tablename, DataGridView grid, string targettable, string displaymember)
         {
             string deletecolname = "deletecol";
-            dtingredientrecipe = IngredientRecipe.LoadByRecipeId(recipeid, "IngredientRecipe");
-            gIngredient.Columns.Clear();
-            gIngredient.DataSource = dtingredientrecipe;
-            WindowsFormUtility.AddComboboxToGrid(gIngredient, DataMaintenance.GetDataList("Ingredient"), "Ingredient", "IngredientType");
-            WindowsFormUtility.AddDeleteButtonToGrid(gIngredient, deletecolname);
-            WindowsFormUtility.FormatGridForEdit(gIngredient, "IngredientRecipe"); //bli amudot shel id
+            dt = IngredientRecipe.LoadByRecipeId(recipeid, tablename);
+            grid.Columns.Clear();
+            grid.DataSource = dt;
+            WindowsFormUtility.AddComboboxToGrid(grid, DataMaintenance.GetDataList(targettable), targettable, displaymember);
+            WindowsFormUtility.AddDeleteButtonToGrid(grid, deletecolname);
+            WindowsFormUtility.FormatGridForEdit(grid, tablename); //bli amudot shel id
         }
+
+        //private void SetRecipeInfo()
+        //{
+
+        //}
+        //private void LoadIngredientRecipe(DataTable dt, string tablename, DataGridView grid, string targettable, string displaymember)
+        //{
+        //    string deletecolname = "deletecol";
+        //    dtingredientrecipe = IngredientRecipe.LoadByRecipeId(recipeid, "IngredientRecipe");
+        //    gIngredient.Columns.Clear();
+        //    gIngredient.DataSource = dtingredientrecipe;
+        //    WindowsFormUtility.AddComboboxToGrid(gIngredient, DataMaintenance.GetDataList("Ingredient"), "Ingredient", "IngredientType");
+        //    WindowsFormUtility.AddDeleteButtonToGrid(gIngredient, deletecolname);
+        //    WindowsFormUtility.FormatGridForEdit(gIngredient, "IngredientRecipe"); //bli amudot shel id
+        //}
 
         private void SetButtonsEnabledBasedOnNewRecord()
         {
