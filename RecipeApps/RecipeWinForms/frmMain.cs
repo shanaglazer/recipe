@@ -13,7 +13,10 @@ namespace RecipeWinForms
             mnuRecipeList.Click += MnuRecipeList_Click;
             mnuCloneRecie.Click += MnuCloneRecie_Click;
             mnuMealList.Click += MnuMealList_Click;
+            mnuCookbookList.Click += MnuCookbookList_Click;
+            mnuCookbook.Click += MnuCookbook_Click;
         }
+
 
 
         //mdi - eih lesader?
@@ -50,9 +53,19 @@ namespace RecipeWinForms
                     frmMeal f = new();
                     newfrm = f;
                 }
+                else if (frmtype == typeof(frmCookbookList))
+                {
+                    frmCookbookList f = new();
+                    newfrm = f;
+                }
+                else if (frmtype == typeof(frmCookbook))
+                {
+                    frmCookbook f = new();
+                    newfrm = f;
+                }
                 if (newfrm != null)
                 {
-                    //newfrm.MdiParent = this;
+                    newfrm.MdiParent = this.MdiParent;
                     newfrm.WindowState = FormWindowState.Maximized;
                     newfrm.FormClosed += Newfrm_FormClosed;
                     newfrm.TextChanged += Newfrm_TextChanged;
@@ -76,6 +89,18 @@ namespace RecipeWinForms
         {
             OpenForm(typeof(frmDashboard));
         }
+
+
+        private void MnuCookbookList_Click(object? sender, EventArgs e)
+        {
+            OpenForm(typeof(frmCookbookList));
+        }
+
+        private void MnuCookbook_Click(object? sender, EventArgs e)
+        {
+            OpenForm(typeof(frmCookbook));
+        }
+
 
         private void MnuNewRecipe_Click(object? sender, EventArgs e)
         {
