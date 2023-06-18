@@ -14,10 +14,10 @@ namespace RecipeWinForms
             mnuCloneRecie.Click += MnuCloneRecie_Click;
             mnuMealList.Click += MnuMealList_Click;
             mnuCookbookList.Click += MnuCookbookList_Click;
-            mnuCookbook.Click += MnuCookbook_Click;
+            mnuNewCookbook.Click += MnuNewCookbook_Click;
+            mnuEditData.Click += MnuEditData_Click;
+            mnuAutoCreate.Click += MnuAutoCreate_Click;
         }
-
-
 
         //mdi - eih lesader?
 
@@ -63,6 +63,16 @@ namespace RecipeWinForms
                     frmCookbook f = new();
                     newfrm = f;
                 }
+                else if (frmtype == typeof(frmAutoCreateCookbook))
+                {
+                    frmAutoCreateCookbook f = new();
+                    newfrm = f;
+                }
+                else if (frmtype == typeof(frmDataMaintenance))
+                {
+                    frmDataMaintenance f = new();
+                    newfrm = f;
+                }
                 if (newfrm != null)
                 {
                     newfrm.MdiParent = this.MdiParent;
@@ -96,11 +106,10 @@ namespace RecipeWinForms
             OpenForm(typeof(frmCookbookList));
         }
 
-        private void MnuCookbook_Click(object? sender, EventArgs e)
+        private void MnuNewCookbook_Click(object? sender, EventArgs e)
         {
             OpenForm(typeof(frmCookbook));
         }
-
 
         private void MnuNewRecipe_Click(object? sender, EventArgs e)
         {
@@ -121,5 +130,16 @@ namespace RecipeWinForms
         {
             OpenForm(typeof(frmMeal));
         }
+
+        private void MnuAutoCreate_Click(object? sender, EventArgs e)
+        {
+            OpenForm(typeof(frmAutoCreateCookbook));
+        }
+
+        private void MnuEditData_Click(object? sender, EventArgs e)
+        {
+            OpenForm(typeof(frmDataMaintenance));
+        }
+
     }
 }
