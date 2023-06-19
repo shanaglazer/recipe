@@ -14,8 +14,8 @@ namespace RecipeWinForms
 
         private void BtnClone_Click(object? sender, EventArgs e)
         {
-            //proc clone
-            //this.close
+            Recipe.CloneRecipe("RecipeClone", lstRecipe.Text);
+            this.Close();
             //openform recipe by pk
         }
 
@@ -26,8 +26,9 @@ namespace RecipeWinForms
 
         private void BindData()
         {
-            //eih lsader amuda mesuyemet sheyaale bacombobox?
-            WindowsFormUtility.SetListBinding(lstRecipe, DataMaintenance.GetDataList("Recipe", true), null, "Recipe");
+            lstRecipe.DataSource = Recipe.GetRecipeList(true);
+            lstRecipe.DisplayMember = "RecipeName";
+            lstRecipe.ValueMember = "RecipeId";
         }
     }
 }

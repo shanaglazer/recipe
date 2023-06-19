@@ -199,6 +199,7 @@
             this.ClientSize = new System.Drawing.Size(886, 540);
             this.Controls.Add(this.tsMain);
             this.Controls.Add(this.menuStrip1);
+            this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "frmMain";
             this.Text = "Hearty Hearth - Dashboard";

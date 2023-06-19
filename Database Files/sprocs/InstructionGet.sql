@@ -19,6 +19,7 @@ begin
 	where i.RecipeID = @RecipeId
 	or i.InstructionID = @InstructionId
 	or @All = 1
+	order by i.InstructionSequence
 
 	return @return
 

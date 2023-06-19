@@ -12,7 +12,7 @@ begin
 	join IngredientRecipe ir
 	on ir.RecipeID = r.RecipeID
 	group by r.RecipeID, r.RecipeName, r.RecipeStatus, u.FirstName, u.LastName, r.Calories
-	order by r.RecipeStatus desc
+	order by r.RecipeStatus desc, r.RecipeName
 
 end
 go

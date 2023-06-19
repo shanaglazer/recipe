@@ -46,8 +46,8 @@ namespace RecipeWinForms
                 dtRecipe.Rows.Add();
             }
 
-            DataTable dtcuisine = Recipe.GetCuisineList();
-            DataTable dtusers = Recipe.GetUserList();
+            DataTable dtcuisine = Recipe.GetList("CuisineGet");
+            DataTable dtusers = Recipe.GetList("UsersGet");
             
             WindowsFormUtility.SetControlBinding(txtRecipeName, bindsource);
             WindowsFormUtility.SetControlBinding(txtCalories, bindsource);
@@ -59,7 +59,12 @@ namespace RecipeWinForms
             WindowsFormUtility.SetControlBinding(lblDateArchived, bindsource);
             this.Text = GetRecipeName();
             LoadRecipeInfo(dtingredientrecipe, "IngredientRecipe", gIngredient, "Ingredient", "IngredientType");
-            //LoadRecipeInfo(dtinstruction, "Instruction", gSteps, "Instruction", "IngredientType");
+            LoadRecipeInfo(dtinstruction, "Instruction", gSteps, "Instruction", "InstructionStep");
+            //frmRecipe frm = new();
+            //if (this.MdiParent != null && this.MdiParent is frmMain)
+            //{
+            //    ((frmMain)this.MdiParent).OpenForm(typeof(frmRecipe));
+            //}
             this.Show();
             SetButtonsEnabledBasedOnNewRecord();
         }

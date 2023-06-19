@@ -29,20 +29,20 @@ namespace RecipeSystem
             return dt;
         }
 
-        public static DataTable GetUserList()
+        public static DataTable GetList(string sproc)
         {
             DataTable dt = new();
-            SqlCommand cmd = SQLUtility.GetSqlCommand("UsersGet");
+            SqlCommand cmd = SQLUtility.GetSqlCommand(sproc);
             cmd.Parameters["@All"].Value = 1;
             dt = SQLUtility.GetDataTable(cmd);
             return dt;
         }
-
-        public static DataTable GetCuisineList()
+        public static DataTable GetRecipeList(bool includeblank = false)
         {
             DataTable dt = new();
-            SqlCommand cmd = SQLUtility.GetSqlCommand("CuisineGet");
-            cmd.Parameters["@All"].Value = 1;
+            SqlCommand cmd = SQLUtility.GetSqlCommand("RecipeGet");
+            SQLUtility.SetParamValue(cmd, "@All", 1);
+            SQLUtility.SetParamValue(cmd, "@IncludeBlank", includeblank);
             dt = SQLUtility.GetDataTable(cmd);
             return dt;
         }
@@ -70,9 +70,16 @@ namespace RecipeSystem
         }
 
 
-        public static DataTable GetRecipeSummary()
+        public static DataTable GetRecipeSummary(string sprocname)
         {
-            SqlCommand cmd = SQLUtility.GetSqlCommand("RecipeSummaryGet");
+            SqlCommand cmd = SQLUtility.GetSqlCommand(sprocname);
+            return SQLUtility.GetDataTable(cmd);
+        }
+
+        public static DataTable CloneRecipe(string sprocname, object value)
+        {
+            SqlCommand cmd = SQLUtility.GetSqlCommand(sprocname);
+            SQLUtility.SetParamValue(cmd, "@RecipeName", value);
             return SQLUtility.GetDataTable(cmd);
         }
     }

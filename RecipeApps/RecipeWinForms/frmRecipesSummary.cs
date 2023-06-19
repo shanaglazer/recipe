@@ -53,7 +53,7 @@ namespace RecipeWinForms
 
         private void BindData()
         {
-            gRecipe.DataSource = Recipe.GetRecipeSummary();
+            gRecipe.DataSource = Recipe.GetRecipeSummary("RecipeSummaryGet");
             WindowsFormUtility.FormatGrid(gRecipe, "Recipe");
         }
 
