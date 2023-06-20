@@ -17,7 +17,7 @@ namespace RecipeWinForms
     public partial class frmCookbook : Form
     {
         int cookbookid = 0;
-        DataTable dtCookBook = new();
+        DataTable dtCookbook = new();
         BindingSource bindsource = new BindingSource();
         public frmCookbook()
         {
@@ -27,32 +27,41 @@ namespace RecipeWinForms
         public static DataTable LoadBook(int cookbookid)
         {
             DataTable dt = new();
-            SqlCommand cmd = SQLUtility.GetSqlCommand("CookBookGet");
+            SqlCommand cmd = SQLUtility.GetSqlCommand("CookbookGet");
             cmd.Parameters["@CookbookId"].Value = cookbookid;
             dt = SQLUtility.GetDataTable(cmd);
             return dt;
+        }
+
+        private string GetBookName()
+        {
+            string value = "New Cookbook";
+            int pkvalue = SQLUtility.GetValueFromFirstRowAsInt(dtCookbook, "CookbookId");
+            if (pkvalue > 0)
+            {
+                value = SQLUtility.GetValueFromFirstRowAsString(dtCookbook, "BookName");
+            }
+            return value;
         }
 
         public void LoadForm(int bookval)
         {
             cookbookid = bookval;
             this.Tag = cookbookid;
-            dtCookBook = LoadBook(cookbookid);
-            bindsource.DataSource = dtCookBook;
+            dtCookbook = LoadBook(cookbookid);
+            bindsource.DataSource = dtCookbook;
             if (cookbookid == 0)
             {
-                dtCookBook.Rows.Add();
+                dtCookbook.Rows.Add();
             }
-            //DataTable dtparties = President.GetPartyList();
-            //WindowsFormUtility.SetListBinding(lstPartyName, dtparties, dtpresident, "Party");
-            //WindowsFormUtility.SetControlBinding(txtNum, bindsource);
-            //WindowsFormUtility.SetControlBinding(txtLastName, bindsource);
-            //WindowsFormUtility.SetControlBinding(txtFirstName, bindsource);
-            //WindowsFormUtility.SetControlBinding(dtpDateBorn, bindsource);
-            //WindowsFormUtility.SetControlBinding(txtDateDied, bindsource);
-            //WindowsFormUtility.SetControlBinding(txtTermStart, bindsource);
-            //WindowsFormUtility.SetControlBinding(txtTermEnd, bindsource);
-            //this.Text = GetPresidentDesc();
+            DataTable dtusers = Recipe.GetList("UsersGet");
+            
+            WindowsFormUtility.SetControlBinding(txtBookName, bindsource);
+            WindowsFormUtility.SetListBinding(lstUserName, dtusers, dtCookbook, "Users");
+            WindowsFormUtility.SetControlBinding(txtPrice, bindsource);
+            WindowsFormUtility.SetControlBinding(txtDateCreated, bindsource);
+            //cbActive!
+            this.Text = GetBookName();
             //LoadPresidentMedals();
             //SetButtonsEnabledBasedOnNewRecord();
         }

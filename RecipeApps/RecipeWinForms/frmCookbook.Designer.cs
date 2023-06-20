@@ -37,9 +37,9 @@
             this.tblgrid = new System.Windows.Forms.TableLayoutPanel();
             this.btnSaveRecipe = new System.Windows.Forms.Button();
             this.gData = new System.Windows.Forms.DataGridView();
-            this.txtCookbookName = new System.Windows.Forms.TextBox();
+            this.txtBookName = new System.Windows.Forms.TextBox();
             this.cbActive = new System.Windows.Forms.CheckBox();
-            this.lstUser = new System.Windows.Forms.ComboBox();
+            this.lstUserName = new System.Windows.Forms.ComboBox();
             this.tblPrice = new System.Windows.Forms.TableLayoutPanel();
             this.lblDate = new System.Windows.Forms.Label();
             this.txtPrice = new System.Windows.Forms.TextBox();
@@ -62,9 +62,9 @@
             this.tblMain.Controls.Add(this.lblPrice, 0, 3);
             this.tblMain.Controls.Add(this.lblActive, 0, 4);
             this.tblMain.Controls.Add(this.tblgrid, 0, 5);
-            this.tblMain.Controls.Add(this.txtCookbookName, 1, 1);
+            this.tblMain.Controls.Add(this.txtBookName, 1, 1);
             this.tblMain.Controls.Add(this.cbActive, 1, 4);
-            this.tblMain.Controls.Add(this.lstUser, 1, 2);
+            this.tblMain.Controls.Add(this.lstUserName, 1, 2);
             this.tblMain.Controls.Add(this.tblPrice, 1, 3);
             this.tblMain.Controls.Add(this.btnSave, 0, 0);
             this.tblMain.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -174,13 +174,13 @@
             this.gData.Size = new System.Drawing.Size(709, 222);
             this.gData.TabIndex = 2;
             // 
-            // txtCookbookName
+            // txtBookName
             // 
-            this.txtCookbookName.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtCookbookName.Location = new System.Drawing.Point(363, 45);
-            this.txtCookbookName.Name = "txtCookbookName";
-            this.txtCookbookName.Size = new System.Drawing.Size(355, 29);
-            this.txtCookbookName.TabIndex = 7;
+            this.txtBookName.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtBookName.Location = new System.Drawing.Point(363, 45);
+            this.txtBookName.Name = "txtBookName";
+            this.txtBookName.Size = new System.Drawing.Size(355, 29);
+            this.txtBookName.TabIndex = 7;
             // 
             // cbActive
             // 
@@ -193,14 +193,14 @@
             this.cbActive.TabIndex = 8;
             this.cbActive.UseVisualStyleBackColor = true;
             // 
-            // lstUser
+            // lstUserName
             // 
-            this.lstUser.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lstUser.FormattingEnabled = true;
-            this.lstUser.Location = new System.Drawing.Point(363, 80);
-            this.lstUser.Name = "lstUser";
-            this.lstUser.Size = new System.Drawing.Size(355, 29);
-            this.lstUser.TabIndex = 9;
+            this.lstUserName.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lstUserName.FormattingEnabled = true;
+            this.lstUserName.Location = new System.Drawing.Point(363, 80);
+            this.lstUserName.Name = "lstUserName";
+            this.lstUserName.Size = new System.Drawing.Size(355, 29);
+            this.lstUserName.TabIndex = 9;
             // 
             // tblPrice
             // 
@@ -287,9 +287,9 @@
         private Label lblPrice;
         private Label lblActive;
         private TableLayoutPanel tblgrid;
-        private TextBox txtCookbookName;
+        private TextBox txtBookName;
         private CheckBox cbActive;
-        private ComboBox lstUser;
+        private ComboBox lstUserName;
         private TableLayoutPanel tblPrice;
         private Label lblDate;
         private TextBox txtPrice;
