@@ -37,8 +37,12 @@ namespace RecipeWinForms
             {
                 id = (int)gRecipes.Rows[rowindex].Cells["RecipeId"].Value;
             }
-            frmRecipe frm = new();
-            frm.ShowForm(id);
+            if (this.MdiParent != null && this.MdiParent is frmRecipe)
+            {
+                ((frmMain)this.MdiParent).OpenForm(typeof(frmRecipe), id);
+            }
+            //frmRecipe frm = new();
+            //frm.ShowForm(id);
         }
 
         private void GRecipes_CellDoubleClick(object? sender, DataGridViewCellEventArgs e)

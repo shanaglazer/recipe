@@ -202,7 +202,7 @@ Cookbook list page:
 SELECT c.BookName, Author = concat(u.firstname, ' ', u.lastname), x.NumOfRecipes
 FROM Cookbook c
 join users u
-on u.userid = c.userid
+on u.usersid = c.usersid
 join x 
 on x.CookBookID = c.CookBookID
 WHERE c.Active = 1

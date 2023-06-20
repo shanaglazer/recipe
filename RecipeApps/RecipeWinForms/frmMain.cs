@@ -75,7 +75,7 @@ namespace RecipeWinForms
                 }
                 if (newfrm != null)
                 {
-                    newfrm.MdiParent = this.MdiParent;
+                    newfrm.MdiParent = this;
                     newfrm.WindowState = FormWindowState.Maximized;
                     newfrm.FormClosed += Newfrm_FormClosed;
                     newfrm.TextChanged += Newfrm_TextChanged;

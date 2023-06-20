@@ -2,6 +2,7 @@
 using System.Data;
 using RecipeSystem;
 using CPUFramework;
+using System.Reflection.Metadata.Ecma335;
 
 namespace RecipeWinForms
 {
@@ -60,10 +61,9 @@ namespace RecipeWinForms
             this.Text = GetRecipeName();
             LoadRecipeInfo(dtingredientrecipe, "IngredientRecipe", gIngredient, "Ingredient", "IngredientType");
             LoadRecipeInfo(dtinstruction, "Instruction", gSteps, "Instruction", "InstructionStep");
-            //frmRecipe frm = new();
             //if (this.MdiParent != null && this.MdiParent is frmMain)
             //{
-            //    ((frmMain)this.MdiParent).OpenForm(typeof(frmRecipe));
+            //    ((frmMain)this.MdiParent).OpenForm(typeof(frmRecipe), recipeid);
             //}
             this.Show();
             SetButtonsEnabledBasedOnNewRecord();
