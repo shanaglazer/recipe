@@ -31,24 +31,6 @@ namespace RecipeWinForms
         private void BtnNewCookbook_Click(object? sender, EventArgs e)
         {
             ShowCookbookForm(-1);
-            //bool b = WindowsFormUtility.IsFormOpen(frmtype);
-            //if (b == false)
-            //{
-            //    Form? newfrm = null;
-            //    if (frmtype == typeof(frmDashboard))
-            //    {
-            //        frmDashboard f = new();
-            //        newfrm = f;
-            //    }
-            //    if (newfrm != null)
-            //    {
-            //        newfrm.MdiParent = this;
-            //        newfrm.WindowState = FormWindowState.Maximized;
-            //        newfrm.FormClosed += Newfrm_FormClosed;
-            //        newfrm.TextChanged += Newfrm_TextChanged;
-            //        newfrm.Show();
-            //    }
-            //    WindowsFormUtility.SetUpNav(tsMain);
         }
 
         private void BindData()
@@ -64,7 +46,7 @@ namespace RecipeWinForms
 
         private void Gdata_CellDoubleClick(object? sender, DataGridViewCellEventArgs e)
         {
-            //liftoah et hapratim
+            ShowCookbookForm(e.RowIndex);
         }
     }
 }
