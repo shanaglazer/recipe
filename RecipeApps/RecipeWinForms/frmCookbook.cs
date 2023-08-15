@@ -22,6 +22,7 @@ namespace RecipeWinForms
         public frmCookbook()
         {
             InitializeComponent();
+            this.Activated += FrmCookbook_Activated;
         }
 
         public static DataTable LoadBook(int cookbookid)
@@ -61,9 +62,17 @@ namespace RecipeWinForms
             WindowsFormUtility.SetControlBinding(txtPrice, bindsource);
             WindowsFormUtility.SetControlBinding(txtDateCreated, bindsource);
             //cbActive!
+            //if(gData)
+            gData.DataSource = Recipe.GetRecipeSummary("RecipeForBookGet");
+            WindowsFormUtility.FormatGrid(gData, "Cookbook");
             this.Text = GetBookName();
             //LoadPresidentMedals();
             //SetButtonsEnabledBasedOnNewRecord();
+        }
+
+        private void FrmCookbook_Activated(object? sender, EventArgs e)
+        {
+            //LoadForm();
         }
     }
 }

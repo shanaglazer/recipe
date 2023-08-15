@@ -1,4 +1,5 @@
 ﻿using CPUFramework;
+using CPUWindowsFormFramework;
 using System.Data;
 using System.Data.SqlClient;
 
@@ -6,16 +7,51 @@ namespace RecipeWinForms
 {
     public partial class frmDashboard : Form
     {
-        //lesader btn!
+        //tool strip & mdi parent/child
         public frmDashboard()
         {
             InitializeComponent();
             this.Activated += FrmDashboard_Activated;
+            btnRecipe.Click += BtnRecipe_Click;
+            btnMeal.Click += BtnMeal_Click;
+            btnCookbook.Click += BtnCookbook_Click;
         }
 
         private void FrmDashboard_Activated(object? sender, EventArgs e)
         {
             BindData();
+        }
+
+        private void OpenForm(Type frmtype)
+        {
+            bool b = WindowsFormUtility.IsFormOpen(frmtype);
+            if (b == false)
+            {
+                Form? newfrm = null;
+                if (frmtype == typeof(frmRecipesSummary))
+                {
+                    frmRecipesSummary f = new();
+                    newfrm = f;
+                }
+                else if (frmtype == typeof(frmMeal))
+                {
+                    frmMeal f = new();
+                    newfrm = f;
+                }
+                else if (frmtype == typeof(frmCookbookList))
+                {
+                    frmCookbookList f = new();
+                    newfrm = f;
+                }
+                if (newfrm != null)
+                {
+                    //newfrm.MdiParent = frmMain;
+                    newfrm.WindowState = FormWindowState.Maximized;
+                    //newfrm.FormClosed += Newfrm_FormClosed;
+                    //newfrm.TextChanged += Newfrm_TextChanged;
+                    newfrm.Show();
+                }
+            }
         }
 
         private void BindData()
@@ -39,6 +75,21 @@ namespace RecipeWinForms
             {
                 lbl.Text = rows[0]["CountItem"].ToString();
             }
+        }
+
+        private void BtnCookbook_Click(object? sender, EventArgs e)
+        {
+            OpenForm(typeof(frmCookbookList));
+        }
+
+        private void BtnMeal_Click(object? sender, EventArgs e)
+        {
+            OpenForm(typeof(frmMeal));
+        }
+
+        private void BtnRecipe_Click(object? sender, EventArgs e)
+        {
+            OpenForm(typeof(frmRecipesSummary));
         }
 
     }

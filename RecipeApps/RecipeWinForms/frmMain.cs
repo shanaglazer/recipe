@@ -17,10 +17,15 @@ namespace RecipeWinForms
             mnuNewCookbook.Click += MnuNewCookbook_Click;
             mnuEditData.Click += MnuEditData_Click;
             mnuAutoCreate.Click += MnuAutoCreate_Click;
+            this.Shown += FrmMain_Shown;
         }
 
-        //mdi - eih lesader?
+        private void FrmMain_Shown(object? sender, EventArgs e)
+        {
+            OpenForm(typeof(frmDashboard));
+        }
 
+        //maybe not public but privet
         public void OpenForm(Type frmtype, int pkvalue = 0)
         {
             bool b = WindowsFormUtility.IsFormOpen(frmtype);

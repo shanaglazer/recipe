@@ -8,7 +8,7 @@ create or alter procedure dbo.CookbookInfoGet(
 	@IncludeBlank bit = 0)
 as
 begin
-    select @BookName = nullif(@BookName, '')
+    select @BookName = isnull(@BookName, '')
 
 	select c.CookbookID, c.UsersID, c.Active, c.BookName, c.Price, c.DateCreated, c.CookbookPicture
 	from Cookbook c
