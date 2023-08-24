@@ -63,10 +63,10 @@ namespace RecipeWinForms
             WindowsFormUtility.SetControlBinding(txtDateCreated, bindsource);
             //cbActive!
             //if(gData)
-            gData.DataSource = Recipe.GetRecipeSummary("RecipeForBookGet");
+            gData.DataSource = Recipe.GetRecipeSummary("CookbookInfoGet");
             WindowsFormUtility.FormatGrid(gData, "Cookbook");
             this.Text = GetBookName();
-            //load ingredients...
+            //load recipes
             //SetButtonsEnabledBasedOnNewRecord();
         }
 

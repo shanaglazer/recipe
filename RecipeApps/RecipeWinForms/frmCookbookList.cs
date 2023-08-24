@@ -22,16 +22,15 @@ namespace RecipeWinForms
             if (rowindex > -1)
             {
                 //Try fixing
-                id = (int)gdata.Rows[rowindex].Cells["CookbookId"].Value;
-                //id = WindowsFormUtility.GetIdFromGrid(gdata, rowindex, "CookbookId");
-                //id = WindowsFormUtility.GetIdFromGrid(gPresident, rowindex, "PresidentId");
+                //id = (int)gdata.Rows[rowindex].Cells["CookbookId"].Value;
+                id = WindowsFormUtility.GetIdFromGrid(gdata, rowindex, "CookbookId");
             }
             if (this.MdiParent != null && this.MdiParent is frmMain)
             {
                 ((frmMain)this.MdiParent).OpenForm(typeof(frmCookbook), id);
             }
             frmCookbook frm = new();
-            frm.LoadForm(id);
+            //frm.LoadForm(id);
         }
 
         private void BtnNewCookbook_Click(object? sender, EventArgs e)
