@@ -12,6 +12,8 @@ namespace RecipeWinForms
 {
     public partial class frmAutoCreateCookbook : Form
     {
+
+        //bind data - should get a list of user names, btn should open the cookbook delaile info
         public frmAutoCreateCookbook()
         {
             InitializeComponent();

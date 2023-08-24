@@ -1,5 +1,6 @@
 ﻿using CPUWindowsFormFramework;
 using System.DirectoryServices.ActiveDirectory;
+using System.Windows.Forms;
 
 namespace RecipeWinForms
 {
@@ -42,6 +43,7 @@ namespace RecipeWinForms
                 {
                     frmRecipe f = new();
                     newfrm = f;
+                    f.ShowForm(pkvalue);
                 }
                 else if (frmtype == typeof(frmRecipesSummary))
                 {

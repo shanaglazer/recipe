@@ -2,7 +2,7 @@ use HeartyHearthDB
 go
 
 create or alter proc dbo.RecipeForBookGet(
-	@CookbookId int = 0,
+	--@CookbookId int = 0,
 	@BookName varchar(80),
 	@message varchar(500) = '' output)
 as 
@@ -10,7 +10,7 @@ begin
 
 	declare @return int = 0
 
-		//isnull
+		--isnull
 
 		select r.RecipeName, b.BookSequence
 		from Cookbook c

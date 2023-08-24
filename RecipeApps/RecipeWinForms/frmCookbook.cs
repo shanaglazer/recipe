@@ -28,7 +28,7 @@ namespace RecipeWinForms
         public static DataTable LoadBook(int cookbookid)
         {
             DataTable dt = new();
-            SqlCommand cmd = SQLUtility.GetSqlCommand("CookbookGet");
+            SqlCommand cmd = SQLUtility.GetSqlCommand("CookbookInfoGet");
             cmd.Parameters["@CookbookId"].Value = cookbookid;
             dt = SQLUtility.GetDataTable(cmd);
             return dt;
@@ -66,7 +66,7 @@ namespace RecipeWinForms
             gData.DataSource = Recipe.GetRecipeSummary("RecipeForBookGet");
             WindowsFormUtility.FormatGrid(gData, "Cookbook");
             this.Text = GetBookName();
-            //LoadPresidentMedals();
+            //load ingredients...
             //SetButtonsEnabledBasedOnNewRecord();
         }
 

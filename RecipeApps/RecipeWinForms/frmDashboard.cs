@@ -8,6 +8,7 @@ namespace RecipeWinForms
     public partial class frmDashboard : Form
     {
         //tool strip & mdi parent/child
+        //cookbook doesn't work from the button in the dashboard!!! ????
         public frmDashboard()
         {
             InitializeComponent();
@@ -45,7 +46,7 @@ namespace RecipeWinForms
                 }
                 if (newfrm != null)
                 {
-                    //newfrm.MdiParent = frmMain;
+                    //newfrm.MdiParent = this;
                     newfrm.WindowState = FormWindowState.Maximized;
                     //newfrm.FormClosed += Newfrm_FormClosed;
                     //newfrm.TextChanged += Newfrm_TextChanged;

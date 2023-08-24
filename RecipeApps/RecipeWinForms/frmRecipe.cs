@@ -6,6 +6,7 @@ using System.Reflection.Metadata.Ecma335;
 
 namespace RecipeWinForms
 {
+    //mdi, ommit the id columns, open up in the right format
     public partial class frmRecipe : Form
     {
         DataTable dtRecipe = new();
@@ -65,6 +66,7 @@ namespace RecipeWinForms
             //{
             //    ((frmMain)this.MdiParent).OpenForm(typeof(frmRecipe), recipeid);
             //}
+           
             this.Show();
             SetButtonsEnabledBasedOnNewRecord();
         }

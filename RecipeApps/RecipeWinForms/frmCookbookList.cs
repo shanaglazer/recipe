@@ -6,6 +6,7 @@ namespace RecipeWinForms
 {
     public partial class frmCookbookList : Form
     {
+        //doesn't bind data when opens a cookbook
         public frmCookbookList()
         {
             InitializeComponent();
@@ -20,12 +21,17 @@ namespace RecipeWinForms
             int id = 0;
             if (rowindex > -1)
             {
-                id = WindowsFormUtility.GetIdFromGrid(gdata, rowindex, "CookbookId");
+                //Try fixing
+                id = (int)gdata.Rows[rowindex].Cells["CookbookId"].Value;
+                //id = WindowsFormUtility.GetIdFromGrid(gdata, rowindex, "CookbookId");
+                //id = WindowsFormUtility.GetIdFromGrid(gPresident, rowindex, "PresidentId");
             }
             if (this.MdiParent != null && this.MdiParent is frmMain)
             {
                 ((frmMain)this.MdiParent).OpenForm(typeof(frmCookbook), id);
             }
+            frmCookbook frm = new();
+            frm.LoadForm(id);
         }
 
         private void BtnNewCookbook_Click(object? sender, EventArgs e)
