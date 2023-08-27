@@ -25,5 +25,17 @@ namespace RecipeSystem
             return dt;
         }
 
+        public static void SaveDataList(DataTable dt, string tablename)
+        {
+            SQLUtility.SaveDataTable(dt, tablename + "Update");
+        }
+
+        public static void DeleteRow(string tablename, int id)
+        {
+            SqlCommand cmd = SQLUtility.GetSqlCommand(tablename + "Delete");
+            SQLUtility.SetParamValue(cmd, $"@{tablename}Id", id);
+            SQLUtility.ExecuteSQL(cmd);
+        }
+
     }
 }

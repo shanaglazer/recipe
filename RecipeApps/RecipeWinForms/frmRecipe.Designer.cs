@@ -334,7 +334,6 @@
             // 
             // lblDateArchived
             // 
-            this.lblDateArchived.AutoSize = true;
             this.lblDateArchived.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.lblDateArchived.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblDateArchived.Location = new System.Drawing.Point(575, 21);
@@ -416,7 +415,7 @@
             this.tbSteps.Location = new System.Drawing.Point(4, 24);
             this.tbSteps.Name = "tbSteps";
             this.tbSteps.Padding = new System.Windows.Forms.Padding(3);
-            this.tbSteps.Size = new System.Drawing.Size(967, 177);
+            this.tbSteps.Size = new System.Drawing.Size(967, 144);
             this.tbSteps.TabIndex = 1;
             this.tbSteps.Text = "Steps";
             this.tbSteps.UseVisualStyleBackColor = true;
@@ -434,7 +433,7 @@
             this.tblSteps.RowCount = 2;
             this.tblSteps.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tblSteps.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tblSteps.Size = new System.Drawing.Size(961, 171);
+            this.tblSteps.Size = new System.Drawing.Size(961, 138);
             this.tblSteps.TabIndex = 0;
             // 
             // btnSaveSteps
@@ -453,7 +452,7 @@
             this.gSteps.Location = new System.Drawing.Point(3, 37);
             this.gSteps.Name = "gSteps";
             this.gSteps.RowTemplate.Height = 25;
-            this.gSteps.Size = new System.Drawing.Size(955, 131);
+            this.gSteps.Size = new System.Drawing.Size(955, 98);
             this.gSteps.TabIndex = 1;
             // 
             // frmRecipe

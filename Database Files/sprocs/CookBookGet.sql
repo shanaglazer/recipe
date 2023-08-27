@@ -1,3 +1,4 @@
+--for cookbook list
 use HeartyHearthDB
 go
 
@@ -12,13 +13,13 @@ begin
     FROM BookRecipe br
     group by br.CookBookID
 	)
-	SELECT c.BookName, Author = concat(u.firstname, ' ', u.lastname), x.NumOfRecipes, c.Price
+	SELECT c.cookbookid, c.BookName, Author = concat(u.firstname, ' ', u.lastname), x.NumOfRecipes, c.Price
 	FROM Cookbook c
 	join users u
 	on u.usersid = c.usersid
 	join x 
 	on x.CookBookID = c.CookBookID
-	WHERE c.Active = 1
+	--WHERE c.Active = 1
 	order by c.BookName
 
 	return @return

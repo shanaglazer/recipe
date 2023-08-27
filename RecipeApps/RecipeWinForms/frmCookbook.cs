@@ -56,18 +56,33 @@ namespace RecipeWinForms
                 dtCookbook.Rows.Add();
             }
             DataTable dtusers = Recipe.GetList("UsersGet");
-            
+            //DataTable dtRecipes = Recipe.GetRecipeList("UsersGet");
+
             WindowsFormUtility.SetControlBinding(txtBookName, bindsource);
             WindowsFormUtility.SetListBinding(lstUserName, dtusers, dtCookbook, "Users");
             WindowsFormUtility.SetControlBinding(txtPrice, bindsource);
             WindowsFormUtility.SetControlBinding(txtDateCreated, bindsource);
-            //cbActive!
+            WindowsFormUtility.SetControlBinding(chkActive,bindsource);
             //if(gData)
-            gData.DataSource = Recipe.GetRecipeSummary("CookbookInfoGet");
+            DataTable dtRecipes = new();
+            //gData.DataSource = LoadRecipeForBook(dtRecipes, "RecipeForBook", gData, "Recipe", "RecipeName");
             WindowsFormUtility.FormatGrid(gData, "Cookbook");
             this.Text = GetBookName();
+            //LoadRecipeForBook(dtingredientrecipe, "IngredientRecipe", gIngredient, "Ingredient", "IngredientType");
             //load recipes
             //SetButtonsEnabledBasedOnNewRecord();
+        }
+
+        private void LoadRecipeForBook(DataTable dt, string sproc, DataGridView grid, string targettable, string displaymember
+            )
+        {
+            string deletecolname = "deletecol";
+            dt = IngredientRecipe.LoadByRecipeId(cookbookid, sproc, "@CookbookId");
+            grid.Columns.Clear();
+            grid.DataSource = dt;
+            WindowsFormUtility.AddComboboxToGrid(grid, DataMaintenance.GetDataList(targettable), targettable, displaymember);
+            WindowsFormUtility.AddDeleteButtonToGrid(grid, deletecolname);
+            WindowsFormUtility.FormatGridForEdit(grid, "Recipe");
         }
 
         private void FrmCookbook_Activated(object? sender, EventArgs e)

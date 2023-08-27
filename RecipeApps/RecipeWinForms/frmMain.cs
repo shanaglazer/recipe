@@ -18,6 +18,8 @@ namespace RecipeWinForms
             mnuNewCookbook.Click += MnuNewCookbook_Click;
             mnuEditData.Click += MnuEditData_Click;
             mnuAutoCreate.Click += MnuAutoCreate_Click;
+            mnuCascade.Click += MnuCascade_Click;
+            mnuTile.Click += MnuTile_Click;
             this.Shown += FrmMain_Shown;
         }
 
@@ -149,5 +151,14 @@ namespace RecipeWinForms
             OpenForm(typeof(frmDataMaintenance));
         }
 
+        private void MnuTile_Click(object? sender, EventArgs e)
+        {
+            LayoutMdi(MdiLayout.TileVertical);
+        }
+
+        private void MnuCascade_Click(object? sender, EventArgs e)
+        {
+            LayoutMdi(MdiLayout.Cascade);
+        }
     }
 }

@@ -74,7 +74,7 @@ namespace RecipeWinForms
         private void LoadRecipeInfo(DataTable dt, string tablename, DataGridView grid, string targettable, string displaymember)
         {
             string deletecolname = "deletecol";
-            dt = IngredientRecipe.LoadByRecipeId(recipeid, tablename);
+            dt = IngredientRecipe.LoadByRecipeId(recipeid, tablename, "@RecipeId");
             grid.Columns.Clear();
             grid.DataSource = dt;
             WindowsFormUtility.AddComboboxToGrid(grid, DataMaintenance.GetDataList(targettable), targettable, displaymember);

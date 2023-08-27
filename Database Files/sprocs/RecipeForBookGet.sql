@@ -3,8 +3,8 @@ use HeartyHearthDB
 go
 
 create or alter proc dbo.RecipeForBookGet(
-	--@CookbookId int = 0,
-	@BookName varchar(80),
+	@CookbookId int = 0,
+	--@BookName varchar(80),
 	@message varchar(500) = '' output)
 as 
 begin
@@ -14,12 +14,10 @@ begin
 		--isnull
 
 		select r.RecipeName, b.BookSequence
-		from Cookbook c
-		join BookRecipe b
-		on b.CookBookID = c.CookbookID
-		join Recipe r
-		on r.RecipeID = b.RecipeID
-		where c.BookName = @BookName
+		from BookRecipe b
+		join Recipe r 
+		on b.RecipeID = r.RecipeID
+		where b.CookBookID = @CookbookId
 		order by b.BookSequence
 
 	return @return

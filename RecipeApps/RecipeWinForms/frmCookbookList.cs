@@ -22,8 +22,9 @@ namespace RecipeWinForms
             if (rowindex > -1)
             {
                 //Try fixing
-                //id = (int)gdata.Rows[rowindex].Cells["CookbookId"].Value;
-                id = WindowsFormUtility.GetIdFromGrid(gdata, rowindex, "CookbookId");
+                //id = (int)gRecipe.Rows[rowindex].Cells["RecipeId"].Value;
+                id = (int)gdata.Rows[rowindex].Cells["CookbookId"].Value;
+                //id = WindowsFormUtility.GetIdFromGrid(gdata, rowindex, "CookbookId");
             }
             if (this.MdiParent != null && this.MdiParent is frmMain)
             {

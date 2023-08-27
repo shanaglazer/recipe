@@ -38,7 +38,7 @@
             this.btnSaveRecipe = new System.Windows.Forms.Button();
             this.gData = new System.Windows.Forms.DataGridView();
             this.txtBookName = new System.Windows.Forms.TextBox();
-            this.cbActive = new System.Windows.Forms.CheckBox();
+            this.chkActive = new System.Windows.Forms.CheckBox();
             this.lstUserName = new System.Windows.Forms.ComboBox();
             this.tblPrice = new System.Windows.Forms.TableLayoutPanel();
             this.lblDate = new System.Windows.Forms.Label();
@@ -63,7 +63,7 @@
             this.tblMain.Controls.Add(this.lblActive, 0, 4);
             this.tblMain.Controls.Add(this.tblgrid, 0, 5);
             this.tblMain.Controls.Add(this.txtBookName, 1, 1);
-            this.tblMain.Controls.Add(this.cbActive, 1, 4);
+            this.tblMain.Controls.Add(this.chkActive, 1, 4);
             this.tblMain.Controls.Add(this.lstUserName, 1, 2);
             this.tblMain.Controls.Add(this.tblPrice, 1, 3);
             this.tblMain.Controls.Add(this.btnSave, 0, 0);
@@ -182,16 +182,16 @@
             this.txtBookName.Size = new System.Drawing.Size(355, 29);
             this.txtBookName.TabIndex = 7;
             // 
-            // cbActive
+            // chkActive
             // 
-            this.cbActive.AutoSize = true;
-            this.cbActive.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cbActive.Location = new System.Drawing.Point(370, 175);
-            this.cbActive.Margin = new System.Windows.Forms.Padding(10, 3, 3, 3);
-            this.cbActive.Name = "cbActive";
-            this.cbActive.Size = new System.Drawing.Size(348, 15);
-            this.cbActive.TabIndex = 8;
-            this.cbActive.UseVisualStyleBackColor = true;
+            this.chkActive.AutoSize = true;
+            this.chkActive.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.chkActive.Location = new System.Drawing.Point(370, 175);
+            this.chkActive.Margin = new System.Windows.Forms.Padding(10, 3, 3, 3);
+            this.chkActive.Name = "chkActive";
+            this.chkActive.Size = new System.Drawing.Size(348, 15);
+            this.chkActive.TabIndex = 8;
+            this.chkActive.UseVisualStyleBackColor = true;
             // 
             // lstUserName
             // 
@@ -288,7 +288,7 @@
         private Label lblActive;
         private TableLayoutPanel tblgrid;
         private TextBox txtBookName;
-        private CheckBox cbActive;
+        private CheckBox chkActive;
         private ComboBox lstUserName;
         private TableLayoutPanel tblPrice;
         private Label lblDate;

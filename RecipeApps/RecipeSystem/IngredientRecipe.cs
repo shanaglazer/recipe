@@ -12,12 +12,12 @@ namespace RecipeSystem
     public class IngredientRecipe
     {
 
-        public static DataTable LoadByRecipeId(int recipeid, string tablename)
+        public static DataTable LoadByRecipeId(int recipeid, string tablename, string param)
         {
             DataTable dt;// = new()
             SqlCommand cmd = SQLUtility.GetSqlCommand(tablename + "Get");
 
-            SQLUtility.SetParamValue(cmd, "@RecipeId", recipeid);
+            SQLUtility.SetParamValue(cmd, param, recipeid);
             //cmd.Parameters["@RecipeId"].Value = recipeid;
             dt = SQLUtility.GetDataTable(cmd);
             return dt;
