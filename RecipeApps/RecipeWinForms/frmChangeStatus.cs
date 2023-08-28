@@ -17,5 +17,9 @@ namespace RecipeWinForms
             InitializeComponent();
         }
 
+        private void SetForm()
+        {
+            //lblRecipeName.Text = 
+        }
     }
 }

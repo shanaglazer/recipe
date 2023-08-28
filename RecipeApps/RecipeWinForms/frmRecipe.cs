@@ -20,6 +20,7 @@ namespace RecipeWinForms
             InitializeComponent();
             btnSave.Click += BtnSave_Click;
             btnDel.Click += BtnDel_Click;
+            btnChangeStatus.Click += BtnChangeStatus_Click;
 
             //DateTime currenttime = new();
             //currenttime = DateTime.Now;
@@ -82,21 +83,6 @@ namespace RecipeWinForms
             WindowsFormUtility.FormatGridForEdit(grid, tablename); //bli amudot shel id
         }
 
-        //private void SetRecipeInfo()
-        //{
-
-        //}
-        //private void LoadIngredientRecipe(DataTable dt, string tablename, DataGridView grid, string targettable, string displaymember)
-        //{
-        //    string deletecolname = "deletecol";
-        //    dtingredientrecipe = IngredientRecipe.LoadByRecipeId(recipeid, "IngredientRecipe");
-        //    gIngredient.Columns.Clear();
-        //    gIngredient.DataSource = dtingredientrecipe;
-        //    WindowsFormUtility.AddComboboxToGrid(gIngredient, DataMaintenance.GetDataList("Ingredient"), "Ingredient", "IngredientType");
-        //    WindowsFormUtility.AddDeleteButtonToGrid(gIngredient, deletecolname);
-        //    WindowsFormUtility.FormatGridForEdit(gIngredient, "IngredientRecipe"); //bli amudot shel id
-        //}
-
         private void SetButtonsEnabledBasedOnNewRecord()
         {
             //lo oved bchadash
@@ -156,6 +142,11 @@ namespace RecipeWinForms
         private void BtnSave_Click(object? sender, EventArgs e)
         {
             Save();
+        }
+
+        private void BtnChangeStatus_Click(object? sender, EventArgs e)
+        {
+            
         }
 
     }

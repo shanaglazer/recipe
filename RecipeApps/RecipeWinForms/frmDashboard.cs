@@ -80,17 +80,26 @@ namespace RecipeWinForms
 
         private void BtnCookbook_Click(object? sender, EventArgs e)
         {
-            OpenForm(typeof(frmCookbookList));
+            if (this.MdiParent != null && this.MdiParent is frmMain)
+            {
+                ((frmMain)this.MdiParent).OpenForm(typeof(frmCookbookList));
+            }
         }
 
         private void BtnMeal_Click(object? sender, EventArgs e)
         {
-            OpenForm(typeof(frmMeal));
+            if (this.MdiParent != null && this.MdiParent is frmMain)
+            {
+                ((frmMain)this.MdiParent).OpenForm(typeof(frmMeal));
+            }
         }
 
         private void BtnRecipe_Click(object? sender, EventArgs e)
         {
-            OpenForm(typeof(frmRecipesSummary));
+            if (this.MdiParent != null && this.MdiParent is frmMain)
+            {
+                ((frmMain)this.MdiParent).OpenForm(typeof(frmRecipesSummary));
+            }
         }
 
     }

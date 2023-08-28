@@ -16,7 +16,7 @@ namespace RecipeWinForms
 {
     public partial class frmDataMaintenance : Form
     {
-        private enum TableTypeEnum { Users, Cuisines, Ingredients, Measurements, Courses }
+        private enum TableTypeEnum { Users, Cuisine, Ingredient, MeasurementType, CourseType }
         DataTable dtlist = new();
         TableTypeEnum currenttabletype = TableTypeEnum.Users;
         string deletecolname = "deletecol";
@@ -102,10 +102,10 @@ namespace RecipeWinForms
                 }
             }
             optUsers.Tag = TableTypeEnum.Users;
-            optCuisine.Tag = TableTypeEnum.Cuisines;
-            optIngredient.Tag = TableTypeEnum.Ingredients;
-            optMeasurement.Tag = TableTypeEnum.Measurements;
-            optCourses.Tag = TableTypeEnum.Courses;
+            optCuisine.Tag = TableTypeEnum.Cuisine;
+            optIngredient.Tag = TableTypeEnum.Ingredient;
+            optMeasurement.Tag = TableTypeEnum.MeasurementType;
+            optCourses.Tag = TableTypeEnum.CourseType;
         }
 
         private void C_Click(object? sender, EventArgs e)
@@ -152,49 +152,5 @@ namespace RecipeWinForms
             Save();
         }
 
-
-        //private void C_Click(object? sender, EventArgs e)
-        //{
-        //    if (sender is Control && ((Control)sender).Tag is TableTypeEnum)
-        //    {
-        //        BindData((TableTypeEnum)((Control)sender).Tag);
-        //    }
-        //}
-
-        //private void BtnSave_Click(object? sender, EventArgs e)
-        //{
-        //    Save();
-        //}
-
-        //private void FrmDataMaintenance_FormClosing(object? sender, FormClosingEventArgs e)
-        //{
-        //    if (SQLUtility.TableHaveChanges(dtlist))
-        //    {
-        //        var res = MessageBox.Show($"Do you want to save changes to {this.Text} before closing the form?", Application.ProductName, MessageBoxButtons.YesNoCancel);
-        //        switch (res)
-        //        {
-        //            case DialogResult.Yes:
-        //                bool b = Save();
-        //                if (b == false)
-        //                {
-        //                    e.Cancel = true;
-        //                    this.Activate();
-        //                }
-        //                break;
-        //            case DialogResult.Cancel:
-        //                e.Cancel = true;
-        //                this.Activate();
-        //                break;
-        //        }
-        //    }
-        //}
-
-        //private void GData_CellContentClick(object? sender, DataGridViewCellEventArgs e)
-        //{
-        //    if (gData.Columns[e.ColumnIndex].Name == deletecolname)
-        //    {
-        //        Delete(e.RowIndex);
-        //    }
-        //}
     }
 }
