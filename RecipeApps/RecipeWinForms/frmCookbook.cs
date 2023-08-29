@@ -22,6 +22,9 @@ namespace RecipeWinForms
         public frmCookbook()
         {
             InitializeComponent();
+            btnSave.Click += BtnSave_Click;
+            btnDelete.Click += BtnDelete_Click;
+            btnSaveRecipe.Click += BtnSaveRecipe_Click;
             this.Activated += FrmCookbook_Activated;
         }
 
@@ -82,9 +85,54 @@ namespace RecipeWinForms
             WindowsFormUtility.FormatGridForEdit(grid, "Recipe");
         }
 
+        private void Save()
+        {
+            Application.UseWaitCursor = true;
+            try
+            {
+                Recipe.Save(dtCookbook);
+                bindsource.ResetBindings(false);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Hearty Hearth");
+            }
+            finally
+            {
+                Application.UseWaitCursor = false;
+            }
+        }
+
+        private void delete()
+        {
+            
+        }
+
+        private void SaveRecipe()
+        {
+            
+        }
+
         private void FrmCookbook_Activated(object? sender, EventArgs e)
         {
             //LoadForm();
         }
+
+
+        private void BtnSaveRecipe_Click(object? sender, EventArgs e)
+        {
+            SaveRecipe();
+        }
+
+        private void BtnDelete_Click(object? sender, EventArgs e)
+        {
+            delete();
+        }
+
+        private void BtnSave_Click(object? sender, EventArgs e)
+        {
+            Save();
+        }
+
     }
 }

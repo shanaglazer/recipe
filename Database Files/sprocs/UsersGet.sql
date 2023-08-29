@@ -1,4 +1,8 @@
-create or alter procedure dbo.UsersGet(@All bit = 0, @UsersId int = 0, @UserName varchar(50) = '')
+create or alter procedure dbo.UsersGet(
+	@All bit = 0, 
+	@UsersId int = 0, 
+	@UserName varchar(50) = '',
+	@IncludeBlank bit = 0)
 as
 begin
     select @UserName = nullif(@UserName, '')
@@ -8,6 +12,8 @@ begin
     where @All = 1
     or u.UserName like '%' + @UserName + '%'
     or u.UsersID = @UsersId
+	union select 0, '', '', ''
+	where @IncludeBlank = 1
 	order by u.LastName, u.FirstName, u.UserName
 end
 go

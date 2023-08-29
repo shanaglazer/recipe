@@ -38,15 +38,6 @@ namespace RecipeWinForms
             dtlist = DataMaintenance.GetDataList(currenttabletype.ToString());
             gData.Columns.Clear();
             gData.DataSource = dtlist;
-            //switch (tabletype)
-            //{
-            //    case TableTypeEnum.City:
-            //        WindowsFormUtility.AddComboboxToGrid(gData, DataMaintenance.GetDataList(TableTypeEnum.Country.ToString()), "Country", "CountryName");
-            //        break;
-            //    case TableTypeEnum.SportSubcategory:
-            //        WindowsFormUtility.AddComboboxToGrid(gData, DataMaintenance.GetDataList(TableTypeEnum.Sport.ToString()), "Sport", "SportName");
-            //        break;
-            //}
             WindowsFormUtility.AddDeleteButtonToGrid(gData, deletecolname);
             WindowsFormUtility.FormatGridForEdit(gData, currenttabletype.ToString());
         }

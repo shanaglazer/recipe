@@ -76,10 +76,10 @@ namespace RecipeSystem
             return SQLUtility.GetDataTable(cmd);
         }
 
-        public static DataTable CloneRecipe(string sprocname, object value)
+        public static DataTable CallSproc(string sprocname, object value, string param)
         {
             SqlCommand cmd = SQLUtility.GetSqlCommand(sprocname);
-            SQLUtility.SetParamValue(cmd, "@RecipeName", value);
+            SQLUtility.SetParamValue(cmd, param, value);
             return SQLUtility.GetDataTable(cmd);
         }
     }

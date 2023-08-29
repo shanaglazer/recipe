@@ -14,7 +14,7 @@ namespace RecipeWinForms
 
         private void BtnClone_Click(object? sender, EventArgs e)
         {
-            Recipe.CloneRecipe("RecipeClone", lstRecipe.Text);
+            Recipe.CallSproc("RecipeClone", lstRecipe.Text, "@RecipeName");
             this.Close();
             //openform recipe by pk
         }
