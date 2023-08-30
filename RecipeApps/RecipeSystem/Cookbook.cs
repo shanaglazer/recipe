@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,8 +20,16 @@ namespace RecipeSystem
             }
             DataRow r = dtCookbook.Rows[0];
             int id = (int)r["CookbookId"];
-            //var datecreated = ((DateTime)r["DateCreated"]).ToString("yyyy-MM-dd h:mm");
             SQLUtility.SaveDataRow(r, "CookbookUpdate");
+        }
+
+        public static void Delete(DataTable dtCookbook)
+        {
+            int id = (int)dtCookbook.Rows[0]["CookbookId"];
+            SqlCommand cmd = SQLUtility.GetSqlCommand("CookbookDelete");
+            SQLUtility.SetParamValue(cmd, "@CookbookId", id);
+            SQLUtility.ExecuteSQL(cmd);
+            //SQLUtility.ExecuteSQL(sql);
         }
 
     }

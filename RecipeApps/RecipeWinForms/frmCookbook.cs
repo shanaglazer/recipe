@@ -90,7 +90,7 @@ namespace RecipeWinForms
             Application.UseWaitCursor = true;
             try
             {
-                Recipe.Save(dtCookbook);
+                Cookbook.Save(dtCookbook);
                 bindsource.ResetBindings(false);
             }
             catch (Exception ex)
@@ -105,7 +105,25 @@ namespace RecipeWinForms
 
         private void delete()
         {
-            
+            var response = MessageBox.Show("Are you sure you whant to delte recipe?", "Hearty Hearth", MessageBoxButtons.YesNo);
+            if (response == DialogResult.No)
+            {
+                return;
+            }
+            Application.UseWaitCursor = true;
+            try
+            {
+                Cookbook.Delete(dtCookbook);
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Hearty Hearth");
+            }
+            finally
+            {
+                Application.UseWaitCursor = false;
+            }
         }
 
         private void SaveRecipe()
