@@ -12,8 +12,8 @@ namespace RecipeWinForms
             InitializeComponent();
             gdata.CellDoubleClick += Gdata_CellDoubleClick;
             this.KeyDown += FrmCookbookList_KeyDown;
-            btnNewCookbook.Click += BtnNewCookbook_Click;
-            BindData();
+            this.Activated += FrmCookbookList_Activated;
+            btnNewCookbook.Click += BtnNewCookbook_Click;     
         }
 
         private void ShowCookbookForm(int rowindex)
@@ -53,6 +53,11 @@ namespace RecipeWinForms
         private void Gdata_CellDoubleClick(object? sender, DataGridViewCellEventArgs e)
         {
             ShowCookbookForm(e.RowIndex);
+        }
+
+        private void FrmCookbookList_Activated(object? sender, EventArgs e)
+        {
+            BindData();
         }
     }
 }

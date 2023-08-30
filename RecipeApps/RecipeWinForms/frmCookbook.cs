@@ -28,6 +28,7 @@ namespace RecipeWinForms
             this.Activated += FrmCookbook_Activated;
         }
 
+        //put into sql utility!!!!
         public static DataTable LoadBook(int cookbookid)
         {
             DataTable dt = new();
@@ -105,7 +106,8 @@ namespace RecipeWinForms
 
         private void delete()
         {
-            var response = MessageBox.Show("Are you sure you whant to delte recipe?", "Hearty Hearth", MessageBoxButtons.YesNo);
+            //laasot ehad shell ze im recipe
+            var response = MessageBox.Show("Are you sure you whant to delete Cookbook?", "Hearty Hearth", MessageBoxButtons.YesNo);
             if (response == DialogResult.No)
             {
                 return;
