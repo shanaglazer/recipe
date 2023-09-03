@@ -14,7 +14,13 @@ begin
 
 	select @IngredientRecipeId = isnull(@IngredientRecipeId, 0), @RecipeId = isnull(@RecipeId, 0), @All = isnull(@All, 0)
 
-	select ir.IngredientRecipeID, ir.RecipeID, ir.IngredientID, ir.MeasurementTypeID, ir.Amount,  ir.IngSequence
+	select 
+		ir.IngredientRecipeID, 
+		ir.RecipeID, 
+		ir.IngredientID, 
+		ir.MeasurementTypeID, 
+		ir.Amount,  
+		ir.IngSequence
 	from IngredientRecipe ir
 	where ir.RecipeID = @RecipeId
 	or ir.ingredientRecipeId = @IngredientRecipeId

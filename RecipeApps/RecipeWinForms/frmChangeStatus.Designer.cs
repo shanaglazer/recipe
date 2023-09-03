@@ -32,17 +32,17 @@
             this.lblRecipeName = new System.Windows.Forms.Label();
             this.lblCurentStatus = new System.Windows.Forms.Label();
             this.tblDates = new System.Windows.Forms.TableLayoutPanel();
-            this.tblStatusButtons = new System.Windows.Forms.TableLayoutPanel();
-            this.btnDraft = new System.Windows.Forms.Button();
-            this.btnPublish = new System.Windows.Forms.Button();
-            this.btnArchive = new System.Windows.Forms.Button();
             this.lblDates = new System.Windows.Forms.Label();
             this.lblDrafted = new System.Windows.Forms.Label();
-            this.lblDateArchived = new System.Windows.Forms.Label();
+            this.lblDateCreated = new System.Windows.Forms.Label();
             this.lblPublished = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
+            this.lblDatePublished = new System.Windows.Forms.Label();
             this.lblArchived = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
+            this.lblDateArchived = new System.Windows.Forms.Label();
+            this.tblStatusButtons = new System.Windows.Forms.TableLayoutPanel();
+            this.btnArchive = new System.Windows.Forms.Button();
+            this.btnPublish = new System.Windows.Forms.Button();
+            this.btnDraft = new System.Windows.Forms.Button();
             this.tblMain.SuspendLayout();
             this.tblDates.SuspendLayout();
             this.tblStatusButtons.SuspendLayout();
@@ -98,11 +98,11 @@
             this.tblDates.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tblDates.Controls.Add(this.lblDates, 0, 1);
             this.tblDates.Controls.Add(this.lblDrafted, 1, 0);
-            this.tblDates.Controls.Add(this.lblDateArchived, 1, 1);
+            this.tblDates.Controls.Add(this.lblDateCreated, 1, 1);
             this.tblDates.Controls.Add(this.lblPublished, 2, 0);
-            this.tblDates.Controls.Add(this.label7, 2, 1);
+            this.tblDates.Controls.Add(this.lblDatePublished, 2, 1);
             this.tblDates.Controls.Add(this.lblArchived, 3, 0);
-            this.tblDates.Controls.Add(this.label9, 3, 1);
+            this.tblDates.Controls.Add(this.lblDateArchived, 3, 1);
             this.tblDates.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tblDates.Location = new System.Drawing.Point(3, 239);
             this.tblDates.Name = "tblDates";
@@ -111,54 +111,6 @@
             this.tblDates.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tblDates.Size = new System.Drawing.Size(748, 112);
             this.tblDates.TabIndex = 2;
-            // 
-            // tblStatusButtons
-            // 
-            this.tblStatusButtons.ColumnCount = 3;
-            this.tblStatusButtons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tblStatusButtons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tblStatusButtons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tblStatusButtons.Controls.Add(this.btnArchive, 0, 0);
-            this.tblStatusButtons.Controls.Add(this.btnPublish, 0, 0);
-            this.tblStatusButtons.Controls.Add(this.btnDraft, 0, 0);
-            this.tblStatusButtons.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tblStatusButtons.Location = new System.Drawing.Point(3, 357);
-            this.tblStatusButtons.Name = "tblStatusButtons";
-            this.tblStatusButtons.RowCount = 1;
-            this.tblStatusButtons.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tblStatusButtons.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tblStatusButtons.Size = new System.Drawing.Size(748, 113);
-            this.tblStatusButtons.TabIndex = 3;
-            // 
-            // btnDraft
-            // 
-            this.btnDraft.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnDraft.Location = new System.Drawing.Point(3, 35);
-            this.btnDraft.Name = "btnDraft";
-            this.btnDraft.Size = new System.Drawing.Size(243, 43);
-            this.btnDraft.TabIndex = 0;
-            this.btnDraft.Text = "Draft";
-            this.btnDraft.UseVisualStyleBackColor = true;
-            // 
-            // btnPublish
-            // 
-            this.btnPublish.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnPublish.Location = new System.Drawing.Point(252, 35);
-            this.btnPublish.Name = "btnPublish";
-            this.btnPublish.Size = new System.Drawing.Size(243, 43);
-            this.btnPublish.TabIndex = 1;
-            this.btnPublish.Text = "Publish";
-            this.btnPublish.UseVisualStyleBackColor = true;
-            // 
-            // btnArchive
-            // 
-            this.btnArchive.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnArchive.Location = new System.Drawing.Point(501, 35);
-            this.btnArchive.Name = "btnArchive";
-            this.btnArchive.Size = new System.Drawing.Size(244, 43);
-            this.btnArchive.TabIndex = 2;
-            this.btnArchive.Text = "Archive";
-            this.btnArchive.UseVisualStyleBackColor = true;
             // 
             // lblDates
             // 
@@ -182,15 +134,15 @@
             this.lblDrafted.Text = "Drafted:";
             this.lblDrafted.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // lblDateArchived
+            // lblDateCreated
             // 
-            this.lblDateArchived.AutoSize = true;
-            this.lblDateArchived.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblDateArchived.Location = new System.Drawing.Point(190, 56);
-            this.lblDateArchived.Name = "lblDateArchived";
-            this.lblDateArchived.Size = new System.Drawing.Size(181, 56);
-            this.lblDateArchived.TabIndex = 2;
-            this.lblDateArchived.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblDateCreated.AutoSize = true;
+            this.lblDateCreated.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblDateCreated.Location = new System.Drawing.Point(190, 56);
+            this.lblDateCreated.Name = "lblDateCreated";
+            this.lblDateCreated.Size = new System.Drawing.Size(181, 56);
+            this.lblDateCreated.TabIndex = 2;
+            this.lblDateCreated.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblPublished
             // 
@@ -203,15 +155,15 @@
             this.lblPublished.Text = "Published:";
             this.lblPublished.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label7
+            // lblDatePublished
             // 
-            this.label7.AutoSize = true;
-            this.label7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label7.Location = new System.Drawing.Point(377, 56);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(181, 56);
-            this.label7.TabIndex = 4;
-            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblDatePublished.AutoSize = true;
+            this.lblDatePublished.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblDatePublished.Location = new System.Drawing.Point(377, 56);
+            this.lblDatePublished.Name = "lblDatePublished";
+            this.lblDatePublished.Size = new System.Drawing.Size(181, 56);
+            this.lblDatePublished.TabIndex = 4;
+            this.lblDatePublished.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblArchived
             // 
@@ -224,15 +176,63 @@
             this.lblArchived.Text = "Archived:";
             this.lblArchived.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label9
+            // lblDateArchived
             // 
-            this.label9.AutoSize = true;
-            this.label9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label9.Location = new System.Drawing.Point(564, 56);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(181, 56);
-            this.label9.TabIndex = 6;
-            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblDateArchived.AutoSize = true;
+            this.lblDateArchived.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblDateArchived.Location = new System.Drawing.Point(564, 56);
+            this.lblDateArchived.Name = "lblDateArchived";
+            this.lblDateArchived.Size = new System.Drawing.Size(181, 56);
+            this.lblDateArchived.TabIndex = 6;
+            this.lblDateArchived.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // tblStatusButtons
+            // 
+            this.tblStatusButtons.ColumnCount = 3;
+            this.tblStatusButtons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tblStatusButtons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tblStatusButtons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tblStatusButtons.Controls.Add(this.btnArchive, 0, 0);
+            this.tblStatusButtons.Controls.Add(this.btnPublish, 0, 0);
+            this.tblStatusButtons.Controls.Add(this.btnDraft, 0, 0);
+            this.tblStatusButtons.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tblStatusButtons.Location = new System.Drawing.Point(3, 357);
+            this.tblStatusButtons.Name = "tblStatusButtons";
+            this.tblStatusButtons.RowCount = 1;
+            this.tblStatusButtons.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tblStatusButtons.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tblStatusButtons.Size = new System.Drawing.Size(748, 113);
+            this.tblStatusButtons.TabIndex = 3;
+            // 
+            // btnArchive
+            // 
+            this.btnArchive.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnArchive.Location = new System.Drawing.Point(501, 35);
+            this.btnArchive.Name = "btnArchive";
+            this.btnArchive.Size = new System.Drawing.Size(244, 43);
+            this.btnArchive.TabIndex = 2;
+            this.btnArchive.Text = "Archive";
+            this.btnArchive.UseVisualStyleBackColor = true;
+            // 
+            // btnPublish
+            // 
+            this.btnPublish.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnPublish.Location = new System.Drawing.Point(252, 35);
+            this.btnPublish.Name = "btnPublish";
+            this.btnPublish.Size = new System.Drawing.Size(243, 43);
+            this.btnPublish.TabIndex = 1;
+            this.btnPublish.Text = "Publish";
+            this.btnPublish.UseVisualStyleBackColor = true;
+            // 
+            // btnDraft
+            // 
+            this.btnDraft.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDraft.Location = new System.Drawing.Point(3, 35);
+            this.btnDraft.Name = "btnDraft";
+            this.btnDraft.Size = new System.Drawing.Size(243, 43);
+            this.btnDraft.TabIndex = 0;
+            this.btnDraft.Text = "Draft";
+            this.btnDraft.UseVisualStyleBackColor = true;
             // 
             // frmChangeStatus
             // 
@@ -265,10 +265,10 @@
         private Button btnPublish;
         private Label lblDates;
         private Label lblDrafted;
-        private Label lblDateArchived;
+        private Label lblDateCreated;
         private Label lblPublished;
-        private Label label7;
+        private Label lblDatePublished;
         private Label lblArchived;
-        private Label label9;
+        private Label lblDateArchived;
     }
 }

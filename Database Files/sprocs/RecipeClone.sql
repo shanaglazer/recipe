@@ -2,6 +2,7 @@ use HeartyHearthDB
 go
 
 create or alter proc dbo.RecipeClone(
+--RecipeId output
 	@RecipeName varchar(100) = '' output,
 	@Message varchar(500) = ''  output)
 as
@@ -32,3 +33,5 @@ begin
 
 end
 go
+
+select * from recipe

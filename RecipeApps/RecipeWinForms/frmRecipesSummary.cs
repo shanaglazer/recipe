@@ -25,7 +25,7 @@ namespace RecipeWinForms
             btnNewRecipe.Click += BtnNewRecipe_Click;
         }
 
-
+        //move this into RecipeSystem and change it to public ?
         private void ShowRecipeForm(int rowindex)
         {
             int id = 0;
@@ -35,7 +35,7 @@ namespace RecipeWinForms
             }
             if (this.MdiParent != null && this.MdiParent is frmMain)
             {
-                ((frmMain)this.MdiParent).OpenForm(typeof(frmRecipe), id);
+                ((frmMain)this.MdiParent).OpenForm(typeof(frmRecipeDetails), id);
             }
         }
 

@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
 using CPUFramework;
 
 namespace RecipeSystem
@@ -54,8 +55,8 @@ namespace RecipeSystem
                 throw new Exception("Cannot call Save method becuase there are no rows in the tabe.");
             }
             DataRow r = dtRecipe.Rows[0];
-            int id = (int)r["recipeId"];
-            var datecreated = ((DateTime)r["DateCreated"]).ToString("yyyy-MM-dd h:mm");
+            //int id = (int)r["recipeId"];
+           // var datecreated = ((DateTime)r["DateCreated"]).ToString("yyyy-MM-dd h:mm");
             SQLUtility.SaveDataRow(r, "RecipeUpdate");
         }
 
@@ -81,6 +82,19 @@ namespace RecipeSystem
             SqlCommand cmd = SQLUtility.GetSqlCommand(sprocname);
             SQLUtility.SetParamValue(cmd, param, value);
             return SQLUtility.GetDataTable(cmd);
+            //lahafoh leint veaz 
+            // return output param
         }
+
+        //private static DataTable LoadNewRecord()
+        //{
+        //    // int newClonedRecipeId = XmlOutputMethod param that came back from RecipeClone sproc
+        //    SqlCommand cmd1 = SQLUtility.GetSqlCommand(sprocname);
+        //    SQLUtility.SetParamValue(cmd, "RecipeId", newClonedRecipeId);
+
+        //    return SQLUtility.GetDataTable(cmd);
+        //}
+
+        //catching a param =  cmd.Parameters[paramname].Value
     }
 }

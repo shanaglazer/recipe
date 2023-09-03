@@ -28,7 +28,6 @@ namespace RecipeWinForms
         {
             Recipe.CallSproc("AutoCreateBook", lstUser.Text, "@UserName");
             this.Close();
-            //open form by @return id
         }
 
         private void BindData()

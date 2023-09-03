@@ -2,12 +2,12 @@ use HeartyHearthDB
 go
 
 create or alter procedure dbo.CookbookUpdate(
-		@CookbookId int  output,
-		@UserName varchar (30),
-		@Active bit,
-		@BookName varchar(80),
-		@price decimal,
-		@DateCreated datetime2,
+		@CookbookId int =0 output,
+		@UserName varchar (30) = '',
+		@Active bit = 0,
+		@BookName varchar(80) = '',
+		@price decimal = 0,
+		@DateCreated datetime2 = '',
 		@Message varchar(500) = ''  output
 )
 as

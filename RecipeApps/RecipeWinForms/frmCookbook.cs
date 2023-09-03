@@ -28,7 +28,6 @@ namespace RecipeWinForms
             this.Activated += FrmCookbook_Activated;
         }
 
-        //put into sql utility!!!!
         public static DataTable LoadBook(int cookbookid)
         {
             DataTable dt = new();
@@ -70,7 +69,7 @@ namespace RecipeWinForms
             //if(gData)
             DataTable dtRecipes = new();
             LoadRecipeForBook(dtRecipes, "RecipeForBook", gData, "Recipe", "RecipeName");
-            WindowsFormUtility.FormatGrid(gData, "Cookbook");
+            WindowsFormUtility.FormatGridForEdit(gData, "Cookbook");
             this.Text = GetBookName();
             //SetButtonsEnabledBasedOnNewRecord();
         }

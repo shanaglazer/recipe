@@ -1,5 +1,6 @@
 ﻿using CPUWindowsFormFramework;
 using RecipeSystem;
+using System.Data;
 
 namespace RecipeWinForms
 {
@@ -12,11 +13,24 @@ namespace RecipeWinForms
             btnClone.Click += BtnClone_Click;
         }
 
+        private void OpenRecipeForm(int pkvalue)
+        {
+            //int pkvalue = 0;
+            if (this.MdiParent != null && this.MdiParent is frmMain)
+            {
+                ((frmMain)this.MdiParent).OpenForm(typeof(frmRecipeDetails), pkvalue);
+            }
+        } 
+
         private void BtnClone_Click(object? sender, EventArgs e)
         {
+            //shinta lli veharas
             Recipe.CallSproc("RecipeClone", lstRecipe.Text, "@RecipeName");
+            //Recipe.ShowRecipeForm(newRecipeId);
+            int pkvalue = new();
             this.Close();
-            //openform recipe by pk
+            //Recipe.ShowRecipeForm(0);
+            OpenRecipeForm(pkvalue);
         }
 
         private void FrmClone_Activated(object? sender, EventArgs e)

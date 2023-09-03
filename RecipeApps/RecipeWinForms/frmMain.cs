@@ -28,7 +28,6 @@ namespace RecipeWinForms
             OpenForm(typeof(frmDashboard));
         }
 
-        //maybe not public but privet
         public void OpenForm(Type frmtype, int pkvalue = 0)
         {
             bool b = WindowsFormUtility.IsFormOpen(frmtype);
@@ -40,10 +39,9 @@ namespace RecipeWinForms
                     frmDashboard f = new();
                     newfrm = f;
                 }
-                //livdok legabei keshetzarih liftoah frm lefi pk!!!!
-                else if (frmtype == typeof(frmRecipe))
+                else if (frmtype == typeof(frmRecipeDetails))
                 {
-                    frmRecipe f = new();
+                    frmRecipeDetails f = new();
                     newfrm = f;
                     f.ShowForm(pkvalue);
                 }
@@ -82,6 +80,12 @@ namespace RecipeWinForms
                 {
                     frmDataMaintenance f = new();
                     newfrm = f;
+                }
+                else if (frmtype == typeof(frmChangeStatus))
+                {
+                    frmChangeStatus f = new();
+                    newfrm = f;
+                    f.SetForm(pkvalue);
                 }
                 if (newfrm != null)
                 {
@@ -123,7 +127,7 @@ namespace RecipeWinForms
 
         private void MnuNewRecipe_Click(object? sender, EventArgs e)
         {
-            OpenForm(typeof(frmRecipe));
+            OpenForm(typeof(frmRecipeDetails));
         }
 
         private void MnuRecipeList_Click(object? sender, EventArgs e)

@@ -7,7 +7,6 @@ create or alter proc dbo.RecipeUpdate(
 	@CuisineID int,
 	@RecipeName varchar (50),
 	@Calories int,
-	@DateCreated datetime,
 	@message varchar(500) = '' output 
 )
 as 
@@ -18,8 +17,8 @@ begin
 
 	if @RecipeID = 0
 	begin
-		insert Recipe(UsersID, CuisineID, RecipeName, Calories, DateCreated, DatePublished, DateArchived)
-		values(@UsersID, @CuisineID, @RecipeName, @Calories, @DateCreated, null, null)
+		insert Recipe(UsersID, CuisineID, RecipeName, Calories, DatePublished, DateArchived)
+		values(@UsersID, @CuisineID, @RecipeName, @Calories, null, null)
 	
 		--select @RecipeID = SCOPE_IDENTITY()
 	end
@@ -31,8 +30,7 @@ begin
 			UsersID = @UsersID, 
 			CuisineID = @CuisineID, 
 			RecipeName = @RecipeName, 
-			Calories = @Calories, 
-			DateCreated = @DateCreated
+			Calories = @Calories
 		where RecipeID = @RecipeID
 	end
 	

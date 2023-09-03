@@ -31,6 +31,7 @@ namespace RecipeWinForms
 
             SetupRadioButtons();
             BindData(currenttabletype);
+            optUsers.Checked = true;
         }
         private void BindData(TableTypeEnum tabletype)
         {

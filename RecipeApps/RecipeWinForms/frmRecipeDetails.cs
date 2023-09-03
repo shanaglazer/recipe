@@ -1,12 +1,11 @@
-﻿using CPUWindowsFormFramework;
-using System.Data;
+﻿using CPUFramework;
+using CPUWindowsFormFramework;
 using RecipeSystem;
-using CPUFramework;
-using System.Reflection.Metadata.Ecma335;
+using System.Data;
 
 namespace RecipeWinForms
 {
-    public partial class frmRecipe : Form
+    public partial class frmRecipeDetails : Form
     {
         DataTable dtRecipe = new();
         DataTable dtingredientrecipe = new();
@@ -14,17 +13,13 @@ namespace RecipeWinForms
         BindingSource bindsource = new();
         int recipeid = 0;
 
-        public frmRecipe()
+        public frmRecipeDetails()
         {
             InitializeComponent();
             btnSave.Click += BtnSave_Click;
             btnDel.Click += BtnDel_Click;
             btnChangeStatus.Click += BtnChangeStatus_Click;
             btnSaveIngredient.Click += BtnSaveIngredient_Click;
-
-            //DateTime currenttime = new();
-            //currenttime = DateTime.Now;
-            //dtpDateCreated.Value = currenttime;
         }
 
         private void SaveIngredientRecipe()
@@ -97,8 +92,8 @@ namespace RecipeWinForms
             grid.Columns.Clear();
             grid.DataSource = dt;
             WindowsFormUtility.AddComboboxToGrid(grid, DataMaintenance.GetDataList(targettable), targettable, displaymember);
-            
-            if(tablename == "IngredientRecipe")
+
+            if (tablename == "IngredientRecipe")
             {
                 WindowsFormUtility.AddComboboxToGrid(grid, DataMaintenance.GetDataList("MeasurementType"), "MeasurementType", "MeasuringType");
             }
@@ -136,7 +131,11 @@ namespace RecipeWinForms
 
         private void ChangeStatus()
         {
-            //SetForm(recipeid);
+            int pkvalue = SQLUtility.GetValueFromFirstRowAsInt(dtRecipe, "RecipeId");
+            if (this.MdiParent != null && this.MdiParent is frmMain)
+            {
+                ((frmMain)this.MdiParent).OpenForm(typeof(frmChangeStatus), pkvalue);
+            }
         }
 
         private void Delete()
@@ -184,4 +183,3 @@ namespace RecipeWinForms
 
     }
 }
-
