@@ -37,9 +37,9 @@ namespace RecipeWinForms
             {
                 id = (int)gRecipes.Rows[rowindex].Cells["RecipeId"].Value;
             }
-            if (this.MdiParent != null && this.MdiParent is frmRecipe)
+            if (this.MdiParent != null && this.MdiParent is frmRecipeDetails)
             {
-                ((frmMain)this.MdiParent).OpenForm(typeof(frmRecipe), id);
+                ((frmMain)this.MdiParent).OpenForm(typeof(frmRecipeDetails), id);
             }
             //frmRecipe frm = new();
             //frm.ShowForm(id);

@@ -100,6 +100,11 @@ namespace RecipeWinForms
             if (tablename == "IngredientRecipe")
             {
                 WindowsFormUtility.AddComboboxToGrid(grid, DataMaintenance.GetDataList("MeasurementType"), "MeasurementType", "MeasuringType");
+                dtingredientrecipe = dt;
+            }
+            else if(tablename == "Instruction")
+            {
+                dtinstruction = dt;
             }
            
             WindowsFormUtility.AddComboboxToGrid(grid, DataMaintenance.GetDataList(targettable), targettable, displaymember);

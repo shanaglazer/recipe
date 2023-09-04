@@ -29,27 +29,29 @@ namespace RecipeWinForms
             btnPublish.Click += BtnPublish_Click;
         }
 
-        private void ChangeStatus()//pass in the sender
+        private void ChangeStatus(Button btn)
         {
+            //doesn't work!
             SqlCommand cmd = SQLUtility.GetSqlCommand("RecipeStatusUpdate");
             string value = "";
-            //switch (btn.Name)
-            //{
-            //    case "btnDraft":
-            //        value = "Created";
-            //        break;
-            //    case btnPublish:
-            //        value = "Published";
-            //        break;
-            //    case btnArchive:
-            //        value = "Drafted";
-            //        break;
-            //}
-            cmd.Parameters["@Date" + value].Value = DateTime.Now;//.ToString();
+            switch (btn.Name)
+            {
+                case "btnDraft":
+                    value = "Created";
+                    break;
+                case "btnPublish":
+                    value = "Published";
+                    break;
+                case "btnArchive":
+                    value = "Archived";
+                    break;
+            }
+            cmd.Parameters["@ColumnToChange"].Value = "Date" + value;
             cmd.Parameters["@RecipeId"].Value = recipeid;
-            dtRecipe = SQLUtility.GetDataTable(cmd);
+            SQLUtility.ExecuteSQL(cmd);
+            //dtRecipe = Recipe.CallSproc("RecipeStatusUpdate", "Date" + value, "@ColumnToChange");//SQLUtility.GetDataTable(cmd);
             //load form again to refresh (buttons, status and dates)
-            bindsource.DataSource = dtRecipe;
+            //bindsource.DataSource = dtRecipe;
         }
 
         private string GetRecipeStatus()
@@ -98,7 +100,7 @@ namespace RecipeWinForms
             if (recipeid == 0)
             {
                 dtRecipe.Rows.Add();
-            }
+            }//try commenting it out
 
             WindowsFormUtility.SetControlBinding(lblRecipeName, bindsource);
             WindowsFormUtility.SetControlBinding(lblDateArchived, bindsource);
@@ -111,17 +113,26 @@ namespace RecipeWinForms
 
         private void BtnPublish_Click(object? sender, EventArgs e)
         {
-          
+            if (sender is Button)
+            {
+                ChangeStatus((Button)sender);
+            }
         }
 
         private void BtnDraft_Click(object? sender, EventArgs e)
         {
-            
+            if (sender is Button)
+            {
+                ChangeStatus((Button)sender);
+            }
         }
 
         private void BtnArchive_Click(object? sender, EventArgs e)
         {
-            
+            if (sender is Button)
+            {
+                ChangeStatus((Button)sender);
+            }
         }
 
 
