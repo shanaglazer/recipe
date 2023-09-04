@@ -1,4 +1,5 @@
-﻿using CPUWindowsFormFramework;
+﻿using CPUFramework;
+using CPUWindowsFormFramework;
 using RecipeSystem;
 using System.Data;
 
@@ -22,15 +23,22 @@ namespace RecipeWinForms
             }
         } 
 
+        private void Clone()
+        {
+            Recipe.CallSproc("RecipeClone", lstRecipe.Text, "@RecipeName");
+            DataTable clonedrecipe = Recipe.CallSproc("ClonedRecipeGet", lstRecipe.Text, "@RecipeName");
+            int pkvalue = SQLUtility.GetValueFromFirstRowAsInt(clonedrecipe, "RecipeId");
+            //
+            if (this.MdiParent != null && this.MdiParent is frmMain)
+            {
+                ((frmMain)this.MdiParent).OpenForm(typeof(frmRecipeDetails), pkvalue);
+            }
+            //frmClone.Close;
+        }
+
         private void BtnClone_Click(object? sender, EventArgs e)
         {
-            //shinta lli veharas
-            Recipe.CallSproc("RecipeClone", lstRecipe.Text, "@RecipeName");
-            //Recipe.ShowRecipeForm(newRecipeId);
-            int pkvalue = new();
-            this.Close();
-            //Recipe.ShowRecipeForm(0);
-            OpenRecipeForm(pkvalue);
+            Clone();
         }
 
         private void FrmClone_Activated(object? sender, EventArgs e)

@@ -21,13 +21,13 @@ namespace RecipeWinForms
         //    return dt;
         //}
 
-        public static void SaveTable(DataTable dt, int recipeid)
+        public static void SaveTable(DataTable dt, int recipeid, string sproc)
         {
             foreach (DataRow r in dt.Select("", "", DataViewRowState.Added))//beshurut shemosifim - lesader id
             {
                 r["RecipeId"] = recipeid;
             }
-            SQLUtility.SaveDataTable(dt, "IngredientRecipeUpdate");
+            SQLUtility.SaveDataTable(dt, sproc);
         }
 
         public static void Delete(int ingredientrecipeid)

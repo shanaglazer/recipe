@@ -31,7 +31,7 @@ namespace RecipeWinForms
         {
             try
             {
-                RecipeIngredient.SaveTable(dtRecipe, recipeid);
+                RecipeIngredient.SaveTable(dtRecipe, recipeid, "IngredientRecipeUpdate");
                 //PresidentMedal.SaveTable(dtpresidentmedal, presidentid);
             }
             catch (Exception ex)

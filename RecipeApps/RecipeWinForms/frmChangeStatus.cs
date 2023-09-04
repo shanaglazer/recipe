@@ -29,6 +29,29 @@ namespace RecipeWinForms
             btnPublish.Click += BtnPublish_Click;
         }
 
+        private void ChangeStatus()//pass in the sender
+        {
+            SqlCommand cmd = SQLUtility.GetSqlCommand("RecipeStatusUpdate");
+            string value = "";
+            //switch (btn.Name)
+            //{
+            //    case "btnDraft":
+            //        value = "Created";
+            //        break;
+            //    case btnPublish:
+            //        value = "Published";
+            //        break;
+            //    case btnArchive:
+            //        value = "Drafted";
+            //        break;
+            //}
+            cmd.Parameters["@Date" + value].Value = DateTime.Now;//.ToString();
+            cmd.Parameters["@RecipeId"].Value = recipeid;
+            dtRecipe = SQLUtility.GetDataTable(cmd);
+            //load form again to refresh (buttons, status and dates)
+            bindsource.DataSource = dtRecipe;
+        }
+
         private string GetRecipeStatus()
         {
             return SQLUtility.GetValueFromFirstRowAsString(dtRecipe, "RecipeStatus");
@@ -88,7 +111,7 @@ namespace RecipeWinForms
 
         private void BtnPublish_Click(object? sender, EventArgs e)
         {
-            
+          
         }
 
         private void BtnDraft_Click(object? sender, EventArgs e)

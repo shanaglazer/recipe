@@ -30,7 +30,7 @@ namespace RecipeWinForms
 
         public void OpenForm(Type frmtype, int pkvalue = 0)
         {
-            bool b = WindowsFormUtility.IsFormOpen(frmtype);
+            bool b = WindowsFormUtility.IsFormOpen(frmtype, pkvalue);
             if (b == false)
             {
                 Form? newfrm = null;

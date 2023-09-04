@@ -20,19 +20,24 @@ namespace RecipeWinForms
             btnDel.Click += BtnDel_Click;
             btnChangeStatus.Click += BtnChangeStatus_Click;
             btnSaveIngredient.Click += BtnSaveIngredient_Click;
+            btnSaveSteps.Click += BtnSaveSteps_Click;
         }
 
         private void SaveIngredientRecipe()
         {
             try
             {
-                RecipeIngredient.SaveTable(dtRecipe, recipeid);
-                //PresidentMedal.SaveTable(dtpresidentmedal, presidentid);
+                RecipeIngredient.SaveTable(dtingredientrecipe, recipeid, "IngredientRecipeUpdate");
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, Application.ProductName);
             }
+        }
+
+        private void SaveSteps()
+        {
+            //same as on top^
         }
 
         private string GetRecipeName()
@@ -69,21 +74,21 @@ namespace RecipeWinForms
             WindowsFormUtility.SetControlBinding(lblDatePublished, bindsource);
             WindowsFormUtility.SetControlBinding(lblDateArchived, bindsource);
             this.Text = GetRecipeName();
-            loadRecipeInformation("ing");
+            //loadRecipeInformation("ing");
             LoadRecipeInfo(dtingredientrecipe, "IngredientRecipe", gIngredient, "Ingredient", "IngredientType");
             LoadRecipeInfo(dtinstruction, "Instruction", gSteps, "Instruction", "InstructionStep");
             this.Show();
             SetButtonsEnabledBasedOnNewRecord();
         }
-        private void loadRecipeInformation(string type)
-        {
-            if (type == "IngredientRecipe")
-            {
-                dtingredientrecipe = IngredientRecipe.LoadByRecipeId(recipeid, type, "@RecipeId");
-                gIngredient.Columns.Clear();
-                gIngredient.DataSource = dtingredientrecipe;
-            }
-        }
+        //private void loadRecipeInformation(string type)
+        //{
+        //    if (type == "IngredientRecipe")
+        //    {
+        //        dtingredientrecipe = IngredientRecipe.LoadByRecipeId(recipeid, type, "@RecipeId");
+        //        gIngredient.Columns.Clear();
+        //        gIngredient.DataSource = dtingredientrecipe;
+        //    }
+        //}
 
         private void LoadRecipeInfo(DataTable dt, string tablename, DataGridView grid, string targettable, string displaymember)
         {
@@ -91,14 +96,18 @@ namespace RecipeWinForms
             dt = IngredientRecipe.LoadByRecipeId(recipeid, tablename, "@RecipeId");
             grid.Columns.Clear();
             grid.DataSource = dt;
-            WindowsFormUtility.AddComboboxToGrid(grid, DataMaintenance.GetDataList(targettable), targettable, displaymember);
-
+            
             if (tablename == "IngredientRecipe")
             {
                 WindowsFormUtility.AddComboboxToGrid(grid, DataMaintenance.GetDataList("MeasurementType"), "MeasurementType", "MeasuringType");
             }
-            WindowsFormUtility.AddDeleteButtonToGrid(grid, deletecolname);
+           
+            WindowsFormUtility.AddComboboxToGrid(grid, DataMaintenance.GetDataList(targettable), targettable, displaymember);
+            
+           
+            
             WindowsFormUtility.FormatGridForEdit(grid, tablename);
+            WindowsFormUtility.AddDeleteButtonToGrid(grid, deletecolname);
         }
 
         private void SetButtonsEnabledBasedOnNewRecord()
@@ -179,6 +188,11 @@ namespace RecipeWinForms
         private void BtnSaveIngredient_Click(object? sender, EventArgs e)
         {
             SaveIngredientRecipe();
+        }
+
+        private void BtnSaveSteps_Click(object? sender, EventArgs e)
+        {
+            SaveSteps();
         }
 
     }

@@ -9,7 +9,7 @@ begin
 	from Recipe r
 	join Users u
 	on u.UsersID = r.UsersID
-	join IngredientRecipe ir
+	left join IngredientRecipe ir
 	on ir.RecipeID = r.RecipeID
 	group by r.RecipeID, r.RecipeName, r.RecipeStatus, u.FirstName, u.LastName, r.Calories
 	order by r.RecipeStatus desc, r.RecipeName
