@@ -30,7 +30,7 @@ namespace RecipeWinForms
             {
                 ((frmMain)this.MdiParent).OpenForm(typeof(frmCookbook), id);
             }
-            frmCookbook frm = new();
+            //frmCookbook frm = new();
             //frm.LoadForm(id);
         }
 

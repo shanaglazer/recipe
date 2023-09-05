@@ -86,15 +86,5 @@ namespace RecipeSystem
             // return output param
         }
 
-        //private static DataTable LoadNewRecord()
-        //{
-        //    // int newClonedRecipeId = XmlOutputMethod param that came back from RecipeClone sproc
-        //    SqlCommand cmd1 = SQLUtility.GetSqlCommand(sprocname);
-        //    SQLUtility.SetParamValue(cmd, "RecipeId", newClonedRecipeId);
-
-        //    return SQLUtility.GetDataTable(cmd);
-        //}
-
-        //catching a param =  cmd.Parameters[paramname].Value
     }
 }

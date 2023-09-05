@@ -7,7 +7,7 @@ create or alter procedure dbo.CookbookUpdate(
 		@Active bit = 0,
 		@BookName varchar(80) = '',
 		@price decimal = 0,
-		@DateCreated datetime2 = '',
+		@DateCreated date,-- = '',
 		@Message varchar(500) = ''  output
 )
 as
@@ -33,10 +33,24 @@ begin
 			Active = @Active,
 			BookName = @bookName,
 			Price  = @price,
-			DateCreated = @DateCreated
+			DateCreated = CAST(@DateCreated AS DATETIME2)
 		where CookbookID = @CookbookId
 	end
 	
 	return @return
 end
 go
+
+exec CookbookUpdate
+@CookbookId = 4,
+@UserName = 'MichalHofman',
+@Active = 1,
+@BookName = 'In the potyyyy',
+@price = 42.00,
+@DateCreated = '2023-09-05',
+@Message = null
+
+select getdate()
+
+select * from Cookbook
+update Cookbook set datecreated = '2023-09-05' where cookbookid = 4

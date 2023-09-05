@@ -23,21 +23,16 @@ namespace RecipeWinForms
             btnSaveSteps.Click += BtnSaveSteps_Click;
         }
 
-        private void SaveIngredientRecipe()
+        private void SaveIngredientAndSteps(string sprocname)
         {
             try
             {
-                RecipeIngredient.SaveTable(dtingredientrecipe, recipeid, "IngredientRecipeUpdate");
+                RecipeIngredient.SaveTable(dtingredientrecipe, recipeid, sprocname);
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, Application.ProductName);
             }
-        }
-
-        private void SaveSteps()
-        {
-            //same as on top^
         }
 
         private string GetRecipeName()
@@ -54,6 +49,7 @@ namespace RecipeWinForms
         public void ShowForm(int recipeidval)
         {
             recipeid = recipeidval;
+            this.Tag = recipeid;
             dtRecipe = Recipe.LoadRecipe(recipeid);
             bindsource.DataSource = dtRecipe;
 
@@ -108,9 +104,6 @@ namespace RecipeWinForms
             }
            
             WindowsFormUtility.AddComboboxToGrid(grid, DataMaintenance.GetDataList(targettable), targettable, displaymember);
-            
-           
-            
             WindowsFormUtility.FormatGridForEdit(grid, tablename);
             WindowsFormUtility.AddDeleteButtonToGrid(grid, deletecolname);
         }
@@ -192,12 +185,12 @@ namespace RecipeWinForms
 
         private void BtnSaveIngredient_Click(object? sender, EventArgs e)
         {
-            SaveIngredientRecipe();
+            SaveIngredientAndSteps("IngredientRecipeUpdate");
         }
 
         private void BtnSaveSteps_Click(object? sender, EventArgs e)
         {
-            SaveSteps();
+            SaveIngredientAndSteps("");
         }
 
     }

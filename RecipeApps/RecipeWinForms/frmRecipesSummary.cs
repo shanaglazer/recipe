@@ -25,7 +25,6 @@ namespace RecipeWinForms
             btnNewRecipe.Click += BtnNewRecipe_Click;
         }
 
-        //move this into RecipeSystem and change it to public ?
         private void ShowRecipeForm(int rowindex)
         {
             int id = 0;

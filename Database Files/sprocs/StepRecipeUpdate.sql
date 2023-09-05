@@ -1,7 +1,7 @@
 use HeartyHearthDB
 go
 
-create or alter procedure dbo.IngredientRecipeUpdate(
+create or alter procedure dbo.StepRecipeUpdate(
 	@IngredientRecipeId int  output,
 	@RecipeId int ,
 	@IngredientId int ,

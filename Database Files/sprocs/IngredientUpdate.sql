@@ -1,3 +1,6 @@
+use HeartyHearthDB
+go
+
 create or alter procedure dbo.IngredientUpdate(
 		@IngredientId int  output,
 		@IngredientType varchar (100),

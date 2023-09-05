@@ -11,8 +11,8 @@ begin
 	
 	if @CuisineId = 0
 	begin
-		insert Cuisine(CuisineID, CuisineType)
-		values(@CuisineId, @CuisineType)
+		insert Cuisine(CuisineType)
+		values(@CuisineType)
 
 		select @CuisineId= scope_identity()
 	end

@@ -18,6 +18,7 @@ begin
 	
 		update Recipe
 		set
+		--lehosif case
 		@ColumnToChange = getdate()
 			--DateCreated = @DateCreated, 
 			--DatePublished = @DatePublished,
@@ -27,3 +28,8 @@ begin
 	return @return
 end
 go
+
+exec RecipeStatusUpdate
+@RecipeId = 4,
+@ColumnToChange = DatePublished,
+@Message = null

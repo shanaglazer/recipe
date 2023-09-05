@@ -23,10 +23,14 @@ namespace RecipeWinForms
 
         public static void SaveTable(DataTable dt, int recipeid, string sproc)
         {
-            foreach (DataRow r in dt.Select("", "", DataViewRowState.Added))//beshurut shemosifim - lesader id
-            {
-                r["RecipeId"] = recipeid;
-            }
+            //foreach (DataRow r in dt.Select("", "", DataViewRowState.Added))
+            //{
+            //    r["RecipeId"] = recipeid;
+            //    //r["IngredientId"] = recipeid;
+            //    //r["MeasurementTypeID"] = recipeid;
+            //    //r["Amount"] = recipeid;
+            //    //r["IngSequence"] = recipeid;
+            //}
             SQLUtility.SaveDataTable(dt, sproc);
         }
 
