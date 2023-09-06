@@ -3,10 +3,6 @@ go
 
 create or alter procedure dbo.RecipeStatusUpdate(
 		@RecipeId int  output,
-		--@DatePublished datetime,
-		--@DateArchived datetime,
-		--@DateCreated datetime,
-		--@DateForChange datetime,
 		@ColumnToChange varchar(15),
 		@Message varchar(500) = ''  output
 )
@@ -17,12 +13,24 @@ begin
 	--select @DatePublished = isnull(@DatePublished,0), @DateArchived = isnull(@DateArchived, ''), @DateCreated = isnull(@DateCreated, '')
 	
 		update Recipe
-		set
-		--lehosif case
-		@ColumnToChange = getdate()
-			--DateCreated = @DateCreated, 
-			--DatePublished = @DatePublished,
-			--DateArchived = @DateArchived
+		set DateCreated = 
+		case 
+		when @ColumnToChange = DateCreated then getdate()
+		else
+		DateCreated
+			end,
+		    DatePublished = 
+		case 
+		when @ColumnToChange = DatePublished then getdate()
+		else
+		DatePublished
+			end,
+			DateArchived = 
+		case 
+		when @ColumnToChange = DateArchived then getdate()
+		else
+		DateArchived
+			end
 		where RecipeID = @RecipeId
 	
 	return @return
@@ -31,5 +39,4 @@ go
 
 exec RecipeStatusUpdate
 @RecipeId = 4,
-@ColumnToChange = DatePublished,
-@Message = null
+@ColumnToChange = 'DatePublished'

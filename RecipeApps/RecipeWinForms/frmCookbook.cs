@@ -26,6 +26,7 @@ namespace RecipeWinForms
             btnDelete.Click += BtnDelete_Click;
             btnSaveRecipe.Click += BtnSaveRecipe_Click;
             this.Activated += FrmCookbook_Activated;
+            gData.CellContentClick += GData_CellContentClick;
         }
 
         public static DataTable LoadBook(int cookbookid)
@@ -80,9 +81,9 @@ namespace RecipeWinForms
             dt = IngredientRecipe.LoadByRecipeId(cookbookid, sproc, "@CookbookId");
             grid.Columns.Clear();
             grid.DataSource = dt;
-         //   WindowsFormUtility.AddComboboxToGrid(grid, DataMaintenance.GetDataList(targettable), targettable, displaymember);
-            WindowsFormUtility.AddDeleteButtonToGrid(grid, deletecolname);
+            WindowsFormUtility.AddComboboxToGrid(grid, DataMaintenance.GetDataList(sproc), targettable, displaymember);
             WindowsFormUtility.FormatGridForEdit(grid, "Recipe");
+            WindowsFormUtility.AddDeleteButtonToGrid(grid, deletecolname);
         }
 
         private void Save()
@@ -128,6 +129,33 @@ namespace RecipeWinForms
         }
 
         private void SaveRecipe()
+        {
+            
+        }
+
+        private void DeleteInstructionsAndStept(int rowIndex, DataGridView grid, string columnname, string sproc, string param)
+        {
+            int id = WindowsFormUtility.GetIdFromGrid(grid, rowIndex, columnname);
+            if (id > 0)
+            {
+                try
+                {
+                    RecipeIngredient.Delete(id, sproc, param);
+                    LoadRecipeForBook(dtCookbook, sproc, grid, "Recipe", "RecipeName");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, Application.ProductName);
+                }
+            }
+            else if (id < grid.Rows.Count)
+            {
+                grid.Rows.RemoveAt(rowIndex);
+            }
+
+        }
+
+        private void GData_CellContentClick(object? sender, DataGridViewCellEventArgs e)
         {
             
         }

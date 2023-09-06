@@ -2,40 +2,36 @@ use HeartyHearthDB
 go
 
 create or alter procedure dbo.StepRecipeUpdate(
-	@IngredientRecipeId int  output,
+	@InstructionId int  output,
 	@RecipeId int ,
-	@IngredientId int ,
-	@MeasurementTypeId varchar(30),
-	@Amount decimal,
-	@IngSequence int,
+	@InstructionStep varchar(100),
+	@InstructionSequence int,
 	@Message varchar(500) = ''  output
 )
 as
 begin
 	declare @return int = 0
 
-	select @IngredientRecipeId = isnull(@IngredientRecipeId,0)
+	select @InstructionId = isnull(@InstructionId,0), @RecipeId = isnull(@RecipeId, ''), @InstructionStep = isnull(@InstructionStep, ''), @InstructionSequence = isnull(@InstructionSequence, '')
 
-	if @IngredientRecipeId = 0
+	if @InstructionId = 0
 	begin
-		insert IngredientRecipe(RecipeID, IngredientID, MeasurementTypeID, Amount, IngSequence)
-		values(@RecipeId, @IngredientId, @MeasurementTypeId, @Amount, @IngSequence)
+		insert Instruction(RecipeID, InstructionStep, InstructionSequence)
+		values(@RecipeId, @InstructionStep, @InstructionSequence)
 
-		select @IngredientRecipeId= scope_identity()
+		select @InstructionId= scope_identity()
 	end
 	else
 	begin
-		update IngredientRecipe
+		update Instruction
 		set
 			recipeid = @RecipeId, 
-			IngredientID =  @IngredientId,
-			MeasurementTypeID = @MeasurementTypeId,
-			Amount = @Amount,
-			IngSequence = @IngSequence
-		where IngredientRecipeId = @IngredientRecipeId
+			InstructionStep = @InstructionStep,
+			InstructionSequence = @InstructionSequence
+		where InstructionID = @InstructionId
 	end
 
 	return @return
 end
 go
---select * from IngredientRecipe
+--select * from instruction

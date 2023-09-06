@@ -21,7 +21,7 @@ namespace RecipeWinForms
             InitializeComponent();
             this.Activated += FrmRecipesSummary_Activated;
             gRecipe.CellDoubleClick += GRecipe_CellDoubleClick;
-            this.KeyDown += FrmRecipesSummary_KeyDown;
+            gRecipe.KeyDown += GRecipe_KeyDown;
             btnNewRecipe.Click += BtnNewRecipe_Click;
         }
 
@@ -38,26 +38,16 @@ namespace RecipeWinForms
             }
         }
 
-        private void GRecipe_CellDoubleClick(object? sender, DataGridViewCellEventArgs e)
-        {
-            ShowRecipeForm(e.RowIndex);
-        }
-
-        private void FrmRecipesSummary_Activated(object? sender, EventArgs e)
-        {
-            BindData();
-        }
-
         private void BindData()
         {
             gRecipe.DataSource = Recipe.GetRecipeSummary("RecipeSummaryGet");
             WindowsFormUtility.FormatGrid(gRecipe, "Recipe");
         }
 
-        private void FrmRecipesSummary_KeyDown(object? sender, KeyEventArgs e)
+
+        private void GRecipe_KeyDown(object? sender, KeyEventArgs e)
         {
-            //lo oved!
-            if(e.KeyCode == Keys.Enter && gRecipe.SelectedRows.Count > 0)
+            if (e.KeyCode == Keys.Enter && gRecipe.SelectedRows.Count > 0)
             {
                 ShowRecipeForm(gRecipe.SelectedRows[0].Index);
                 e.SuppressKeyPress = true;
@@ -67,6 +57,16 @@ namespace RecipeWinForms
         private void BtnNewRecipe_Click(object? sender, EventArgs e)
         {
             ShowRecipeForm(-1);
+        }
+
+        private void GRecipe_CellDoubleClick(object? sender, DataGridViewCellEventArgs e)
+        {
+            ShowRecipeForm(e.RowIndex);
+        }
+
+        private void FrmRecipesSummary_Activated(object? sender, EventArgs e)
+        {
+            BindData();
         }
     }
 }

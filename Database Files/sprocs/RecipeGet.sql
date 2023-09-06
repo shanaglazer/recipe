@@ -1,3 +1,6 @@
+use HeartyHearthDB
+go
+
 create or alter procedure dbo.RecipeGet(
 	@All bit = 0, 
 	@RecipeId int = 0, 

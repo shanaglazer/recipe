@@ -23,21 +23,17 @@ namespace RecipeWinForms
 
         public static void SaveTable(DataTable dt, int recipeid, string sproc)
         {
-            //foreach (DataRow r in dt.Select("", "", DataViewRowState.Added))
-            //{
-            //    r["RecipeId"] = recipeid;
-            //    //r["IngredientId"] = recipeid;
-            //    //r["MeasurementTypeID"] = recipeid;
-            //    //r["Amount"] = recipeid;
-            //    //r["IngSequence"] = recipeid;
-            //}
+            foreach (DataRow r in dt.Select("", "", DataViewRowState.Added))
+            {
+                r["RecipeId"] = recipeid;
+            }
             SQLUtility.SaveDataTable(dt, sproc);
         }
 
-        public static void Delete(int ingredientrecipeid)
+        public static void Delete(int ingredientrecipeid, string sproc, string param)
         {
-            SqlCommand cmd = SQLUtility.GetSqlCommand("IngredientRecipeDelete");
-            cmd.Parameters["@IngredientRecipeId"].Value = ingredientrecipeid;
+            SqlCommand cmd = SQLUtility.GetSqlCommand(sproc);
+            cmd.Parameters[param].Value = ingredientrecipeid;
             SQLUtility.ExecuteSQL(cmd);
         }
 
