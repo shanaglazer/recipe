@@ -15,7 +15,7 @@ namespace RecipeWinForms
 {
     public partial class frmRecipesSummary : Form
     {
-        //enter lo oved!
+        
         public frmRecipesSummary()
         {
             InitializeComponent();

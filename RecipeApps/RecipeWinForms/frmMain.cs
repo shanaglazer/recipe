@@ -23,11 +23,6 @@ namespace RecipeWinForms
             this.Shown += FrmMain_Shown;
         }
 
-        private void FrmMain_Shown(object? sender, EventArgs e)
-        {
-            OpenForm(typeof(frmDashboard));
-        }
-
         public void OpenForm(Type frmtype, int pkvalue = 0)
         {
             bool b = WindowsFormUtility.IsFormOpen(frmtype, pkvalue);
@@ -163,6 +158,11 @@ namespace RecipeWinForms
         private void MnuCascade_Click(object? sender, EventArgs e)
         {
             LayoutMdi(MdiLayout.Cascade);
+        }
+
+        private void FrmMain_Shown(object? sender, EventArgs e)
+        {
+            OpenForm(typeof(frmDashboard));
         }
     }
 }

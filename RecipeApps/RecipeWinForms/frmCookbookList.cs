@@ -6,12 +6,12 @@ namespace RecipeWinForms
 {
     public partial class frmCookbookList : Form
     {
-        //doesn't bind data when opens a cookbook
+        
         public frmCookbookList()
         {
             InitializeComponent();
             gdata.CellDoubleClick += Gdata_CellDoubleClick;
-            this.KeyDown += FrmCookbookList_KeyDown;
+            gdata.KeyDown += Gdata_KeyDown;
             this.Activated += FrmCookbookList_Activated;
             btnNewCookbook.Click += BtnNewCookbook_Click;     
         }
@@ -34,20 +34,15 @@ namespace RecipeWinForms
             //frm.LoadForm(id);
         }
 
-        private void BtnNewCookbook_Click(object? sender, EventArgs e)
-        {
-            ShowCookbookForm(-1);
-        }
-
         private void BindData()
         {
             gdata.DataSource = Recipe.GetRecipeSummary("CookbookGet");
             WindowsFormUtility.FormatGrid(gdata, "Cookbook");
         }
 
-        private void FrmCookbookList_KeyDown(object? sender, KeyEventArgs e)
+        private void BtnNewCookbook_Click(object? sender, EventArgs e)
         {
-            //enter iftah - lo over berecipe
+            ShowCookbookForm(-1);
         }
 
         private void Gdata_CellDoubleClick(object? sender, DataGridViewCellEventArgs e)
@@ -59,5 +54,15 @@ namespace RecipeWinForms
         {
             BindData();
         }
+
+        private void Gdata_KeyDown(object? sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter && gdata.SelectedRows.Count > 0)
+            {
+                ShowCookbookForm(gdata.SelectedRows[0].Index);
+                e.SuppressKeyPress = true;
+            }
+        }
+
     }
 }

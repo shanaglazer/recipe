@@ -25,7 +25,7 @@ namespace RecipeWinForms
             btnSave.Click += BtnSave_Click;
             btnDelete.Click += BtnDelete_Click;
             btnSaveRecipe.Click += BtnSaveRecipe_Click;
-            this.Activated += FrmCookbook_Activated;
+            //this.Activated += FrmCookbook_Activated;
             gData.CellContentClick += GData_CellContentClick;
         }
 
@@ -85,7 +85,7 @@ namespace RecipeWinForms
             WindowsFormUtility.FormatGridForEdit(grid, "Recipe");
             WindowsFormUtility.AddDeleteButtonToGrid(grid, deletecolname);
         }
-
+        //efshar lehaavir
         private void Save()
         {
             Application.UseWaitCursor = true;
@@ -103,7 +103,7 @@ namespace RecipeWinForms
                 Application.UseWaitCursor = false;
             }
         }
-
+//efshar lehaavir
         private void delete()
         {
             //laasot ehad shell ze im recipe
@@ -132,8 +132,8 @@ namespace RecipeWinForms
         {
             
         }
-
-        private void DeleteInstructionsAndStept(int rowIndex, DataGridView grid, string columnname, string sproc, string param)
+//e l
+        private void DeleteRecipe(int rowIndex, DataGridView grid, string columnname, string sproc, string param)
         {
             int id = WindowsFormUtility.GetIdFromGrid(grid, rowIndex, columnname);
             if (id > 0)
@@ -157,13 +157,13 @@ namespace RecipeWinForms
 
         private void GData_CellContentClick(object? sender, DataGridViewCellEventArgs e)
         {
-            
+            DeleteRecipe(e.RowIndex, gData, "BookRecipeId", "BookRecieDelete", "@BookRecipeId");
         }
 
-        private void FrmCookbook_Activated(object? sender, EventArgs e)
-        {
-            //LoadForm();
-        }
+        //private void FrmCookbook_Activated(object? sender, EventArgs e)
+        //{
+        //    //LoadForm();
+        //}
 
 
         private void BtnSaveRecipe_Click(object? sender, EventArgs e)

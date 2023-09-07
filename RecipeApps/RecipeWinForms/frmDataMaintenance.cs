@@ -42,7 +42,7 @@ namespace RecipeWinForms
             WindowsFormUtility.AddDeleteButtonToGrid(gData, deletecolname);
             WindowsFormUtility.FormatGridForEdit(gData, currenttabletype.ToString());
         }
-
+        
         private bool Save()
         {
             bool b = false;
@@ -62,7 +62,7 @@ namespace RecipeWinForms
             }
             return b;
         }
-
+        
         private void Delete(int rowindex)
         {
             int id = WindowsFormUtility.GetIdFromGrid(gData, rowindex, currenttabletype.ToString() + "Id");

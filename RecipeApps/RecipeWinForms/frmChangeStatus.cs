@@ -54,14 +54,9 @@ namespace RecipeWinForms
             //bindsource.DataSource = dtRecipe;
         }
 
-        private string GetRecipeStatus()
-        {
-            return SQLUtility.GetValueFromFirstRowAsString(dtRecipe, "RecipeStatus");
-        }
-
         private void SetButtonsEnabledBasedOnStatus()
         {
-            string status = GetRecipeStatus();
+            string status = ChangeRecipeStatus.GetRecipeStatus(dtRecipe);
             switch (status)
             {
                 case "On site":
@@ -82,20 +77,11 @@ namespace RecipeWinForms
             }
         }
 
-        private static DataTable LoadRecipe(int cookbookid)
-        {
-            DataTable dt = new();
-            SqlCommand cmd = SQLUtility.GetSqlCommand("RecipeGet");
-            cmd.Parameters["@RecipeId"].Value = cookbookid;
-            dt = SQLUtility.GetDataTable(cmd);
-            return dt;
-        }
-
         public void SetForm(int pkvalue)
         {
             recipeid = pkvalue;
             this.Tag = recipeid;
-            dtRecipe = LoadRecipe(recipeid);
+            dtRecipe = ChangeRecipeStatus.LoadRecipe(recipeid);
             bindsource.DataSource = dtRecipe;
             if (recipeid == 0)
             {
@@ -106,7 +92,7 @@ namespace RecipeWinForms
             WindowsFormUtility.SetControlBinding(lblDateArchived, bindsource);
             WindowsFormUtility.SetControlBinding(lblDateCreated, bindsource);
             WindowsFormUtility.SetControlBinding(lblDatePublished, bindsource);
-            string value = GetRecipeStatus();
+            string value = ChangeRecipeStatus.GetRecipeStatus(dtRecipe);
             lblCurentStatus.Text = "Current Status: " + value;
             SetButtonsEnabledBasedOnStatus();
         }

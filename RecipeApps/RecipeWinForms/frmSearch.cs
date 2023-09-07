@@ -1,5 +1,4 @@
 ﻿using System.Data;
-using CPUFramework;
 using RecipeSystem;
 
 namespace RecipeWinForms

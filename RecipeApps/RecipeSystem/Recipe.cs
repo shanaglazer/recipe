@@ -86,5 +86,16 @@ namespace RecipeSystem
             // return output param
         }
 
+
+        public static string GetRecipeName(DataTable dtRecipe)
+        {
+            string value = "Recipe";
+            int pkvalue = SQLUtility.GetValueFromFirstRowAsInt(dtRecipe, "RecipeId");
+            if (pkvalue > 0)
+            {
+                value = value + " - " + SQLUtility.GetValueFromFirstRowAsString(dtRecipe, "RecipeName");
+            }
+            return value;
+        }
     }
 }

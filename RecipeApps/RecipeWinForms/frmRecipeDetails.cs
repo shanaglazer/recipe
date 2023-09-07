@@ -37,17 +37,6 @@ namespace RecipeWinForms
             }
         }
 
-        private string GetRecipeName()
-        {
-            string value = "Recipe";
-            int pkvalue = SQLUtility.GetValueFromFirstRowAsInt(dtRecipe, "RecipeId");
-            if (pkvalue > 0)
-            {
-                value = value + " - " + SQLUtility.GetValueFromFirstRowAsString(dtRecipe, "RecipeName");
-            }
-            return value;
-        }
-
         public void ShowForm(int recipeidval)
         {
             recipeid = recipeidval;
@@ -71,7 +60,7 @@ namespace RecipeWinForms
             WindowsFormUtility.SetControlBinding(lblDateCreated, bindsource);
             WindowsFormUtility.SetControlBinding(lblDatePublished, bindsource);
             WindowsFormUtility.SetControlBinding(lblDateArchived, bindsource);
-            this.Text = GetRecipeName();
+            this.Text = Recipe.GetRecipeName(dtRecipe);
             //loadRecipeInformation("ing");
             LoadRecipeInfo(dtingredientrecipe, "IngredientRecipe", gIngredient, "Ingredient", "IngredientType");
             LoadRecipeInfo(dtinstruction, "Instruction", gSteps, "Instruction", "InstructionStep");
