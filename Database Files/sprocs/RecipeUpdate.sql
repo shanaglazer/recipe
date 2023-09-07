@@ -17,10 +17,10 @@ begin
 
 	if @RecipeID = 0
 	begin
-		insert Recipe(UsersID, CuisineID, RecipeName, Calories, DatePublished, DateArchived)
-		values(@UsersID, @CuisineID, @RecipeName, @Calories, null, null)
+		insert Recipe(UsersID, CuisineID, RecipeName, Calories,DateCreated, DatePublished, DateArchived)
+		values(@UsersID, @CuisineID, @RecipeName, @Calories, getdate(), null, null)
 	
-		--select @RecipeID = SCOPE_IDENTITY()
+		select @RecipeID = SCOPE_IDENTITY()
 	end
 	
 	else 

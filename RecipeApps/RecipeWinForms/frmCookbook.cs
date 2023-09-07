@@ -1,16 +1,8 @@
 ﻿using CPUFramework;
 using CPUWindowsFormFramework;
 using RecipeSystem;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace RecipeWinForms
 {
@@ -60,19 +52,24 @@ namespace RecipeWinForms
                 dtCookbook.Rows.Add();
             }
             DataTable dtusers = Recipe.GetList("UsersGet");
-            //DataTable dtRecipes = Recipe.GetRecipeList("UsersGet");
 
             WindowsFormUtility.SetControlBinding(txtBookName, bindsource);
             WindowsFormUtility.SetListBinding(lstUserName, dtusers, dtCookbook, "Users");
             WindowsFormUtility.SetControlBinding(txtPrice, bindsource);
-            WindowsFormUtility.SetControlBinding(txtDateCreated, bindsource);
+            WindowsFormUtility.SetControlBinding(lblDateCreated, bindsource);
             WindowsFormUtility.SetControlBinding(chkActive, bindsource);
-            //if(gData)
             DataTable dtRecipes = new();
             LoadRecipeForBook(dtRecipes, "RecipeForBook", gData, "Recipe", "RecipeName");
             WindowsFormUtility.FormatGridForEdit(gData, "Cookbook");
             this.Text = GetBookName();
-            //SetButtonsEnabledBasedOnNewRecord();
+            SetButtonsEnabledBasedOnNewRecord();
+        }
+
+        private void SetButtonsEnabledBasedOnNewRecord()
+        {
+            bool b = cookbookid == 0 ? false : true;
+            btnDelete.Enabled = b;
+            btnSaveRecipe.Enabled = b;
         }
 
         private void LoadRecipeForBook(DataTable dt, string sproc, DataGridView grid, string targettable, string displaymember)
@@ -81,16 +78,18 @@ namespace RecipeWinForms
             dt = IngredientRecipe.LoadByRecipeId(cookbookid, sproc, "@CookbookId");
             grid.Columns.Clear();
             grid.DataSource = dt;
-            WindowsFormUtility.AddComboboxToGrid(grid, DataMaintenance.GetDataList(sproc), targettable, displaymember);
+            DataTable dtRecipe = dt;
+            WindowsFormUtility.AddComboboxToGrid(grid, DataMaintenance.GetDataList(targettable), targettable, displaymember);
             WindowsFormUtility.FormatGridForEdit(grid, "Recipe");
             WindowsFormUtility.AddDeleteButtonToGrid(grid, deletecolname);
         }
-        //efshar lehaavir
+        
         private void Save()
         {
             Application.UseWaitCursor = true;
             try
             {
+                SetButtonsEnabledBasedOnNewRecord();
                 Cookbook.Save(dtCookbook);
                 bindsource.ResetBindings(false);
             }
@@ -103,7 +102,7 @@ namespace RecipeWinForms
                 Application.UseWaitCursor = false;
             }
         }
-//efshar lehaavir
+
         private void delete()
         {
             //laasot ehad shell ze im recipe
@@ -132,7 +131,7 @@ namespace RecipeWinForms
         {
             
         }
-//e l
+
         private void DeleteRecipe(int rowIndex, DataGridView grid, string columnname, string sproc, string param)
         {
             int id = WindowsFormUtility.GetIdFromGrid(grid, rowIndex, columnname);

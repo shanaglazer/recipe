@@ -43,7 +43,7 @@
             this.tblPrice = new System.Windows.Forms.TableLayoutPanel();
             this.lblDate = new System.Windows.Forms.Label();
             this.txtPrice = new System.Windows.Forms.TextBox();
-            this.txtDateCreated = new System.Windows.Forms.TextBox();
+            this.lblDateCreated = new System.Windows.Forms.Label();
             this.btnSave = new System.Windows.Forms.Button();
             this.tblMain.SuspendLayout();
             this.tblgrid.SuspendLayout();
@@ -209,7 +209,7 @@
             this.tblPrice.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tblPrice.Controls.Add(this.lblDate, 1, 0);
             this.tblPrice.Controls.Add(this.txtPrice, 0, 1);
-            this.tblPrice.Controls.Add(this.txtDateCreated, 1, 1);
+            this.tblPrice.Controls.Add(this.lblDateCreated, 1, 1);
             this.tblPrice.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tblPrice.Location = new System.Drawing.Point(363, 115);
             this.tblPrice.Name = "tblPrice";
@@ -238,13 +238,14 @@
             this.txtPrice.Size = new System.Drawing.Size(171, 29);
             this.txtPrice.TabIndex = 1;
             // 
-            // txtDateCreated
+            // lblDateCreated
             // 
-            this.txtDateCreated.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtDateCreated.Location = new System.Drawing.Point(180, 30);
-            this.txtDateCreated.Name = "txtDateCreated";
-            this.txtDateCreated.Size = new System.Drawing.Size(172, 29);
-            this.txtDateCreated.TabIndex = 2;
+            this.lblDateCreated.AutoSize = true;
+            this.lblDateCreated.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblDateCreated.Location = new System.Drawing.Point(180, 27);
+            this.lblDateCreated.Name = "lblDateCreated";
+            this.lblDateCreated.Size = new System.Drawing.Size(172, 27);
+            this.lblDateCreated.TabIndex = 2;
             // 
             // btnSave
             // 
@@ -293,9 +294,9 @@
         private TableLayoutPanel tblPrice;
         private Label lblDate;
         private TextBox txtPrice;
-        private TextBox txtDateCreated;
         private Button btnSave;
         private Button btnSaveRecipe;
         private DataGridView gData;
+        private Label lblDateCreated;
     }
 }

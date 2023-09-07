@@ -31,7 +31,11 @@ namespace RecipeWinForms
 
         private void ChangeStatus(Button btn)
         {
-            //doesn't work!
+            var response = MessageBox.Show("Are you sure you want to change this recipe to " + btn.Name.Substring(3) + "?", "Hearty Hearth", MessageBoxButtons.YesNo);
+            if (response == DialogResult.No)
+            {
+                return;
+            }
             SqlCommand cmd = SQLUtility.GetSqlCommand("RecipeStatusUpdate");
             string value = "";
             switch (btn.Name)
@@ -49,9 +53,10 @@ namespace RecipeWinForms
             cmd.Parameters["@ColumnToChange"].Value = "Date" + value;
             cmd.Parameters["@RecipeId"].Value = recipeid;
             SQLUtility.ExecuteSQL(cmd);
-            //dtRecipe = Recipe.CallSproc("RecipeStatusUpdate", "Date" + value, "@ColumnToChange");//SQLUtility.GetDataTable(cmd);
-            //load form again to refresh (buttons, status and dates)
-            //bindsource.DataSource = dtRecipe;
+            dtRecipe = ChangeRecipeStatus.LoadRecipe(recipeid);
+            //SetForm(SQLUtility.GetValueFromFirstRowAsInt(dtRecipe, "RecipeId"));
+            bindsource.DataSource = dtRecipe;
+            SetCurrentStatutLbl();
         }
 
         private void SetButtonsEnabledBasedOnStatus()
@@ -77,6 +82,12 @@ namespace RecipeWinForms
             }
         }
 
+        private void SetCurrentStatutLbl()
+        {
+            string value = ChangeRecipeStatus.GetRecipeStatus(dtRecipe);
+            lblCurrentStatus.Text = "Current Status: " + value;
+        }
+
         public void SetForm(int pkvalue)
         {
             recipeid = pkvalue;
@@ -86,14 +97,13 @@ namespace RecipeWinForms
             if (recipeid == 0)
             {
                 dtRecipe.Rows.Add();
-            }//try commenting it out
+            }
 
             WindowsFormUtility.SetControlBinding(lblRecipeName, bindsource);
             WindowsFormUtility.SetControlBinding(lblDateArchived, bindsource);
             WindowsFormUtility.SetControlBinding(lblDateCreated, bindsource);
             WindowsFormUtility.SetControlBinding(lblDatePublished, bindsource);
-            string value = ChangeRecipeStatus.GetRecipeStatus(dtRecipe);
-            lblCurentStatus.Text = "Current Status: " + value;
+            SetCurrentStatutLbl();
             SetButtonsEnabledBasedOnStatus();
         }
 

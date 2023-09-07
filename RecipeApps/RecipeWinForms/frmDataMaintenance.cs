@@ -1,16 +1,7 @@
 ﻿using CPUFramework;
 using CPUWindowsFormFramework;
 using RecipeSystem;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.Xml.Linq;
 
 namespace RecipeWinForms
 {
@@ -65,6 +56,16 @@ namespace RecipeWinForms
         
         private void Delete(int rowindex)
         {
+            var response = MessageBox.Show("Are you sure you want to delete this record?", "Hearty Hearth", MessageBoxButtons.YesNo);
+            if (currenttabletype == TableTypeEnum.Users)
+            {
+                response = MessageBox.Show("Are you sure you want to delete this user and all related recipes, meals, and cookbooks?", "Hearty Hearth", MessageBoxButtons.YesNo);
+               
+            }
+            if (response == DialogResult.No)
+            {
+                return;
+            }
             int id = WindowsFormUtility.GetIdFromGrid(gData, rowindex, currenttabletype.ToString() + "Id");
             if (id != 0)
             {

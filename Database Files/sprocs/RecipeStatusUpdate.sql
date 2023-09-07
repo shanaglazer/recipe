@@ -10,33 +10,35 @@ as
 begin
 	declare @return int = 0
 
-	--select @DatePublished = isnull(@DatePublished,0), @DateArchived = isnull(@DateArchived, ''), @DateCreated = isnull(@DateCreated, '')
+	select @ColumnToChange = isnull(@ColumnToChange,'')
 	
-		update Recipe
-		set DateCreated = 
-		case 
-		when @ColumnToChange = DateCreated then getdate()
-		else
-		DateCreated
-			end,
-		    DatePublished = 
-		case 
-		when @ColumnToChange = DatePublished then getdate()
-		else
-		DatePublished
-			end,
-			DateArchived = 
-		case 
-		when @ColumnToChange = DateArchived then getdate()
-		else
-		DateArchived
-			end
+		
+		if(@ColumnToChange = 'DateCreated')
+		begin
+		update Recipe 
+		set DateCreated = getdate(), 
+			DatePublished = null, 
+			DateArchived = null 
 		where RecipeID = @RecipeId
+		end
+		if(@ColumnToChange = 'DatePublished')
+		begin
+		update Recipe 
+		set DatePublished = getdate(),
+		    DateArchived = null
+		where RecipeID = @RecipeId
+		end
+		if(@ColumnToChange = 'DateArchived')
+		begin
+		update Recipe 
+		set DateArchived = getdate()
+		where RecipeID = @RecipeId
+		end
 	
 	return @return
 end
 go
 
-exec RecipeStatusUpdate
-@RecipeId = 4,
-@ColumnToChange = 'DatePublished'
+--exec RecipeStatusUpdate
+--@RecipeId = 4,
+--@ColumnToChange = 'DatePublished'

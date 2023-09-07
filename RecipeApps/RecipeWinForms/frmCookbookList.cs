@@ -21,17 +21,12 @@ namespace RecipeWinForms
             int id = 0;
             if (rowindex > -1)
             {
-                //Try fixing
-                //id = (int)gRecipe.Rows[rowindex].Cells["RecipeId"].Value;
                 id = (int)gdata.Rows[rowindex].Cells["CookbookId"].Value;
-                //id = WindowsFormUtility.GetIdFromGrid(gdata, rowindex, "CookbookId");
             }
             if (this.MdiParent != null && this.MdiParent is frmMain)
             {
                 ((frmMain)this.MdiParent).OpenForm(typeof(frmCookbook), id);
             }
-            //frmCookbook frm = new();
-            //frm.LoadForm(id);
         }
 
         private void BindData()

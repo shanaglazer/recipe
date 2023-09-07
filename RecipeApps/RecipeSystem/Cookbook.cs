@@ -19,7 +19,7 @@ namespace RecipeSystem
                 throw new Exception("Cannot call Save method becuase there are no rows in the tabe.");
             }
             DataRow r = dtCookbook.Rows[0];
-            int id = (int)r["CookbookId"];
+            //int id = (int)r["CookbookId"];
             SQLUtility.SaveDataRow(r, "CookbookUpdate");
         }
 

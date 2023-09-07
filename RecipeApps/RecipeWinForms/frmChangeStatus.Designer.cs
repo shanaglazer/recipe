@@ -30,7 +30,7 @@
         {
             this.tblMain = new System.Windows.Forms.TableLayoutPanel();
             this.lblRecipeName = new System.Windows.Forms.Label();
-            this.lblCurentStatus = new System.Windows.Forms.Label();
+            this.lblCurrentStatus = new System.Windows.Forms.Label();
             this.tblDates = new System.Windows.Forms.TableLayoutPanel();
             this.lblDates = new System.Windows.Forms.Label();
             this.lblDrafted = new System.Windows.Forms.Label();
@@ -54,7 +54,7 @@
             this.tblMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tblMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tblMain.Controls.Add(this.lblRecipeName, 0, 0);
-            this.tblMain.Controls.Add(this.lblCurentStatus, 0, 1);
+            this.tblMain.Controls.Add(this.lblCurrentStatus, 0, 1);
             this.tblMain.Controls.Add(this.tblDates, 0, 2);
             this.tblMain.Controls.Add(this.tblStatusButtons, 0, 3);
             this.tblMain.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -79,15 +79,15 @@
             this.lblRecipeName.TabIndex = 0;
             this.lblRecipeName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // lblCurentStatus
+            // lblCurrentStatus
             // 
-            this.lblCurentStatus.AutoSize = true;
-            this.lblCurentStatus.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblCurentStatus.Location = new System.Drawing.Point(3, 118);
-            this.lblCurentStatus.Name = "lblCurentStatus";
-            this.lblCurentStatus.Size = new System.Drawing.Size(748, 118);
-            this.lblCurentStatus.TabIndex = 1;
-            this.lblCurentStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblCurrentStatus.AutoSize = true;
+            this.lblCurrentStatus.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblCurrentStatus.Location = new System.Drawing.Point(3, 118);
+            this.lblCurrentStatus.Name = "lblCurrentStatus";
+            this.lblCurrentStatus.Size = new System.Drawing.Size(748, 118);
+            this.lblCurrentStatus.TabIndex = 1;
+            this.lblCurrentStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // tblDates
             // 
@@ -270,5 +270,6 @@
         private Label lblDatePublished;
         private Label lblArchived;
         private Label lblDateArchived;
+        private Label lblCurrentStatus;
     }
 }

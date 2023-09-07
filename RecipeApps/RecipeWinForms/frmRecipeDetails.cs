@@ -47,6 +47,7 @@ namespace RecipeWinForms
             if (recipeid == 0)
             {
                 dtRecipe.Rows.Add();
+                SetButtonsEnabledBasedOnNewRecord();
             }
 
             DataTable dtcuisine = Recipe.GetList("CuisineGet");
@@ -65,17 +66,8 @@ namespace RecipeWinForms
             LoadRecipeInfo(dtingredientrecipe, "IngredientRecipe", gIngredient, "Ingredient", "IngredientType");
             LoadRecipeInfo(dtinstruction, "Instruction", gSteps, "Instruction", "InstructionStep");
             this.Show();
-            SetButtonsEnabledBasedOnNewRecord();
+            
         }
-        //private void loadRecipeInformation(string type)
-        //{
-        //    if (type == "IngredientRecipe")
-        //    {
-        //        dtingredientrecipe = IngredientRecipe.LoadByRecipeId(recipeid, type, "@RecipeId");
-        //        gIngredient.Columns.Clear();
-        //        gIngredient.DataSource = dtingredientrecipe;
-        //    }
-        //}
 
         private void LoadRecipeInfo(DataTable dt, string tablename, DataGridView grid, string targettable, string displaymember)
         {
@@ -103,7 +95,6 @@ namespace RecipeWinForms
 
         private void SetButtonsEnabledBasedOnNewRecord()
         {
-            //lo oved bchadash
             bool b = recipeid == 0 ? false : true;
             btnChangeStatus.Enabled = b;
             btnDel.Enabled = b;
@@ -118,6 +109,7 @@ namespace RecipeWinForms
             {
                 Recipe.Save(dtRecipe);
                 bindsource.ResetBindings(false);
+                SetButtonsEnabledBasedOnNewRecord();
             }
             catch (Exception ex)
             {
@@ -172,7 +164,7 @@ namespace RecipeWinForms
 
         private void Delete()
         {
-            var response = MessageBox.Show("Are you sure you whant to delte recipe?", "Hearty Hearth", MessageBoxButtons.YesNo);
+            var response = MessageBox.Show("Are you sure you whant to delete recipe?", "Hearty Hearth", MessageBoxButtons.YesNo);
             if (response == DialogResult.No)
             {
                 return;

@@ -16,4 +16,3 @@ begin
 	return @return
 end
 go
---select * from BookRecipe
