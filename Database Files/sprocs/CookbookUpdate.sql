@@ -40,12 +40,3 @@ begin
 	return @return
 end
 go
-
-exec CookbookUpdate
-@CookbookId = ,
-@UsersId = 1,
-@Active = 1,
-@BookName = 'gjs',
-@price = 634,
-@Message = null
-

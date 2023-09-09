@@ -29,7 +29,7 @@ namespace RecipeWinForms
         {
             try
             {
-                RecipeIngredient.SaveTable(dt, recipeid, sprocname);
+                RecipeIngredient.SaveTable(dt, recipeid, sprocname, "RecipeId");
             }
             catch (Exception ex)
             {

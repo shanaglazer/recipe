@@ -11,11 +11,11 @@ namespace RecipeWinForms
 {
     public class RecipeIngredient
     {
-        public static void SaveTable(DataTable dt, int recipeid, string sproc)
+        public static void SaveTable(DataTable dt, int recipeid, string sproc, string idcolumn)
         {
             foreach (DataRow r in dt.Select("", "", DataViewRowState.Added))
             {
-                r["RecipeId"] = recipeid;
+                r[idcolumn] = recipeid;
             }
             SQLUtility.SaveDataTable(dt, sproc);
         }

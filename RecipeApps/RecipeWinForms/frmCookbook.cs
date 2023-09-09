@@ -129,7 +129,14 @@ namespace RecipeWinForms
 
         private void SaveRecipe()
         {
-            
+            try
+            {
+                RecipeIngredient.SaveTable(dtCookbook, cookbookid, "RecipeForBookUpdate", "CookbookId");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, Application.ProductName);
+            }
         }
 
         private void DeleteRecipe(int rowIndex, DataGridView grid, string columnname, string sproc, string param)
