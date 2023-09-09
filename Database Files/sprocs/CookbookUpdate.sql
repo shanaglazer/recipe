@@ -2,9 +2,9 @@ use HeartyHearthDB
 go
 
 create or alter procedure dbo.CookbookUpdate(
-		@CookbookId int =0 output,
-		@UserName varchar (30) = '',
-		--@UsersId int = 0,
+		@CookbookId int output,
+		--@UserName varchar (30) = '',
+		@UsersId int = 0,
 		@Active bit = 0,
 		@BookName varchar(80) = '',
 		@price decimal = 0,
@@ -15,14 +15,14 @@ as
 begin
 	declare @return int = 0
 
-	select @CookbookId = isnull(@CookbookId,0), @UserName = isnull(@UserName, ''), @Active = isnull(@Active, 0), @BookName = isnull(@BookName, ''), @price = isnull(@price, 0)--, @DateCreated = nullif(@DateCreated, '')
+	select @CookbookId = isnull(@CookbookId,0), @UsersId = isnull(@UsersId, 0), @Active = isnull(@Active, 0), @BookName = isnull(@BookName, ''), @price = isnull(@price, 0)--, @DateCreated = nullif(@DateCreated, '')
 	
 	--select @CookbookPicture =  concat('Cookbook-', replace(@BookName, ' ', '-' ), '.jpg')
 
 	if @CookbookId = 0
 	begin
 		insert cookbook(UsersID, Active, BookName, Price, DateCreated)
-		values((select UsersId from Users where username = @UserName), @Active, @BookName, @price, getdate())
+		values(@UsersId, @Active, @BookName, @price, getdate())  --(select UsersId from Users where username = @UserName)
 
 		select @CookbookId= scope_identity()
 	end
@@ -30,7 +30,7 @@ begin
 	begin
 		update Cookbook
 		set
-			UsersID = (select UsersID from Users  where UserName = @UserName),
+			UsersID = @UsersId,--(select UsersID from Users  where UserName = @UserName),
 			Active = @Active,
 			BookName = @bookName,
 			Price  = @price
@@ -42,11 +42,10 @@ end
 go
 
 exec CookbookUpdate
---@CookbookId = 4,
-@UserName = 'LibfroindE',
+@CookbookId = ,
+@UsersId = 1,
 @Active = 1,
-@BookName = 'hihihihi',
-@price = 42.00,
+@BookName = 'gjs',
+@price = 634,
 @Message = null
-select * from Users
 

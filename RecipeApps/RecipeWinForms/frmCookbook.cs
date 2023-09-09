@@ -89,9 +89,9 @@ namespace RecipeWinForms
             Application.UseWaitCursor = true;
             try
             {
-                SetButtonsEnabledBasedOnNewRecord();
                 Cookbook.Save(dtCookbook);
                 bindsource.ResetBindings(false);
+                SetButtonsEnabledBasedOnNewRecord();
             }
             catch (Exception ex)
             {

@@ -17,7 +17,7 @@ begin
 	FROM Cookbook c
 	join users u
 	on u.usersid = c.usersid
-	join x 
+	left join x 
 	on x.CookBookID = c.CookBookID
 	--WHERE c.Active = 1
 	order by c.BookName
