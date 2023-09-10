@@ -10,6 +10,7 @@ namespace RecipeWinForms
     {
         int cookbookid = 0;
         DataTable dtCookbook = new();
+        DataTable dtRecipes = new();
         BindingSource bindsource = new BindingSource();
         public frmCookbook()
         {
@@ -50,6 +51,7 @@ namespace RecipeWinForms
             if (cookbookid == 0)
             {
                 dtCookbook.Rows.Add();
+                SetButtonsEnabledBasedOnNewRecord(false);
             }
             DataTable dtusers = Recipe.GetList("UsersGet");
 
@@ -58,16 +60,16 @@ namespace RecipeWinForms
             WindowsFormUtility.SetControlBinding(txtPrice, bindsource);
             WindowsFormUtility.SetControlBinding(lblDateCreated, bindsource);
             WindowsFormUtility.SetControlBinding(chkActive, bindsource);
-            DataTable dtRecipes = new();
+            
             LoadRecipeForBook(dtRecipes, "RecipeForBook", gData, "Recipe", "RecipeName");
             WindowsFormUtility.FormatGridForEdit(gData, "Cookbook");
             this.Text = GetBookName();
-            SetButtonsEnabledBasedOnNewRecord();
+            
         }
 
-        private void SetButtonsEnabledBasedOnNewRecord()
+        private void SetButtonsEnabledBasedOnNewRecord(bool b)
         {
-            bool b = cookbookid == 0 ? false : true;
+            //bool b = cookbookid == 0 ? false : true;
             btnDelete.Enabled = b;
             btnSaveRecipe.Enabled = b;
         }
@@ -76,6 +78,7 @@ namespace RecipeWinForms
         {
             string deletecolname = "deletecol";
             dt = IngredientRecipe.LoadByRecipeId(cookbookid, sproc, "@CookbookId");
+            dtRecipes = dt;
             grid.Columns.Clear();
             grid.DataSource = dt;
             DataTable dtRecipe = dt;
@@ -91,7 +94,7 @@ namespace RecipeWinForms
             {
                 Cookbook.Save(dtCookbook);
                 bindsource.ResetBindings(false);
-                SetButtonsEnabledBasedOnNewRecord();
+                SetButtonsEnabledBasedOnNewRecord(true);
             }
             catch (Exception ex)
             {
@@ -105,7 +108,6 @@ namespace RecipeWinForms
 
         private void delete()
         {
-            //laasot ehad shell ze im recipe
             var response = MessageBox.Show("Are you sure you whant to delete Cookbook?", "Hearty Hearth", MessageBoxButtons.YesNo);
             if (response == DialogResult.No)
             {
@@ -131,7 +133,7 @@ namespace RecipeWinForms
         {
             try
             {
-                RecipeIngredient.SaveTable(dtCookbook, cookbookid, "RecipeForBookUpdate", "CookbookId");
+                RecipeIngredient.SaveTable(dtRecipes, cookbookid, "RecipeForBookUpdate", "CookbookId");
             }
             catch (Exception ex)
             {
@@ -147,7 +149,7 @@ namespace RecipeWinForms
                 try
                 {
                     RecipeIngredient.Delete(id, sproc, param);
-                    LoadRecipeForBook(dtCookbook, sproc, grid, "Recipe", "RecipeName");
+                    LoadRecipeForBook(dtCookbook, "RecipeForBook", grid, "Recipe", "RecipeName");
                 }
                 catch (Exception ex)
                 {
@@ -163,7 +165,7 @@ namespace RecipeWinForms
 
         private void GData_CellContentClick(object? sender, DataGridViewCellEventArgs e)
         {
-            DeleteRecipe(e.RowIndex, gData, "BookRecipeId", "BookRecieDelete", "@BookRecipeId");
+            DeleteRecipe(e.RowIndex, gData, "BookRecipeId", "BookRecipeDelete", "@BookRecipeId");
         }
 
         //private void FrmCookbook_Activated(object? sender, EventArgs e)

@@ -47,7 +47,7 @@ namespace RecipeWinForms
             if (recipeid == 0)
             {
                 dtRecipe.Rows.Add();
-                SetButtonsEnabledBasedOnNewRecord();
+                SetButtonsEnabledBasedOnNewRecord(false);
             }
 
             DataTable dtcuisine = Recipe.GetList("CuisineGet");
@@ -79,23 +79,24 @@ namespace RecipeWinForms
             if (tablename == "IngredientRecipe")
             {
                 WindowsFormUtility.AddComboboxToGrid(grid, DataMaintenance.GetDataList("MeasurementType"), "MeasurementType", "MeasuringType");
+                WindowsFormUtility.AddComboboxToGrid(grid, DataMaintenance.GetDataList(targettable), targettable, displaymember);
                 dtingredientrecipe = dt;
                 gIngredient.DataSource = dtingredientrecipe;
+
             }
             else if(tablename == "Instruction")
             {
                 dtinstruction = dt;
                 gSteps.DataSource = dtinstruction;
             }
-           
-            WindowsFormUtility.AddComboboxToGrid(grid, DataMaintenance.GetDataList(targettable), targettable, displaymember);
+            
             WindowsFormUtility.FormatGridForEdit(grid, tablename);
             WindowsFormUtility.AddDeleteButtonToGrid(grid, deletecolname);
         }
 
-        private void SetButtonsEnabledBasedOnNewRecord()
+        private void SetButtonsEnabledBasedOnNewRecord(bool b)
         {
-            bool b = recipeid == 0 ? false : true;
+            //bool b = recipeid == 0 ? false : true;
             btnChangeStatus.Enabled = b;
             btnDel.Enabled = b;
             btnSaveSteps.Enabled = b;
@@ -109,7 +110,8 @@ namespace RecipeWinForms
             {
                 Recipe.Save(dtRecipe);
                 bindsource.ResetBindings(false);
-                SetButtonsEnabledBasedOnNewRecord();
+                //bindsource.DataSource = dtRecipe;
+                SetButtonsEnabledBasedOnNewRecord(true);
             }
             catch (Exception ex)
             {
