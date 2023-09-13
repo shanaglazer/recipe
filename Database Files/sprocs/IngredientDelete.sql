@@ -8,9 +8,8 @@ begin
 
 	select @IngredientId = isnull(@IngredientId,0)
 
-	delete i 
-	from Ingredient i
-	where i.IngredientID = @IngredientId
+	delete IngredientRecipe where IngredientID = @IngredientId
+	delete Ingredient where IngredientID = @IngredientId
 
 	return @return
 end

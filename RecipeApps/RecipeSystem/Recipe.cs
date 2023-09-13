@@ -55,19 +55,15 @@ namespace RecipeSystem
                 throw new Exception("Cannot call Save method becuase there are no rows in the tabe.");
             }
             DataRow r = dtRecipe.Rows[0];
-            //int id = (int)r["recipeId"];
-           // var datecreated = ((DateTime)r["DateCreated"]).ToString("yyyy-MM-dd h:mm");
             SQLUtility.SaveDataRow(r, "RecipeUpdate");
         }
 
         public static void Delete(DataTable dtRecipe)
         {
             int id = (int)dtRecipe.Rows[0]["RecipeId"];
-            //string sql = "delete Recipe where RecipeId = " + id;
             SqlCommand cmd = SQLUtility.GetSqlCommand("RecipeDelete");
             SQLUtility.SetParamValue(cmd, "@RecipeId", id);
             SQLUtility.ExecuteSQL(cmd);
-            //SQLUtility.ExecuteSQL(sql);
         }
 
 
@@ -82,8 +78,6 @@ namespace RecipeSystem
             SqlCommand cmd = SQLUtility.GetSqlCommand(sprocname);
             SQLUtility.SetParamValue(cmd, param, value);
             return SQLUtility.GetDataTable(cmd);
-            //lahafoh leint veaz 
-            // return output param
         }
 
 

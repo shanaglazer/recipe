@@ -17,8 +17,20 @@ namespace RecipeWinForms
 
         private void AutoCreate()
         {
-            Recipe.CallSproc("AutoCreateBook", lstUser.Text, "@UserName");
-            this.Close();
+            Application.UseWaitCursor = true;
+            try
+            {
+                Recipe.CallSproc("AutoCreateBook", lstUser.Text, "@UserName");
+                this.Close();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("A book with this name exists already.", "Hearty Hearth");
+            }
+            finally
+            {
+                Application.UseWaitCursor = false;
+            }
         }
 
         private void BindData()

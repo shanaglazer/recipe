@@ -8,9 +8,8 @@ begin
 
 	select @MeasurementTypeId = isnull(@MeasurementTypeId,0)
 
-	delete m 
-	from MeasurementType m
-	where m.MeasurementTypeID = @MeasurementTypeId
+	delete IngredientRecipe where MeasurementTypeID = @MeasurementTypeId
+	delete MeasurementType where MeasurementTypeID = @MeasurementTypeId
 
 	return @return
 end

@@ -8,9 +8,8 @@ begin
 
 	select @CuisineId = isnull(@CuisineId,0)
 
-	delete c
-	from Cuisine c
-	where c.CuisineID = @CuisineId
+	delete Recipe where CuisineID = @CuisineId
+	delete Cuisine where CuisineID = @CuisineId
 
 	return @return
 end

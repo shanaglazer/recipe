@@ -54,8 +54,8 @@
             // tblMain
             // 
             this.tblMain.ColumnCount = 2;
-            this.tblMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tblMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tblMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tblMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tblMain.Controls.Add(this.btnDelete, 1, 0);
             this.tblMain.Controls.Add(this.lblCookbookName, 0, 1);
             this.tblMain.Controls.Add(this.lblUserName, 0, 2);
@@ -76,7 +76,7 @@
             this.tblMain.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tblMain.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tblMain.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tblMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tblMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tblMain.Size = new System.Drawing.Size(721, 469);
             this.tblMain.TabIndex = 0;
             // 
@@ -84,7 +84,7 @@
             // 
             this.btnDelete.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.btnDelete.AutoSize = true;
-            this.btnDelete.Location = new System.Drawing.Point(363, 3);
+            this.btnDelete.Location = new System.Drawing.Point(136, 3);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(115, 36);
             this.btnDelete.TabIndex = 11;
@@ -97,7 +97,7 @@
             this.lblCookbookName.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblCookbookName.Location = new System.Drawing.Point(3, 42);
             this.lblCookbookName.Name = "lblCookbookName";
-            this.lblCookbookName.Size = new System.Drawing.Size(354, 35);
+            this.lblCookbookName.Size = new System.Drawing.Size(127, 35);
             this.lblCookbookName.TabIndex = 2;
             this.lblCookbookName.Text = "Cookbook Name";
             this.lblCookbookName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -108,7 +108,7 @@
             this.lblUserName.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblUserName.Location = new System.Drawing.Point(3, 77);
             this.lblUserName.Name = "lblUserName";
-            this.lblUserName.Size = new System.Drawing.Size(354, 35);
+            this.lblUserName.Size = new System.Drawing.Size(127, 35);
             this.lblUserName.TabIndex = 3;
             this.lblUserName.Text = "User";
             this.lblUserName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -119,7 +119,7 @@
             this.lblPrice.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblPrice.Location = new System.Drawing.Point(3, 112);
             this.lblPrice.Name = "lblPrice";
-            this.lblPrice.Size = new System.Drawing.Size(354, 60);
+            this.lblPrice.Size = new System.Drawing.Size(127, 60);
             this.lblPrice.TabIndex = 4;
             this.lblPrice.Text = "Price";
             this.lblPrice.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -130,7 +130,7 @@
             this.lblActive.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblActive.Location = new System.Drawing.Point(3, 172);
             this.lblActive.Name = "lblActive";
-            this.lblActive.Size = new System.Drawing.Size(354, 21);
+            this.lblActive.Size = new System.Drawing.Size(127, 21);
             this.lblActive.TabIndex = 5;
             this.lblActive.Text = "Active";
             this.lblActive.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -177,19 +177,19 @@
             // txtBookName
             // 
             this.txtBookName.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtBookName.Location = new System.Drawing.Point(363, 45);
+            this.txtBookName.Location = new System.Drawing.Point(136, 45);
             this.txtBookName.Name = "txtBookName";
-            this.txtBookName.Size = new System.Drawing.Size(355, 29);
+            this.txtBookName.Size = new System.Drawing.Size(582, 29);
             this.txtBookName.TabIndex = 7;
             // 
             // chkActive
             // 
             this.chkActive.AutoSize = true;
             this.chkActive.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.chkActive.Location = new System.Drawing.Point(370, 175);
+            this.chkActive.Location = new System.Drawing.Point(143, 175);
             this.chkActive.Margin = new System.Windows.Forms.Padding(10, 3, 3, 3);
             this.chkActive.Name = "chkActive";
-            this.chkActive.Size = new System.Drawing.Size(348, 15);
+            this.chkActive.Size = new System.Drawing.Size(575, 15);
             this.chkActive.TabIndex = 8;
             this.chkActive.UseVisualStyleBackColor = true;
             // 
@@ -197,9 +197,9 @@
             // 
             this.lstUserName.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lstUserName.FormattingEnabled = true;
-            this.lstUserName.Location = new System.Drawing.Point(363, 80);
+            this.lstUserName.Location = new System.Drawing.Point(136, 80);
             this.lstUserName.Name = "lstUserName";
-            this.lstUserName.Size = new System.Drawing.Size(355, 29);
+            this.lstUserName.Size = new System.Drawing.Size(582, 29);
             this.lstUserName.TabIndex = 9;
             // 
             // tblPrice
@@ -211,21 +211,21 @@
             this.tblPrice.Controls.Add(this.txtPrice, 0, 1);
             this.tblPrice.Controls.Add(this.lblDateCreated, 1, 1);
             this.tblPrice.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tblPrice.Location = new System.Drawing.Point(363, 115);
+            this.tblPrice.Location = new System.Drawing.Point(136, 115);
             this.tblPrice.Name = "tblPrice";
             this.tblPrice.RowCount = 2;
             this.tblPrice.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tblPrice.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tblPrice.Size = new System.Drawing.Size(355, 54);
+            this.tblPrice.Size = new System.Drawing.Size(582, 54);
             this.tblPrice.TabIndex = 10;
             // 
             // lblDate
             // 
             this.lblDate.AutoSize = true;
             this.lblDate.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblDate.Location = new System.Drawing.Point(180, 0);
+            this.lblDate.Location = new System.Drawing.Point(294, 0);
             this.lblDate.Name = "lblDate";
-            this.lblDate.Size = new System.Drawing.Size(172, 27);
+            this.lblDate.Size = new System.Drawing.Size(285, 27);
             this.lblDate.TabIndex = 0;
             this.lblDate.Text = "Date Created:";
             this.lblDate.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -235,16 +235,16 @@
             this.txtPrice.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtPrice.Location = new System.Drawing.Point(3, 30);
             this.txtPrice.Name = "txtPrice";
-            this.txtPrice.Size = new System.Drawing.Size(171, 29);
+            this.txtPrice.Size = new System.Drawing.Size(285, 29);
             this.txtPrice.TabIndex = 1;
             // 
             // lblDateCreated
             // 
             this.lblDateCreated.AutoSize = true;
             this.lblDateCreated.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblDateCreated.Location = new System.Drawing.Point(180, 27);
+            this.lblDateCreated.Location = new System.Drawing.Point(294, 27);
             this.lblDateCreated.Name = "lblDateCreated";
-            this.lblDateCreated.Size = new System.Drawing.Size(172, 27);
+            this.lblDateCreated.Size = new System.Drawing.Size(285, 27);
             this.lblDateCreated.TabIndex = 2;
             // 
             // btnSave

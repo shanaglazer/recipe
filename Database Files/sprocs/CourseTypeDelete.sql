@@ -8,9 +8,9 @@ begin
 
 	select @CourseTypeId = isnull(@CourseTypeId,0)
 
-	delete c 
-	from CourseType c
-	where c.CourseTypeID = @CourseTypeId
+	delete Course where CourseTypeID = @CourseTypeId
+	delete CourseType where CourseTypeID = @CourseTypeId
+	delete CourseType where CourseTypeID = @CourseTypeId
 
 	return @return
 end

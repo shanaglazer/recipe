@@ -16,7 +16,6 @@ namespace RecipeWinForms
 
         private void OpenRecipeForm(int pkvalue)
         {
-            //int pkvalue = 0;
             if (this.MdiParent != null && this.MdiParent is frmMain)
             {
                 ((frmMain)this.MdiParent).OpenForm(typeof(frmRecipeDetails), pkvalue);
@@ -25,15 +24,26 @@ namespace RecipeWinForms
 
         private void Clone()
         {
-            Recipe.CallSproc("RecipeClone", lstRecipe.Text, "@RecipeName");
-            DataTable clonedrecipe = Recipe.CallSproc("ClonedRecipeGet", lstRecipe.Text, "@RecipeName");
-            int pkvalue = SQLUtility.GetValueFromFirstRowAsInt(clonedrecipe, "RecipeId");
-            //
-            if (this.MdiParent != null && this.MdiParent is frmMain)
+            Application.UseWaitCursor = true;
+            try
             {
-                ((frmMain)this.MdiParent).OpenForm(typeof(frmRecipeDetails), pkvalue);
+                Recipe.CallSproc("RecipeClone", lstRecipe.Text, "@RecipeName");
+                DataTable clonedrecipe = Recipe.CallSproc("ClonedRecipeGet", lstRecipe.Text, "@RecipeName");
+                int pkvalue = SQLUtility.GetValueFromFirstRowAsInt(clonedrecipe, "RecipeId");
+                //
+                if (this.MdiParent != null && this.MdiParent is frmMain)
+                {
+                    ((frmMain)this.MdiParent).OpenForm(typeof(frmRecipeDetails), pkvalue);
+                }
             }
-            //frmClone.Close;
+            catch (Exception)
+            {
+                MessageBox.Show("This recipe has a cloned version already.", "Hearty Hearth");
+            }
+            finally
+            {
+                Application.UseWaitCursor = false;
+            }
         }
 
         private void BtnClone_Click(object? sender, EventArgs e)

@@ -56,12 +56,18 @@ namespace RecipeWinForms
         
         private void Delete(int rowindex)
         {
-            var response = MessageBox.Show("Are you sure you want to delete this record?", "Hearty Hearth", MessageBoxButtons.YesNo);
+            string message = "";
             if (currenttabletype == TableTypeEnum.Users)
             {
-                response = MessageBox.Show("Are you sure you want to delete this user and all related recipes, meals, and cookbooks?", "Hearty Hearth", MessageBoxButtons.YesNo);
-               
+                message = "Are you sure you want to delete this user and all related recipes, meals, and cookbooks?";
+
             }
+            else
+            {
+                message = "Are you sure you want to delete this record?";
+            }
+            var response = MessageBox.Show(message, "Hearty Hearth", MessageBoxButtons.YesNo);
+             
             if (response == DialogResult.No)
             {
                 return;
