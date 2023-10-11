@@ -8,6 +8,30 @@ begin
 
 	select @CuisineId = isnull(@CuisineId,0)
 
+	delete b 
+	from RecipeCourse b
+	join Recipe r
+	on r.RecipeID = b.RecipeID
+	where CuisineID = @CuisineId
+
+	delete b 
+	from BookRecipe b
+	join Recipe r
+	on r.RecipeID = b.RecipeID
+	where CuisineID = @CuisineId
+
+	delete i 
+	from Instruction i
+	join Recipe r
+	on r.RecipeID = i.RecipeID
+	where CuisineID = @CuisineId
+
+	delete i 
+	from IngredientRecipe i
+	join Recipe r
+	on r.RecipeID = i.RecipeID
+	where CuisineID = @CuisineId
+	
 	delete Recipe where CuisineID = @CuisineId
 	delete Cuisine where CuisineID = @CuisineId
 
