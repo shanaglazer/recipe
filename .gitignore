@@ -10,11 +10,11 @@
 *.userosscache
 *.sln.docstates
 
-# User-specific files (MonoDevelop/Xamarin Studio)
-*.userprefs
-
 #secret files
 *secret-appsettings.json
+
+# User-specific files (MonoDevelop/Xamarin Studio)
+*.userprefs
 
 # Mono auto generated files
 mono_crash.*
