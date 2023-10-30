@@ -16,7 +16,7 @@
             FontSize="Header"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
-        <Label x:Name="MessageLbl" FontSize="Medium" TextColor="{StaticResource Danger}"/>
+        <Label x:Name="MessageLbl" TextColor="{StaticResource Danger}" FontSize="Medium" /> 
         <Border Padding="10">
             <Grid ColumnDefinitions="auto, auto" RowDefinitions="auto,auto, auto, auto" HorizontalOptions="Center" ColumnSpacing="10" RowSpacing="10">
 

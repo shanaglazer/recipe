@@ -6,20 +6,18 @@
     xmlns:local="clr-namespace:RecipeMAUI"
     Shell.FlyoutBehavior="Disabled">
 
-    <!--<TabBar>
+    <TabBar>
+        <ShellContent
+            Title="Home"
+            ContentTemplate="{DataTemplate local:Home}"
+            Route="Home" />
 
         <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:Home}"
-        Route="Home" />
+            Title="Recipe Search"
+            ContentTemplate="{DataTemplate local:RecipeList}"
+            Route="RecipeList" />
 
-        <ShellContent
-        Title="President Search"
-        ContentTemplate="{DataTemplate local:PresidentSearch}"
-        Route="PresidentSearch" />
-
-    </TabBar>-->
-
+    </TabBar>
     <ShellContent
         Title="Login"
         ContentTemplate="{DataTemplate local:Login}"
