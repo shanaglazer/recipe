@@ -14,7 +14,7 @@
                 <DataTemplate>
                     <ViewCell>
                         <Grid RowDefinitions="Auto" ColumnDefinitions="auto, auto, *" ColumnSpacing="10">
-                            <Image Grid.Row="0" Grid.Column="0" HeightRequest="75" Source="{Binding Path=[Num], StringFormat='p{0}p.jpeg'}"/>
+                            <Image Grid.Row="0" Grid.Column="0" HeightRequest="70" WidthRequest="70" Source="{Binding Path=[RecipeNameForImage], StringFormat='recipe_{0}.png'}"/>
                             <Label Grid.Row="0" Grid.Column="1" Text="{Binding Path=[RecipeName]}"/>
                             <Label Grid.Row="0" Grid.Column="2" Text="{Binding Path=[Calories]}"/>
                         </Grid>

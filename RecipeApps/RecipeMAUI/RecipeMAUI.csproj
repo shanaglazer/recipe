@@ -49,6 +49,13 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\Images\Recipe_AppleYogurtSmoothie.png" />
+	  <None Remove="Resources\Images\Recipe_ButterMuffins.png" />
+	  <None Remove="Resources\Images\Recipe_CheeseBread.png" />
+	  <None Remove="Resources\Images\Recipe_ChocolateChipCookies.png" />
+	  <None Remove="Resources\Images\Recipe_GrilledChicken.png" />
+	  <None Remove="Resources\Images\Recipe_RicewithChilisauce.png" />
+	  <None Remove="Resources\Images\Recipe_Shawarma.png" />
 	  <None Remove="secret-appsettings.json" />
 	</ItemGroup>
 
@@ -61,6 +68,7 @@
 	<ItemGroup>
 	  <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="7.0.4" />
 	  <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="7.0.0" />
+	  <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
 	</ItemGroup>
 
 	<ItemGroup>
