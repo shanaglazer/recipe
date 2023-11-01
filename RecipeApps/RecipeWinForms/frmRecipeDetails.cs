@@ -111,10 +111,14 @@ namespace RecipeWinForms
             Application.UseWaitCursor = true;
             try
             {
+                bool b = recipeid == 0 ? true : false;
                 Recipe.Save(dtRecipe);
                 bindsource.ResetBindings(false);
                 //bindsource.DataSource = dtRecipe;
+                recipeid = SQLUtility.GetValueFromFirstRowAsInt(dtRecipe, "RecipeId");
+                this.Tag = recipeid;
                 SetButtonsEnabledBasedOnNewRecord(true);
+                lblDateCreated.Text = b == true ? DateTime.Now.ToString() : lblDateCreated.Text;
             }
             catch (Exception ex)
             {
