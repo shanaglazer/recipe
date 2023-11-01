@@ -1,4 +1,5 @@
-﻿using RecipeSystem;
+﻿using CPUFramework;
+using RecipeSystem;
 using System.Data;
 
 namespace RecipeWinForms
@@ -21,7 +22,14 @@ namespace RecipeWinForms
             try
             {
                 Recipe.CallSproc("AutoCreateBook", lstUser.Text, "@UserName");
-                this.Close();
+                DataTable NewAutoBook = Recipe.CallSproc("AutoCreatedBookGet", lstUser.Text, "@UserName");
+                int pkvalue = SQLUtility.GetValueFromFirstRowAsInt(NewAutoBook, "CookbookID");
+                //
+                if (this.MdiParent != null && this.MdiParent is frmMain)
+                {
+                    ((frmMain)this.MdiParent).OpenForm(typeof(frmCookbook), pkvalue);
+                }
+                //this.Close();
             }
             catch (Exception)
             {

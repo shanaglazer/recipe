@@ -23,7 +23,10 @@ namespace RecipeWinForms
             btnSaveSteps.Click += BtnSaveSteps_Click;
             gSteps.CellContentClick += GSteps_CellContentClick;
             gIngredient.CellContentClick += GIngredient_CellContentClick;
+            txtCalories.KeyPress += TxtCalories_KeyPress;
         }
+
+        
 
         private void SaveIngredientAndSteps(string sprocname, DataTable dt)
         {
@@ -223,5 +226,12 @@ namespace RecipeWinForms
             SaveIngredientAndSteps("StepRecipeUpdate", dtinstruction);
         }
 
+        private void TxtCalories_KeyPress(object? sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
     }
 }
