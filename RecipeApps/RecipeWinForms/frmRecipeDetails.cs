@@ -2,6 +2,7 @@
 using CPUWindowsFormFramework;
 using RecipeSystem;
 using System.Data;
+using System.Xml.Linq;
 
 namespace RecipeWinForms
 {
@@ -24,9 +25,13 @@ namespace RecipeWinForms
             gSteps.CellContentClick += GSteps_CellContentClick;
             gIngredient.CellContentClick += GIngredient_CellContentClick;
             txtCalories.KeyPress += TxtCalories_KeyPress;
+            //this.Activated += FrmRecipeDetails_Activated;
         }
 
-        
+        //private void FrmRecipeDetails_Activated(object? sender, EventArgs e)
+        //{
+        //    BindData();
+        //}
 
         private void SaveIngredientAndSteps(string sprocname, DataTable dt)
         {
@@ -40,19 +45,8 @@ namespace RecipeWinForms
             }
         }
 
-        public void ShowForm(int recipeidval)
+        private void BindData()
         {
-            recipeid = recipeidval;
-            this.Tag = recipeid;
-            dtRecipe = Recipe.LoadRecipe(recipeid);
-            bindsource.DataSource = dtRecipe;
-
-            if (recipeid == 0)
-            {
-                dtRecipe.Rows.Add();
-                SetButtonsEnabledBasedOnNewRecord(false);
-            }
-
             DataTable dtcuisine = Recipe.GetList("CuisineGet");
             DataTable dtusers = Recipe.GetList("UsersGet");
 
@@ -68,6 +62,22 @@ namespace RecipeWinForms
             //loadRecipeInformation("ing");
             LoadRecipeInfo(dtingredientrecipe, "IngredientRecipe", gIngredient, "Ingredient", "IngredientType");
             LoadRecipeInfo(dtinstruction, "Instruction", gSteps, "Instruction", "InstructionStep");
+        }
+
+        public void ShowForm(int recipeidval)
+        {
+            recipeid = recipeidval;
+            this.Tag = recipeid;
+            dtRecipe = Recipe.LoadRecipe(recipeid);
+            bindsource.DataSource = dtRecipe;
+
+            if (recipeid == 0)
+            {
+                dtRecipe.Rows.Add();
+                SetButtonsEnabledBasedOnNewRecord(false);
+            }
+
+            BindData();
             this.Show();
             
         }

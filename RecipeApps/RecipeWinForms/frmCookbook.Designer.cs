@@ -246,6 +246,7 @@
             this.lblDateCreated.Name = "lblDateCreated";
             this.lblDateCreated.Size = new System.Drawing.Size(285, 27);
             this.lblDateCreated.TabIndex = 2;
+            this.lblDateCreated.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnSave
             // 

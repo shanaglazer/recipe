@@ -92,9 +92,13 @@ namespace RecipeWinForms
             Application.UseWaitCursor = true;
             try
             {
+                bool b = cookbookid == 0 ? true : false;
                 Cookbook.Save(dtCookbook);
                 bindsource.ResetBindings(false);
+                cookbookid = SQLUtility.GetValueFromFirstRowAsInt(dtCookbook, "CookbookId");
+                this.Tag = cookbookid;
                 SetButtonsEnabledBasedOnNewRecord(true);
+                lblDateCreated.Text = b == true ? DateTime.Now.ToString() : lblDateCreated.Text;
             }
             catch (Exception ex)
             {

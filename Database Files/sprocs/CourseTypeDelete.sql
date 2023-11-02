@@ -7,15 +7,18 @@ create or alter procedure dbo.CourseTypeDelete(
 )
 as
 begin
-	declare @return int = 0, @CourseId int = 0
+	declare @return int = 0
 
 	select @CourseTypeId = isnull(@CourseTypeId,0)
 
-	set @CourseId = (select c.CourseID from Course c where CourseTypeID = @CourseTypeId)
-
+	delete r 
+	from RecipeCourse r
+	join Course c
+	on c.courseid = r.courseid
+	where c.CourseTypeID = @CourseTypeId
 	
 	delete Course where CourseTypeID = @CourseTypeId
-	delete RecipeCourse where CourseID = @CourseId
+	
 	delete CourseType where CourseTypeID = @CourseTypeId
 
 	return @return
