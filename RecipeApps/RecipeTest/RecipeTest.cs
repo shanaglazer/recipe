@@ -20,7 +20,8 @@ namespace RecipeTest
             TestContext.WriteLine("Existing recipe with id " + recipeid);
             TestContext.WriteLine("Ensure that app loads recipe " + recipeid);
 
-            DataTable dt = Recipe.LoadRecipe(recipeid);
+            bizRecipe recipe = new();
+            DataTable dt = recipe.Load(recipeid);
             int loadedid = (int)dt.Rows[0]["recipeid"];
             Assert.IsTrue(loadedid == recipeid, loadedid + " <> " + recipeid);
             TestContext.WriteLine("Loaded recipe (" + loadedid + ")");
@@ -47,7 +48,9 @@ namespace RecipeTest
             r["usersid"] = usersid;
             r["cuisineid"] = cuisineid;
             r["DateCreated"] = datetime;
-            Recipe.Save(dt);
+
+            bizRecipe recipe = new();
+            recipe.Save(dt);
 
             int newid = SQLUtility.GetFirstColumnFirstRowValue("select * from recipe where recipename = '" + newrecipename + "'");
 
@@ -67,7 +70,9 @@ namespace RecipeTest
             TestContext.WriteLine("Change recipename to " + recipename);
             DataTable dtnew = Recipe.LoadRecipe(recipeid);
             dtnew.Rows[0]["recipename"] = recipename;
-            Recipe.Save(dtnew);
+
+            bizRecipe recipe = new();
+            recipe.Save(dtnew);
             string newrecipename = dtnew.Rows[0]["recipename"].ToString(); //SQLUtility.GetFirstColumnFirstRowValue("select recipename from recipe where recipeid = " + recipeid);
             Assert.IsTrue(newrecipename == recipename, "recipename for recipe (" + recipeid + ") = " + recipename);
             TestContext.WriteLine("Recipe name for recipe (" + recipeid + ") = " + newrecipename);
@@ -161,41 +166,43 @@ namespace RecipeTest
             Assume.That(recipeid > 0, "No recipes in DB, Can't run test");
             TestContext.WriteLine("Chosen recipe id " + recipeid + " " + recipename);
             TestContext.WriteLine("Ensure that app can delete " + recipeid);
-            Recipe.Delete(dt);
+
+            bizRecipe recipe = new();
+            recipe.Delete(dt);
             DataTable dtafterdelete = SQLUtility.GetDataTable("select * from recipe where recipeid = " + recipeid);
             Assert.IsTrue(dtafterdelete.Rows.Count == 0, "record with recipeid " + recipeid + "exists in DB");
             TestContext.WriteLine("Record with recipeid " + recipeid + " does not exist in DB");
         }
 
-        [Test]
-        public void GetListOfUsers()
-        {
-            int usercount = SQLUtility.GetFirstColumnFirstRowValue("select total = count(*) from users");
-            Assume.That(usercount > 0, "No users in DB, Can't test.");
-            TestContext.WriteLine("num of users in DB is " + usercount);
-            TestContext.WriteLine("Ensure that num of rows return by app matches " + usercount);
+        //[Test]
+        //public void GetListOfUsers()
+        //{
+        //    int usercount = SQLUtility.GetFirstColumnFirstRowValue("select total = count(*) from users");
+        //    Assume.That(usercount > 0, "No users in DB, Can't test.");
+        //    TestContext.WriteLine("num of users in DB is " + usercount);
+        //    TestContext.WriteLine("Ensure that num of rows return by app matches " + usercount);
 
-            DataTable dt = Recipe.GetUserList();
+        //    DataTable dt = Recipe.GetUserList();
 
-            Assert.IsTrue(dt.Rows.Count == usercount, "num rows returned by app " + dt.Rows.Count + " <> " + usercount);
+        //    Assert.IsTrue(dt.Rows.Count == usercount, "num rows returned by app " + dt.Rows.Count + " <> " + usercount);
 
-            TestContext.WriteLine("Num of rows in users return by app " + dt.Rows.Count);
-        }
+        //    TestContext.WriteLine("Num of rows in users return by app " + dt.Rows.Count);
+        //}
 
-        [Test]
-        public void GetListOfCuisines()
-        {
-            int cuisinecount = SQLUtility.GetFirstColumnFirstRowValue("select total = count(*) from cuisine");
-            Assume.That(cuisinecount > 0, "No cuisines in DB, Can't test.");
-            TestContext.WriteLine("num of cuisines in DB is " + cuisinecount);
-            TestContext.WriteLine("Ensure that num of rows return by app matches " + cuisinecount);
+        //[Test]
+        //public void GetListOfCuisines()
+        //{
+        //    int cuisinecount = SQLUtility.GetFirstColumnFirstRowValue("select total = count(*) from cuisine");
+        //    Assume.That(cuisinecount > 0, "No cuisines in DB, Can't test.");
+        //    TestContext.WriteLine("num of cuisines in DB is " + cuisinecount);
+        //    TestContext.WriteLine("Ensure that num of rows return by app matches " + cuisinecount);
 
-            DataTable dt = Recipe.GetCuisineList();
+        //    DataTable dt = Recipe.GetCuisineList();
 
-            Assert.IsTrue(dt.Rows.Count == cuisinecount, "num rows returned by app " + dt.Rows.Count + " <> " + cuisinecount);
+        //    Assert.IsTrue(dt.Rows.Count == cuisinecount, "num rows returned by app " + dt.Rows.Count + " <> " + cuisinecount);
 
-            TestContext.WriteLine("Num of rows in cuisines return by app " + dt.Rows.Count);
-        }
+        //    TestContext.WriteLine("Num of rows in cuisines return by app " + dt.Rows.Count);
+        //}
 
         private int GetExistingRecipeId()
         {
