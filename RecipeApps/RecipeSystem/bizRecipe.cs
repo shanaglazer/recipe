@@ -9,20 +9,21 @@ namespace RecipeSystem
 {
     public class bizRecipe : bizObject
     {
-        int _recipeid;
-        int _usersid;
-        int _cuisineid;
-        string _recipename = "";
-        int _calories;
-        DateTime _datecreated;
-        DateTime _datearchived;
-        DateTime _datepublished;
-        string _recipestatus;
-
         public bizRecipe() //: base("Recipe")
         {
 
         }
+
+        private int _recipeid;
+        private int _usersid;
+        private int _cuisineid;
+        private string _recipename = "";
+        private int _calories;
+        private DateTime _datecreated;
+        private DateTime _datearchived;
+        private DateTime _datepublished;
+        //private string _recipestatus;
+
 
         public int RecipeId
         {
