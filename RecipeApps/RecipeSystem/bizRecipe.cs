@@ -1,13 +1,15 @@
 ﻿using CPUFramework;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace RecipeSystem
 {
-    public class bizRecipe : bizObject
+    public class bizRecipe : bizObject<bizRecipe>
     {
         public bizRecipe() //: base("Recipe")
         {
@@ -137,5 +139,12 @@ namespace RecipeSystem
             get;
         }
 
+        public List<bizRecipe> Search(string recipenameval)
+        {
+            SqlCommand cmd = SQLUtility.GetSqlCommand(this.GetSprocName);
+            SQLUtility.SetParamValue(cmd, "RecipeName", recipenameval);
+            DataTable dt = SQLUtility.GetDataTable(cmd);
+            return this.GetListFromDataTable(dt);
+        }
     }
 }
