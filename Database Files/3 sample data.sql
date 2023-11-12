@@ -39,6 +39,10 @@ union select u.UsersID, (select c.CuisineID from Cuisine c where c.CuisineType =
 union select u.UsersID, (select c.CuisineID from Cuisine c where c.CuisineType = 'Asian'), 'Grilled Chicken', 50, '11-14-2018', '11-28-2018', '04-13-2020' FROM Users u WHERE u.UserName = 'FA'
 union select u.UsersID, (select c.CuisineID from Cuisine c where c.CuisineType = 'Israeli'), 'Shawarma', 120, '07-26-2020', '08-15-2020', null FROM Users u WHERE u.UserName = 'FA'
 union select u.UsersID, (select c.CuisineID from Cuisine c where c.CuisineType = 'Chinese'), 'Rice with Chili sauce', 180, '05-09-2017', '05-28-2017', null FROM Users u WHERE u.UserName = 'EdenHa'
+union select u.UsersID, (select c.CuisineID from Cuisine c where c.CuisineType = 'Israeli'), 'falafel', 220, '07-26-2020', '08-15-2020', '08-16-2020' FROM Users u WHERE u.UserName = 'FA'
+union select u.UsersID, (select c.CuisineID from Cuisine c where c.CuisineType = 'Asian'), 'stir-fry', 120, '07-26-2020', '08-15-2020', '08-16-2020' FROM Users u WHERE u.UserName = 'FA'
+union select u.UsersID, (select c.CuisineID from Cuisine c where c.CuisineType = 'French'), 'Chocolate praline', 120, '07-26-2020', '08-15-2020', '08-16-2020' FROM Users u WHERE u.UserName = 'FA'
+
 
 insert Ingredient(IngredientType)
 select 'Flour'
