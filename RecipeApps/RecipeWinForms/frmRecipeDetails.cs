@@ -13,8 +13,8 @@ namespace RecipeWinForms
         DataTable dtinstruction = new();
         BindingSource bindsource = new();
         int recipeid = 0;
-
-        public frmRecipeDetails()
+        
+        public frmRecipeDetails() 
         {
             InitializeComponent();
             btnSave.Click += BtnSave_Click;
@@ -25,13 +25,23 @@ namespace RecipeWinForms
             gSteps.CellContentClick += GSteps_CellContentClick;
             gIngredient.CellContentClick += GIngredient_CellContentClick;
             txtCalories.KeyPress += TxtCalories_KeyPress;
-            //this.Activated += FrmRecipeDetails_Activated;
+            this.Activated += FrmRecipeDetails_Activated;
+
         }
 
-        //private void FrmRecipeDetails_Activated(object? sender, EventArgs e)
-        //{
-        //    BindData();
-        //}
+        private void FrmRecipeDetails_Activated(object? sender, EventArgs e)
+        {
+            lblDateCreated.DataBindings.Clear();
+            lblDatePublished.DataBindings.Clear();
+            lblDateArchived.DataBindings.Clear();
+            lblDateCreated.ResetBindings();
+            lblDatePublished.ResetBindings();
+            lblDateArchived.ResetBindings();
+            //bindsource.refr
+            //WindowsFormUtility.SetControlBinding(lblDateCreated, bindsource);
+            //WindowsFormUtility.SetControlBinding(lblDatePublished, bindsource);
+            //WindowsFormUtility.SetControlBinding(lblDateArchived, bindsource);
+        }
 
         private void SaveIngredientAndSteps(string sprocname, DataTable dt)
         {
