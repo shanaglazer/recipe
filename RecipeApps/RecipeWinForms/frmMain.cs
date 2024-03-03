@@ -162,6 +162,8 @@ namespace RecipeWinForms
 
         private void FrmMain_Shown(object? sender, EventArgs e)
         {
+            frmLogin f = new() { StartPosition = FormStartPosition.CenterParent};
+            f.ShowDialog();
             OpenForm(typeof(frmDashboard));
         }
     }

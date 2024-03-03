@@ -1,5 +1,6 @@
 using CPUFramework;
 using RecipeSystem;
+using System.Configuration;
 
 namespace RecipeWinForms
 {
@@ -14,7 +15,15 @@ namespace RecipeWinForms
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            DBManager.SetConnectionString("server=.\\SQLExpress;Database=HeartyHearthDB;Trusted_Connection=true", false);
+            try
+            {
+                string connstring = ConfigurationManager.ConnectionStrings["devconn"].ConnectionString;
+                DBManager.SetConnectionString(connstring, false);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
             Application.Run(new frmMain());
         }
     }
