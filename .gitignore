@@ -11,6 +11,7 @@
 *.sln.docstates
 
 # secret files
+*create-login.sql
 secret-appsettings.json
 
 
