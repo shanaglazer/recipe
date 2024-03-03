@@ -7,7 +7,7 @@ go
 
 create login [loginname] with password  = '[password]'
 
-use RecordKeeperDB
+use HeartyHearthDB
 go
 
 create user [username] from login [login name]
