@@ -1,4 +1,8 @@
-﻿namespace RecipeWinForms
+﻿using RecipeSystem;
+using System.Configuration;
+using RecipeWinForms.Properties;
+
+namespace RecipeWinForms
 {
     public partial class frmLogin : Form
     {
@@ -12,7 +16,11 @@
 
         public bool ShowLogin()
         {
-            this.ShowLogin();
+#if DEBUG
+            this.Text = this.Text + " - DEV";
+#endif
+            txtUserId.Text = Settings.Default.userid;
+            this.ShowDialog();
             return loginsuccess;
         }
 
@@ -23,8 +31,25 @@
 
         private void BtnLogin_Click(object? sender, EventArgs e)
         {
-            loginsuccess = true;
-            this.Close();
+            try
+            {
+                string connstringkey = "";
+#if DEBUG
+                connstringkey = "devconn";
+#else
+                connstringkey = "liveconn";
+#endif
+                string connstring = ConfigurationManager.ConnectionStrings[connstringkey].ConnectionString;
+                DBManager.SetConnectionString(connstring, false, txtUserId.Text, txtPassword.Text); 
+                loginsuccess = true;
+                Settings.Default.userid = txtUserId.Text;
+                Settings.Default.Save();
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Invalid Login. Try again.", Application.ProductName);
+            }
         }
     }
 }

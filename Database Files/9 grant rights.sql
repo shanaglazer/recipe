@@ -30,11 +30,11 @@ grant execute on CookbookInfoGet to approle
 grant execute on BookRecipeDelete to approle
 grant execute on AutoCreateBook to approle
 grant execute on RecipeDelete to approle
-grant execute on CookbookPicture to approle
+--grant execute on CookbookPicture to approle
 grant execute on CookbookUpdate to approle
 grant execute on RecipeUpdate to approle
 grant execute on CookbookDelete to approle
-grant execute on RecipeIngredientGet to approle
+--grant execute on RecipeIngredientGet to approle
 grant execute on RecipeGet to approle
 grant execute on CuisineGet to approle
 grant execute on UsersGet to approle
