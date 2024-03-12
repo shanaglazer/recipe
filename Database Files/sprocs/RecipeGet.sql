@@ -10,12 +10,26 @@ as
 begin
     select @RecipeName = nullif(@RecipeName, '')
 
-	select r.RecipeID, r.UsersID, r.CuisineID, r.RecipeName, r.Calories, r.DateCreated, r.DatePublished, r.DateArchived, r.RecipeStatus, RecipeNameForImage = lower(REPLACE(r.RecipeName,' ', ''))
+
+	;with x as(
+    SELECT NumOfIng = COUNT(ir.IngredientID), r.RecipeID
+    from IngredientRecipe ir
+    join Recipe r
+    on r.RecipeID = ir.RecipeID
+    group by r.RecipeID
+	)
+	select r.RecipeID, r.RecipeName, r.RecipeStatus, r.UsersID, u.UserName, r.CuisineID, c.CuisineType, r.Calories, NumIngredient = isnull(x.NumOfIng, 0), r.DateCreated, r.DatePublished, r.DateArchived, RecipeNameForImage = lower(REPLACE(r.RecipeName,' ', ''))
 	from recipe r
+	left join Users u
+	on u.UsersID = r.UsersID
+	left join Cuisine c
+	on c.CuisineID = r.CuisineID
+	left join x
+	on x.RecipeID = r.RecipeID
     where @All = 1
     or r.RecipeName like '%' + @RecipeName + '%'
     or r.RecipeID = @RecipeId
-	union  select 0,0,0,'',0,'','','','', ''
+	union  select 0,'','',0,'',0,'',0,0,'','','',''
 	where @IncludeBlank =1
 	order by r.recipename
 end

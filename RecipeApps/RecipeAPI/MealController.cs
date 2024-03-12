@@ -8,10 +8,10 @@ namespace RecipeAPI
     [ApiController]
     public class MealController : ControllerBase
     {
-        //[HttpGet]
-        //public List<bizRecipe> Get()
-        //{
-        //    return new bizRecipe().GetList();
-        //}
+        [HttpGet]
+        public List<bizMeal> Get()
+        {
+            return new bizMeal().GetList();
+        }
     }
 }

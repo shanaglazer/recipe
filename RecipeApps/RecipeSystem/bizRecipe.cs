@@ -24,7 +24,10 @@ namespace RecipeSystem
         private DateTime _datecreated;
         private DateTime _datearchived;
         private DateTime _datepublished;
-        //private string _recipestatus;
+        private string _recipestatus;
+        private string _username;
+        private string _cuisinetype;
+        private int _numingredients;
 
 
         public int RecipeId
@@ -79,6 +82,32 @@ namespace RecipeSystem
             }
         }
 
+        public string UserName
+        {
+            get { return _username; }
+            set
+            {
+                if (_username != value)
+                {
+                    _username = value;
+                    InvokePropertyChanged();
+                }
+            }
+        }
+
+        public string CuisineType
+        {
+            get { return _cuisinetype; }
+            set
+            {
+                if (_cuisinetype != value)
+                {
+                    _cuisinetype = value;
+                    InvokePropertyChanged();
+                }
+            }
+        }
+
         public int Calories
         {
             get { return _calories; }
@@ -87,6 +116,20 @@ namespace RecipeSystem
                 if (_calories != value)
                 {
                     _calories = value;
+                    InvokePropertyChanged();
+                }
+            }
+        }
+
+        //not working!!
+        public int NumIngredients
+        {
+            get { return _numingredients; }
+            set
+            {
+                if (_numingredients != value)
+                {
+                    _numingredients = value;
                     InvokePropertyChanged();
                 }
             }
@@ -136,7 +179,15 @@ namespace RecipeSystem
 
         public string RecipeStatus
         {
-            get;
+            get { return _recipestatus; }
+            set
+            {
+                if (_recipestatus != value)
+                {
+                    _recipestatus = value;
+                    InvokePropertyChanged();
+                }
+            }
         }
 
         public List<bizRecipe> Search(string recipenameval)
