@@ -2,7 +2,7 @@
 use HeartyHearthDB
 go
 
-create or alter proc dbo.CookbookGet(@message varchar(500) = '' output)
+create or alter proc dbo.CookbookGet(@All bit = 0, @CookbookId int = 0, @IncludeBlank bit = 0, @message varchar(500) = '' output)
 as 
 begin
 
@@ -20,6 +20,10 @@ begin
 	left join x 
 	on x.CookBookID = c.CookBookID
 	--WHERE c.Active = 1
+	where @All = 1
+	or c.CookbookID = @CookbookId
+	union  select 0,'','',0,0
+	where @IncludeBlank =1
 	order by c.BookName
 
 	return @return
@@ -27,4 +31,4 @@ begin
 end
 go
 
-exec CookbookGet
+exec CookbookGet @All = 1

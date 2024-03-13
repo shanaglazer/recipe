@@ -8,10 +8,16 @@ namespace RecipeAPI
     [ApiController]
     public class CookbookController : ControllerBase
     {
-        //[HttpGet]
-        //public List<bizRecipe> Get()
-        //{
-        //    return new bizRecipe().GetList();
-        //}
+        [HttpGet]
+        public List<bizCookbook> Get()
+        {
+            return new bizCookbook().GetList();
+        }
+
+        [HttpGet("searchbyid/{bookid}")]
+        public List<bizCookbook> GetByBookId(int bookid)
+        {
+            return new bizCookbook().Search(bookid);
+        }
     }
 }
