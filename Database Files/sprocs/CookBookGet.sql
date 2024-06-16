@@ -13,7 +13,7 @@ begin
     FROM BookRecipe br
     group by br.CookBookID
 	)
-	SELECT c.cookbookid, c.BookName, Author = concat(u.firstname, ' ', u.lastname), x.NumOfRecipes, c.Price
+	SELECT u.UsersID, u.UserName, c.Active, c.cookbookid, c.DateCreated, c.BookName, Author = concat(u.firstname, ' ', u.lastname), x.NumOfRecipes, c.Price
 	FROM Cookbook c
 	join users u
 	on u.usersid = c.usersid
@@ -22,7 +22,7 @@ begin
 	--WHERE c.Active = 1
 	where @All = 1
 	or c.CookbookID = @CookbookId
-	union  select 0,'','',0,0
+	union  select 0,'',0,0,'','','',0,0
 	where @IncludeBlank =1
 	order by c.BookName
 

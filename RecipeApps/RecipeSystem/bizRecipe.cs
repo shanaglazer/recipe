@@ -27,7 +27,9 @@ namespace RecipeSystem
         private string _recipestatus;
         private string _username;
         private string _cuisinetype;
-        private int _numingredients;
+        private int _numingredient;
+        private bool _vegan;
+
 
 
         public int RecipeId
@@ -122,14 +124,14 @@ namespace RecipeSystem
         }
 
         //not working!!
-        public int NumIngredients
+        public int NumIngredient
         {
-            get { return _numingredients; }
+            get { return _numingredient; }
             set
             {
-                if (_numingredients != value)
+                if (_numingredient != value)
                 {
-                    _numingredients = value;
+                    _numingredient = value;
                     InvokePropertyChanged();
                 }
             }
@@ -185,6 +187,19 @@ namespace RecipeSystem
                 if (_recipestatus != value)
                 {
                     _recipestatus = value;
+                    InvokePropertyChanged();
+                }
+            }
+        }
+
+        public bool Vegan
+        {
+            get { return _vegan; }
+            set
+            {
+                if (_vegan != value)
+                {
+                    _vegan = value;
                     InvokePropertyChanged();
                 }
             }

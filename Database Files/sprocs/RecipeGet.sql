@@ -18,7 +18,7 @@ begin
     on r.RecipeID = ir.RecipeID
     group by r.RecipeID
 	)
-	select r.RecipeID, r.RecipeName, r.RecipeStatus, r.UsersID, u.UserName, r.CuisineID, c.CuisineType, r.Calories, NumIngredient = isnull(x.NumOfIng, 0), r.DateCreated, r.DatePublished, r.DateArchived, RecipeNameForImage = lower(REPLACE(r.RecipeName,' ', ''))
+	select r.RecipeID, r.RecipeName, r.RecipeStatus, r.UsersID, u.UserName, r.CuisineID, c.CuisineType, r.Calories, NumIngredient = isnull(x.NumOfIng, 0), r.DateCreated, r.DatePublished, r.DateArchived, RecipeNameForImage = lower(REPLACE(r.RecipeName,' ', '')),  r.Vegan
 	from recipe r
 	left join Users u
 	on u.UsersID = r.UsersID
