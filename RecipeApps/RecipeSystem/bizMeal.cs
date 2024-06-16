@@ -17,7 +17,7 @@ namespace RecipeSystem
 
         private int _mealid;
         private int _usersid;
-        private int _active;
+        private bool _active;
         private string _mealname = "";
         private DateTime _datecreated;
         private string _mealdesc = "";
@@ -49,7 +49,7 @@ namespace RecipeSystem
             }
         }
 
-        public int Active
+        public bool Active
         {
             get { return _active; }
             set

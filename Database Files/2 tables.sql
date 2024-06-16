@@ -146,6 +146,8 @@ create table dbo.Meal(
     MealPicture as concat('Meal-', replace(MealName, ' ', '-' ), '.jpg') PERSISTED
 )
 go 
+alter table Meal add MealDesc varchar(500) not null default ''
+go
 
 create table dbo.CourseType(
     CourseTypeID int not null IDENTITY PRIMARY KEY,

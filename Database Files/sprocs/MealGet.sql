@@ -1,7 +1,7 @@
-use HeartyHearthDB
-go
+--use HeartyHearthDB
+--go
 
-create or alter proc dbo.MealGet(@All bit = 0, @message varchar(500) = '' output)
+create or alter proc dbo.MealGet(@All bit = 0, @IncludeBlank bit = 0, @message varchar(500) = '' output)
 as 
 begin
 
@@ -36,7 +36,7 @@ begin
 		    WHERE m.Active = 1
 		    group by m.MealID
 		)
-		SELECT m.MealName, u.UserName, x.Calories, MealDesc = concat(m.mealname, ' contains ',y.NumOfCourses,' courses and ', z.NumOfRecipes, ' recipes.')
+		SELECT m.MealId, m.MealName, m.Active, m.DateCreated, u.UsersID, u.UserName, x.Calories, MealDesc = concat(m.mealname, ' contains ',y.NumOfCourses,' courses and ', z.NumOfRecipes, ' recipes.')
 		FROM x
 		join Meal m
 		on x.MealID = m.MealID

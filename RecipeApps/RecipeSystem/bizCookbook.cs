@@ -18,6 +18,7 @@ namespace RecipeSystem
 
         private int _cookbookid;
         private int _usersid;
+        private string _username;
         private int _active;
         private string _bookname = "";
         private decimal _price;
@@ -38,6 +39,8 @@ namespace RecipeSystem
             }
         }
 
+        
+
         public int UsersId
         {
             get { return _usersid; }
@@ -46,6 +49,19 @@ namespace RecipeSystem
                 if (_usersid != value)
                 {
                     _usersid = value;
+                    InvokePropertyChanged();
+                }
+            }
+        }
+
+        public string UserName
+        {
+            get { return _username; }
+            set
+            {
+                if (_username != value)
+                {
+                    _username = value;
                     InvokePropertyChanged();
                 }
             }
