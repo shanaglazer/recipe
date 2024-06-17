@@ -18,7 +18,7 @@ begin
     on r.RecipeID = ir.RecipeID
     group by r.RecipeID
 	)
-	select r.RecipeID, r.RecipeName, r.RecipeStatus, r.UsersID, u.UserName, r.CuisineID, c.CuisineType, r.Calories, NumIngredient = isnull(x.NumOfIng, 0), r.DateCreated, r.DatePublished, r.DateArchived, RecipeNameForImage = lower(REPLACE(r.RecipeName,' ', '')),  r.Vegan
+	select r.RecipeID, r.RecipeName, r.RecipeStatus, r.UsersID, u.UserName, r.CuisineID, c.CuisineType, r.Calories, NumIngredient = isnull(x.NumOfIng, 0), r.DateCreated, r.DatePublished, r.DateArchived, RecipeNameForImage = lower(REPLACE(r.RecipeName,' ', '')),	 r.Vegan
 	from recipe r
 	left join Users u
 	on u.UsersID = r.UsersID
@@ -29,7 +29,7 @@ begin
     where @All = 1
     or r.RecipeName like '%' + @RecipeName + '%'
     or r.RecipeID = @RecipeId
-	union  select 0,'','',0,'',0,'',0,0,'','','',''
+	union  select 0,'','',0,'',0,'',0,0,'','','','',0
 	where @IncludeBlank =1
 	order by r.recipename
 end

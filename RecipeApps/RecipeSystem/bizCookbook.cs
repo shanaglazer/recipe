@@ -25,6 +25,8 @@ namespace RecipeSystem
         private DateTime _datecreated;
         private string _author = "";
         private int _numofrecipes;
+        private int _skill;
+        private string _skilldesc;
 
         public int CookbookId
         {
@@ -144,6 +146,34 @@ namespace RecipeSystem
                 }
             }
         }
+
+        public int Skill
+        {
+            get { return _skill; }
+            set
+            {
+                if (_skill != value)
+                {
+                    _skill = value;
+                    InvokePropertyChanged();
+                }
+            }
+        }
+
+        public string SkillDesc
+        {
+            get { return _skilldesc; }
+            set
+            {
+                if (_skilldesc != value)
+                {
+                    _skilldesc = value;
+                    InvokePropertyChanged();
+                    InvokePropertyChanged("Skill");
+                }
+            }
+        }
+
 
         public List<bizCookbook> Search(int bookid)
         {
