@@ -29,7 +29,7 @@ begin
     where @All = 1
     or r.RecipeName like '%' + @RecipeName + '%'
     or r.RecipeID = @RecipeId
-	union  select 0,'','',0,'',0,'',0,0,'','','','',0
+	union  select 0,'','',0,'',0,'',0,0,'','','','',convert(bit, 0)
 	where @IncludeBlank =1
 	order by r.recipename
 end
