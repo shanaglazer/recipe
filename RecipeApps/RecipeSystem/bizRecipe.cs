@@ -123,7 +123,6 @@ namespace RecipeSystem
             }
         }
 
-        //not working!!
         public int NumIngredient
         {
             get { return _numingredient; }
@@ -212,5 +211,14 @@ namespace RecipeSystem
             DataTable dt = SQLUtility.GetDataTable(cmd);
             return this.GetListFromDataTable(dt);
         }
+
+        public List<bizRecipe> SearchByBook(int cookbookid)
+        {
+            SqlCommand cmd = SQLUtility.GetSqlCommand("RecipeForBookGet");
+            SQLUtility.SetParamValue(cmd, "CookbookId", cookbookid);
+            DataTable dt = SQLUtility.GetDataTable(cmd);
+            return this.GetListFromDataTable(dt);
+        }
+
     }
 }

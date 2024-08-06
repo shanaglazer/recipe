@@ -30,5 +30,5 @@ begin
 
 end
 go
-exec IngredientRecipeGet
+exec IngredientRecipeGet  @All = 1
 

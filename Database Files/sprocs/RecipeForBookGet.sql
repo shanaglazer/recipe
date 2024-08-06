@@ -14,12 +14,16 @@ begin
 
 		--isnull
 
-		select b.BookRecipeID, b.CookBookID, r.RecipeID, b.BookSequence
+		select b.BookRecipeID, b.CookBookID, r.RecipeID, r.UsersID, r.CuisineID, r.RecipeName, r.Calories, r.DateArchived, r.DateCreated, r.DatePublished, r.RecipeStatus, b.BookSequence, c.CuisineType, u.UserName
 		from BookRecipe b
 		join Recipe r 
 		on b.RecipeID = r.RecipeID
+		join Users u
+		on u.UsersID = r.usersid
+		join Cuisine c
+		on c.CuisineID = r.CuisineID
 		where b.CookBookID = @CookbookId
-		union select 0, 0, 0,  0
+		union select 0, 0, 0, 0, 0, '', 0, '', '', '', '', 0, '', ''
 		where @IncludeBlank = 1
 		order by b.BookSequence
 
@@ -27,3 +31,5 @@ begin
 
 end
 go
+
+exec RecipeForBookGet @CookbookId = 1

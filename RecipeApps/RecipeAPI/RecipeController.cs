@@ -15,6 +15,13 @@ namespace RecipeAPI
             return lst;
         }
 
+        [HttpGet("searchbybook")]
+        public List<bizRecipe> GetByBookId(int id)
+        {
+            var lst = new bizRecipe().SearchByBook(id);
+            return lst;
+        }
+
         [HttpGet("searchbyname/{recipenamevalue}")]
         public List<bizRecipe> GetByRecipeName(string recipenamevalue)
         {
