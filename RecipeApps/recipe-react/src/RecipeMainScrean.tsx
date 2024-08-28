@@ -3,12 +3,16 @@ import { fetchRecipe } from "./DataUtil";
 import { IRecipe } from "./DataInterfaces";
 import RecipeCard from "./RecipeCard";
 
-export default function RecipeMainScrean() {
+interface Props {
+  cuisineid: number;
+}
+
+export default function RecipeMainScrean({ cuisineid }: Props) {
   const [recipe, setRecipe] = useState<IRecipe[]>([]);
 
   useEffect(() => {
     const fetchData = async () => {
-      const data = await fetchRecipe(6);
+      const data = await fetchRecipe(cuisineid);
       setRecipe(data);
     };
     fetchData();

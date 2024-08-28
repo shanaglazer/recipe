@@ -2,8 +2,14 @@ import "./assets/css/bootstrap.min.css";
 import Navbar from "./Navbar";
 import CuisineSidebar from "./CuisineSidebar";
 import RecipeMainScrean from "./RecipeMainScrean";
+import { useState } from "react";
 
 function App() {
+  const [selectedCuisineId, setSelectedCuisineId] = useState(0);
+  const handleSelectedCuisin = (cuisineid: number) => {
+    setSelectedCuisineId(cuisineid);
+  };
+
   return (
     <>
       <div className="container">
@@ -12,10 +18,10 @@ function App() {
         </div>
         <div className="row">
           <div className="col-2">
-            <CuisineSidebar />
+            <CuisineSidebar onCuisineSelected={handleSelectedCuisin} />
           </div>
           <div className="col-10">
-            <RecipeMainScrean />
+            <RecipeMainScrean cuisineid={selectedCuisineId} />
           </div>
         </div>
       </div>

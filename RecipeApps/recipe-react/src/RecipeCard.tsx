@@ -15,7 +15,7 @@ export default function RecipeCard({ recipe }: Props) {
   );
   return (
     <>
-      <div className="card" style={{ width: "18rem" }}>
+      <div className="card m-1" style={{ width: "18rem" }}>
         <img
           src={`/img/recipe-images/${recipe.recipeName.toLowerCase()}.jpeg`}
           className="card-img-top"
