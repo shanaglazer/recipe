@@ -1,4 +1,4 @@
-import {ICuisine} from "./DataInterfaces";
+import {ICuisine, IRecipe} from "./DataInterfaces";
 
 const baseurl='https://sgrecipeapi.azurewebsites.net/api/';
 
@@ -14,6 +14,6 @@ export async function fetchCuisine() {
 }
 
 
-// export async function fetchPresidentsByPartyId(partyid: number) {
-//     return await fetchData<IPresident[]>(`President/getbyparty/${partyid}` )
-// }
+export async function fetchRecipe(id: number) {
+    return await fetchData<IRecipe[]>(`Recipe/searchbycuisine/${id}`)
+}
