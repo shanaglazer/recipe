@@ -220,5 +220,13 @@ namespace RecipeSystem
             return this.GetListFromDataTable(dt);
         }
 
+        public List<bizRecipe> SearchByCuisine(int cuisineid)
+        {
+            SqlCommand cmd = SQLUtility.GetSqlCommand("RecipeGet");
+            SQLUtility.SetParamValue(cmd, "CuisineID", cuisineid);
+            DataTable dt = SQLUtility.GetDataTable(cmd);
+            return this.GetListFromDataTable(dt);
+        }
+
     }
 }

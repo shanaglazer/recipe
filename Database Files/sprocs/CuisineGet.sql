@@ -1,4 +1,4 @@
-create or alter procedure dbo.CuisineGet(@All bit = 0, @CuisineId int = 0, @CuisineType varchar(50) = '')
+create or alter procedure dbo.CuisineGet(@All bit = 0, @CuisineId int = 0, @CuisineType varchar(50) = '', @IncludeBlank bit = 0)
 as
 begin
     select @CuisineType = nullif(@CuisineType, '')
@@ -8,6 +8,8 @@ begin
     where @All = 1
     or c.CuisineType like '%' + @CuisineType + '%'
     or c.CuisineID = @CuisineId
+	union select 0, ''
+	where @IncludeBlank = 1
 	order by c.CuisineType
 end
 go

@@ -5,6 +5,7 @@ create or alter procedure dbo.RecipeGet(
 	@All bit = 0, 
 	@RecipeId int = 0, 
 	@RecipeName varchar(50) = '', 
+	@CuisineID varchar(30) = '',
 	@IncludeBlank bit = 0)
 as
 begin
@@ -29,6 +30,7 @@ begin
     where @All = 1
     or r.RecipeName like '%' + @RecipeName + '%'
     or r.RecipeID = @RecipeId
+	or r.CuisineID = @CuisineID
 	union  select 0,'','',0,'',0,'',0,0,'','','','',convert(bit, 0)
 	where @IncludeBlank =1
 	order by r.recipename
@@ -42,7 +44,8 @@ exec RecipeGet @RecipeName = ''
 exec RecipeGet @RecipeName = 'a'
 
 exec RecipeGet @All = 1
-
+exec RecipeGet @CuisineID = 5
+select * from cuisine
 declare @RecipeId int
 select top 1 @RecipeId = r.Recipeid from Recipe r
 exec RecipeGet @RecipeId = @RecipeId

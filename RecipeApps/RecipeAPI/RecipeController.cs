@@ -28,5 +28,19 @@ namespace RecipeAPI
             return new bizRecipe().Search(recipenamevalue);
         }
 
+        [HttpGet("searchbycuisine/{id}")]
+        public List<bizRecipe> GetByCuisineID(int id)
+        {
+            var lst = new bizRecipe().SearchByCuisine(id);
+            return lst;
+        }
+
+
+        [HttpGet("cuisineget")]
+        public List<bizCuisine> GetCuisine()
+        {
+            var lst = new bizCuisine().GetList();
+            return lst;
+        }
     }
 }
