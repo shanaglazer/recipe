@@ -16,7 +16,7 @@ export default function RecipeMainScrean({ cuisineid }: Props) {
       setRecipe(data);
     };
     fetchData();
-  }, []);
+  }, [recipe]);
 
   return (
     <>
