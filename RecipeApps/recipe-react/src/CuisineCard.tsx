@@ -15,7 +15,9 @@ export default function CuisineCard({
     <>
       <div
         onClick={() => onSelected(cuisine.cuisineID)}
-        className={`btn ${isSelected ? "bg-dark" : ""}`}
+        className={`btn border border-secondary m-2 ${
+          isSelected ? "bg-secondary" : ""
+        }`}
       >
         <figure className="figure">
           <img
