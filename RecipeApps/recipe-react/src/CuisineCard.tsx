@@ -15,7 +15,7 @@ export default function CuisineCard({
     <>
       <div
         onClick={() => onSelected(cuisine.cuisineID)}
-        className={`btn border border-secondary m-2 ${
+        className={`btn border border-secondary m-1 ${
           isSelected ? "bg-secondary" : ""
         }`}
       >
