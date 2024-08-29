@@ -25,7 +25,7 @@ export default function RecipeMainScrean({ cuisineid }: Props) {
 </div> */}
       <div className="row bg-light">
         {recipe.map((r) => (
-          <div className="col-4">
+          <div className="col-xl-4 col-md-6 col-sm-12">
             <RecipeCard key={r.recipeId} recipe={r} />
           </div>
         ))}
