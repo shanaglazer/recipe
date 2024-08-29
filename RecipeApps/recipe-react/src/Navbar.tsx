@@ -7,18 +7,18 @@ export default function Navbar() {
             <img src="/img/logo.svg" alt="brand img" width="50" height="50" />
             Hearty Hearth
           </a>
-          {/* <img
-            src="/img/hh icon.svg"
+          <button
             className="navbar-toggler"
+            type="button"
             data-bs-toggle="collapse"
-            data-bs-target="#navbarColor01"
-            aria-controls="navbarColor01"
+            data-bs-target=".navbar-collapse"
+            aria-controls="navbarSupportedContent"
             aria-expanded="false"
             aria-label="Toggle navigation"
-          /> */}
-          {/* <span className="navbar-toggler-icon"></span>
-          </img> */}
-          <div className="collapse navbar-collapse" id="navbarColor01">
+          >
+            <span className="navbar-toggler-icon"></span>
+          </button>
+          <div className="navbar-collapse collapse d-sm-inline-flex justify-content-between">
             <ul className="navbar-nav me-auto">
               <li className="nav-item">
                 <a className="nav-link active" href="#">

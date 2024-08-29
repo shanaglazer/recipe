@@ -24,7 +24,7 @@ export default function CuisineCard({
             alt="Cuisine Image"
           />
           <figcaption className="figure-caption text-end">
-            {cuisine.cuisineType}
+            <h6>{cuisine.cuisineType}</h6>
           </figcaption>
         </figure>
       </div>

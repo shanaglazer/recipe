@@ -28,7 +28,9 @@ export default function RecipeCard({ recipe }: Props) {
             The recipe for {recipe.recipeName} was created on {formattedDate}.
             The recipe consists of {recipe.numIngredient} ingredients and
             contains {recipe.calories}.<br />
-            Recipe status: {recipe.recipeStatus}
+            <span className="text-danger">
+              Recipe status: {recipe.recipeStatus}
+            </span>
           </p>
         </div>
       </div>
