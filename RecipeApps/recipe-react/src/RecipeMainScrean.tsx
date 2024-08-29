@@ -20,7 +20,10 @@ export default function RecipeMainScrean({ cuisineid }: Props) {
 
   return (
     <>
-      <div className="row">
+      {/* <div class="progress">
+  <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%;"></div>
+</div> */}
+      <div className="row bg-light">
         {recipe.map((r) => (
           <RecipeCard key={r.recipeId} recipe={r} />
         ))}

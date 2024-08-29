@@ -1,7 +1,10 @@
 export default function Navbar() {
   return (
     <>
-      <nav className="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
+      <nav
+        className="col-12 navbar navbar-expand-lg bg-primary"
+        data-bs-theme="dark"
+      >
         <div className="container-fluid">
           <a className="navbar-brand" href="#">
             <img src="/img/logo.svg" alt="brand img" width="50" height="50" />
