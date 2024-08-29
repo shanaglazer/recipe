@@ -17,10 +17,13 @@ function App() {
           <Navbar />
         </div>
         <div className="row">
-          <div className="col-2">
+          <div className="col-md-2 col-3 border border-dark">
             <CuisineSidebar onCuisineSelected={handleSelectedCuisin} />
           </div>
-          <div className="col-10">
+          <div
+            style={{ backgroundColor: "#D3D3D3" }}
+            className="col-md-10 col-9 border border-dark"
+          >
             <RecipeMainScrean cuisineid={selectedCuisineId} />
           </div>
         </div>
