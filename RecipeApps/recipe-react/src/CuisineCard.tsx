@@ -24,9 +24,14 @@ export default function CuisineCard({
             src={`/img/cuisine-images/${cuisine.cuisineType.toLowerCase()}.jpeg`}
             className="figure-img img-fluid rounded"
             alt="Cuisine Image"
+            width="200"
+            height="200"
           />
-          <figcaption className="figure-caption text-end">
-            <h6>{cuisine.cuisineType}</h6>
+          <figcaption
+            className="figure-caption text-center"
+            style={{ fontSize: 14 }}
+          >
+            {cuisine.cuisineType}
           </figcaption>
         </figure>
       </div>

@@ -2,7 +2,7 @@ export default function Navbar() {
   return (
     <>
       <nav
-        className="col-12 navbar navbar-expand-lg bg-primary"
+        className="col-12 navbar navbar-expand-lg navbar-toggleable-sm bg-primary"
         data-bs-theme="dark"
       >
         <div className="container-fluid">
@@ -21,8 +21,9 @@ export default function Navbar() {
           >
             <span className="navbar-toggler-icon"></span>
           </button>
+
           <div
-            className="collapse navbar-collapse d-lg-inline-flex justify-content-between"
+            className="navbar-collapse collapse d-lg-inline-flex justify-content-between"
             id="navbarNav"
           >
             <ul className="navbar-nav me-auto">
