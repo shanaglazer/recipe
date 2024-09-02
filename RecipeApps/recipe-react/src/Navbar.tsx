@@ -11,7 +11,7 @@ export default function Navbar() {
             Hearty Hearth
           </a>
           <button
-            className="navbar-toggler"
+            className="navbar-toggler collapsed"
             type="button"
             data-bs-toggle="collapse"
             data-bs-target="#navbarNav"
@@ -22,7 +22,7 @@ export default function Navbar() {
             <span className="navbar-toggler-icon"></span>
           </button>
           <div
-            className="collapse navbar-collapse d-sm-inline-flex justify-content-between"
+            className="collapse navbar-collapse d-lg-inline-flex justify-content-between"
             id="navbarNav"
           >
             <ul className="navbar-nav me-auto">
