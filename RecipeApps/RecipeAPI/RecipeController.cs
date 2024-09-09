@@ -42,5 +42,27 @@ namespace RecipeAPI
             var lst = new bizCuisine().GetList();
             return lst;
         }
+
+        [HttpGet("users")]
+        public List<bizUsers> UserGet()
+        {
+            return new bizUsers().GetList();
+        }
+
+
+        [HttpPost]
+        public IActionResult Post([FromForm] bizRecipe recipe)
+        {
+            try
+            {
+                recipe.Save();
+                return Ok(new { message = "Recipe Saved.", recipeid = recipe.RecipeId });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { ex.Message });
+            }
+        }
+
     }
 }
