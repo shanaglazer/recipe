@@ -34,6 +34,9 @@ export default function RecipeCard({ recipe }: Props) {
             </span>
           </p>
         </div>
+        <div>
+          <button className="btn btn-outline-primary">Edit</button>
+        </div>
       </div>
     </>
   );

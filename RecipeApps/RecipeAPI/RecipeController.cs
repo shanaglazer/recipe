@@ -8,12 +8,12 @@ namespace RecipeAPI
     [ApiController]
     public class RecipeController : ControllerBase
     {
-        [HttpGet]
-        public List<bizRecipe> Get()
-        {
-            var lst = new bizRecipe().GetList();
-            return lst;
-        }
+        //[HttpGet]
+        //public List<bizRecipe> Get()
+        //{
+        //    var lst = new bizRecipe().GetList();
+        //    return lst;
+        //}
 
         [HttpGet("searchbybook")]
         public List<bizRecipe> GetByBookId(int id)

@@ -29,7 +29,6 @@ export default function CuisineSidebar({ onCuisineSelected }: Props) {
 
   return (
     <>
-      {/* <div className="d-flex flex-wrap"> */}
       {cuisineList.map((c) => (
         <CuisineCard
           key={c.cuisineID}
@@ -38,7 +37,6 @@ export default function CuisineSidebar({ onCuisineSelected }: Props) {
           isSelected={c.cuisineID == selectedCuisineId}
         />
       ))}
-      {/* </div> */}
     </>
   );
 }

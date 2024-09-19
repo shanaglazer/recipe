@@ -28,7 +28,7 @@ namespace RecipeSystem
         private string _username;
         private string _cuisinetype;
         private int _numingredient;
-        private bool _vegan;
+        private bool _vegan = false;
 
 
 
@@ -84,31 +84,31 @@ namespace RecipeSystem
             }
         }
 
-        public string UserName
-        {
-            get { return _username; }
-            set
-            {
-                if (_username != value)
-                {
-                    _username = value;
-                    InvokePropertyChanged();
-                }
-            }
-        }
+        //public string UserName
+        //{
+        //    get { return _username; }
+        //    set
+        //    {
+        //        if (_username != value)
+        //        {
+        //            _username = value;
+        //            InvokePropertyChanged();
+        //        }
+        //    }
+        //}
 
-        public string CuisineType
-        {
-            get { return _cuisinetype; }
-            set
-            {
-                if (_cuisinetype != value)
-                {
-                    _cuisinetype = value;
-                    InvokePropertyChanged();
-                }
-            }
-        }
+        //public string CuisineType
+        //{
+        //    get { return _cuisinetype; }
+        //    set
+        //    {
+        //        if (_cuisinetype != value)
+        //        {
+        //            _cuisinetype = value;
+        //            InvokePropertyChanged();
+        //        }
+        //    }
+        //}
 
         public int Calories
         {
@@ -123,18 +123,18 @@ namespace RecipeSystem
             }
         }
 
-        public int NumIngredient
-        {
-            get { return _numingredient; }
-            set
-            {
-                if (_numingredient != value)
-                {
-                    _numingredient = value;
-                    InvokePropertyChanged();
-                }
-            }
-        }
+        //public int NumIngredient
+        //{
+        //    get { return _numingredient; }
+        //    set
+        //    {
+        //        if (_numingredient != value)
+        //        {
+        //            _numingredient = value;
+        //            InvokePropertyChanged();
+        //        }
+        //    }
+        //}
 
         public DateTime DateCreated
         {
