@@ -64,5 +64,21 @@ namespace RecipeAPI
             }
         }
 
+        [HttpDelete]
+        public IActionResult Delete(int id)
+        {
+            bizRecipe r = new();
+            try
+            {
+                r.Delete(id);
+                return Ok(new { message = "Recipe Deleted." });//new { message = "Recipe Deleted."}
+            }
+            catch (Exception ex)
+            {
+                //r.ErrorMessage = ex.Message; 
+                return BadRequest(new { ex.Message });
+            }
+        }
+
     }
 }

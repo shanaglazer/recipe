@@ -26,8 +26,8 @@ export default function RecipeCard({ recipe }: Props) {
           <h6 className="text-primary">Created By: {recipe.userName}</h6>
           <p className="card-text">
             The recipe for {recipe.recipeName} was created on {formattedDate}.
-            The recipe consists of {recipe.numIngredient} ingredients and
-            contains {recipe.calories} calories.
+            The recipe consists of {recipe.numIngredient.toString()} ingredients
+            and contains {recipe.calories} calories.
             <br />
             <span className="text-danger">
               Recipe status: {recipe.recipeStatus}
@@ -35,7 +35,7 @@ export default function RecipeCard({ recipe }: Props) {
           </p>
         </div>
         <div>
-          <button className="btn btn-outline-primary">Edit</button>
+          {/* <button className="btn btn-outline-primary">Edit</button> */}
         </div>
       </div>
     </>

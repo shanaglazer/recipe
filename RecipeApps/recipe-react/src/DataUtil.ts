@@ -1,6 +1,6 @@
 import {ICuisine, IRecipe} from "./DataInterfaces";
 
-const baseurl='https://sgrecipeapi.azurewebsites.net/api/';
+const baseurl='http://localhost:5166/api/';  //'https://sgrecipeapi.azurewebsites.net/api/';
 
 async function fetchData<T>(url:string):Promise<T> {
     url = baseurl + url;
