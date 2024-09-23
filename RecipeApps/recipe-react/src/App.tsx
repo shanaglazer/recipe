@@ -6,9 +6,12 @@ import Navbar from "./Navbar";
 import CuisineSidebar from "./CuisineSidebar";
 import RecipeMainScrean from "./RecipeMainScrean";
 import { useState } from "react";
+import RecipeEdit from "./RecipeEdit";
 
 function App() {
   const [selectedCuisineId, setSelectedCuisineId] = useState(0);
+  const [isRecipeEdit, setIsRecipeEdit] = useState(false);
+
   const handleSelectedCuisin = (cuisineid: number) => {
     setSelectedCuisineId(cuisineid);
   };
@@ -27,7 +30,21 @@ function App() {
             style={{ backgroundColor: "#D3D3D3" }}
             className="col-md-10 col-9 border border-dark"
           >
-            <RecipeMainScrean cuisineid={selectedCuisineId} />
+            {isRecipeEdit ? (
+              <RecipeEdit />
+            ) : (
+              <div>
+                <div className="row">
+                  <button
+                    className="col-3 mt-2 btn btn-outline-primary"
+                    style={{ marginLeft: "30px" }}
+                  >
+                    Add New Recipe
+                  </button>
+                </div>
+                <RecipeMainScrean cuisineid={selectedCuisineId} />
+              </div>
+            )}
           </div>
         </div>
       </div>
