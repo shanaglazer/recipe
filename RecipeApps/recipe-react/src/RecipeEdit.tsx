@@ -11,6 +11,7 @@ export default function RecipeEdit({ recipe }: Props) {
   const [users, setUsers] = useState<IUsers[]>([]);
   const [cuisines, setCuisines] = useState<ICuisine[]>([]);
   const { register, handleSubmit, reset } = useForm({ defaultValues: recipe });
+  const [errormsg, setErrormsg] = useState("");
 
   // const [loading, setLoading] = useState(true);
 
@@ -41,6 +42,7 @@ export default function RecipeEdit({ recipe }: Props) {
 
   const submitForm = async (data: FieldValues) => {
     const r = await postRecipe(data);
+    setErrormsg(r.errorMessage);
     reset(r);
     //console.log(data);
   };
@@ -50,7 +52,7 @@ export default function RecipeEdit({ recipe }: Props) {
       <div className="container">
         <div className="row">
           <div className="col-12">
-            <h2 id="hmsg"></h2>
+            <h2 id="hmsg">{errormsg}</h2>
           </div>
         </div>
         <div className="row">

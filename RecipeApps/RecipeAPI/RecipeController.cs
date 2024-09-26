@@ -57,11 +57,12 @@ namespace RecipeAPI
             try
             {
                 recipe.Save();
-                return Ok(new { message = "Recipe Saved.", recipeid = recipe.RecipeId });
+                return Ok(recipe);//new { message = "Recipe Saved.", recipeid = recipe.RecipeId }
             }
             catch (Exception ex)
             {
-                return BadRequest(new { ex.Message });
+                recipe.ErrorMessage = ex.Message;
+                return BadRequest(recipe);//new { ex.Message }
             }
         }
 
