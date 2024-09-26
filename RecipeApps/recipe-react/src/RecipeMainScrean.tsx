@@ -5,9 +5,13 @@ import RecipeCard from "./RecipeCard";
 
 interface Props {
   cuisineid: number;
+  onRecipeSelectedForEdit: (recipe: IRecipe) => void;
 }
 
-export default function RecipeMainScrean({ cuisineid }: Props) {
+export default function RecipeMainScrean({
+  cuisineid,
+  onRecipeSelectedForEdit,
+}: Props) {
   const [recipe, setRecipe] = useState<IRecipe[]>([]);
 
   useEffect(() => {
@@ -31,7 +35,12 @@ export default function RecipeMainScrean({ cuisineid }: Props) {
               className="col-xl-4 col-md-6 col-sm-12 d-flex align-items-stretch"
             >
               <RecipeCard key={r.recipeId} recipe={r} />
-              <button className="btn btn-outline-secondary">Edit</button>
+              <button
+                onClick={() => onRecipeSelectedForEdit(r)}
+                className="btn btn-outline-secondary"
+              >
+                Edit
+              </button>
             </div>
           ))}
         </div>

@@ -26,7 +26,7 @@ export default function RecipeCard({ recipe }: Props) {
           <h6 className="text-primary">Created By: {recipe.userName}</h6>
           <p className="card-text">
             The recipe for {recipe.recipeName} was created on {formattedDate}.
-            The recipe consists of {recipe.numIngredient} ingredients and
+            {/* The recipe consists of {recipe.numIngredient} ingredients and */}
             contains {recipe.calories} calories.
             <br />
             <span className="text-danger">

@@ -50,8 +50,9 @@ namespace RecipeAPI
         }
 
 
+        //[fromform]
         [HttpPost]
-        public IActionResult Post([FromForm] bizRecipe recipe)
+        public IActionResult Post(bizRecipe recipe)
         {
             try
             {

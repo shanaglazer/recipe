@@ -1,17 +1,51 @@
-export default function RecipeEdit() {
-  return (
-    /*   to create an empty form - 
-    recipeId: '',
-    userId: '',
-    cuisineId: '',
-    recipeName: '',
-    calories: '',
-    dateCreated: '',
-    datePublished: '',
-    dateArchived: '',
-    recipeStatus: '',
-    vegan: false, */
+import { useEffect, useState } from "react";
+import { FieldValues, useForm } from "react-hook-form";
+import { ICuisine, IRecipe, IUsers } from "./DataInterfaces";
+import { fetchCuisine, fetchUsers, postRecipe } from "./DataUtil";
 
+interface Props {
+  recipe: IRecipe;
+}
+
+export default function RecipeEdit({ recipe }: Props) {
+  const [users, setUsers] = useState<IUsers[]>([]);
+  const [cuisines, setCuisines] = useState<ICuisine[]>([]);
+  const { register, handleSubmit, reset } = useForm({ defaultValues: recipe });
+
+  // const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await fetchUsers();
+      setUsers(data);
+      // setLoading(false);
+    };
+    fetchData();
+  }, []);
+
+  useEffect(() => {
+    console.log(users); // Logs the updated users whenever users state changes
+  }, [users]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await fetchCuisine();
+      setCuisines(data);
+    };
+    fetchData();
+  }, []);
+
+  useEffect(() => {
+    reset(recipe);
+  }, [recipe, reset]);
+
+  const submitForm = async (data: FieldValues) => {
+    const r = await postRecipe(data);
+    reset(r);
+    //console.log(data);
+  };
+
+  return (
     <>
       <div className="container">
         <div className="row">
@@ -21,78 +55,125 @@ export default function RecipeEdit() {
         </div>
         <div className="row">
           <div className="col-12">
-            <form id="frm" action="" method="post" className="needs-validation">
+            <form
+              onSubmit={handleSubmit(submitForm)}
+              className="needs-validation"
+            >
               <div className="mb-3">
                 <label htmlFor="recipeId" className="form-label">
                   Recipe ID:
                 </label>
-                <input type="text" id="recipeId" name="recipeId" />
+                <input type="number" className="form-control" required />
               </div>
 
               <div className="mb-3">
-                <label htmlFor="userId" className="form-label">
-                  User ID:
-                </label>
-                <input type="text" id="userId" name="userId" />
+                <label htmlFor="usersId">User:</label>
+                {/* {loading ? (
+                  <p>Loading...</p>
+                ) : ( */}
+                <select {...register("usersId")} className="form-select">
+                  {users.map((u) => (
+                    <option key={u.usersId} value={u.usersId}>
+                      {u.userName}
+                    </option>
+                  ))}
+                </select>
+                {/* )} */}
               </div>
 
               <div className="mb-3">
-                <label htmlFor="cuisineId" className="form-label">
-                  Cuisine ID:
-                </label>
-                <input type="text" id="cuisineId" name="cuisineId" />
+                <label htmlFor="cuisineID">Cuisine:</label>
+                <select {...register("cuisineId")} className="form-select">
+                  {cuisines.map((c) => (
+                    <option key={c.cuisineID} value={c.cuisineID}>
+                      {c.cuisineType}
+                    </option>
+                  ))}
+                </select>
               </div>
 
               <div className="mb-3">
-                <label htmlFor="recipeName" className="form-label">
-                  Recipe Name:
-                </label>
-                <input type="text" id="recipeName" name="recipeName" />
+                <label htmlFor="recipeName">Recipe Name:</label>
+                <input
+                  type="text"
+                  {...register("recipeName")}
+                  className="form-control"
+                />
               </div>
 
               <div className="mb-3">
-                <label htmlFor="calories" className="form-label">
-                  Calories:
-                </label>
-                <input type="number" id="calories" name="calories" />
+                <label htmlFor="calories">Calories:</label>
+                <input
+                  type="number"
+                  {...register("calories")}
+                  className="form-control"
+                />
+              </div>
+
+              {/* <label htmlFor="numIngredient">Number of Ingredients:</label>
+            <input type="number" id="numIngredient" name="numIngredient" value="0" /> */}
+
+              <div className="mb-3">
+                <label htmlFor="dateCreated">Date Created:</label>
+                <input
+                  type="datetime-local"
+                  {...register("dateCreated")}
+                  className="form-control"
+                />
               </div>
 
               <div className="mb-3">
-                <label htmlFor="dateCreated" className="form-label">
-                  Date Created:
-                </label>
-                <input type="date" id="dateCreated" name="dateCreated" />
+                <label htmlFor="datePublished">Date Published:</label>
+                <input
+                  type="datetime-local"
+                  {...register("datePublished")}
+                  className="form-control"
+                />
               </div>
 
               <div className="mb-3">
-                <label htmlFor="datePublished" className="form-label">
-                  Date Published:
-                </label>
-                <input type="date" id="datePublished" name="datePublished" />
+                <label htmlFor="dateArchived">Date Archived:</label>
+                <input
+                  type="datetime-local"
+                  {...register("dateArchived")}
+                  className="form-control"
+                />
               </div>
 
               <div className="mb-3">
-                <label htmlFor="dateArchived" className="form-label">
-                  Date Archived:
-                </label>
-                <input type="date" id="dateArchived" name="dateArchived" />
+                <label htmlFor="recipeStatus">Recipe Status:</label>
+                <input
+                  type="text"
+                  {...register("recipeStatus")}
+                  className="form-control"
+                />
+              </div>
+
+              <div className="mb-3 col-1">
+                <label htmlFor="vegan">Vegan:</label>
+                <input
+                  type="checkbox"
+                  {...register("vegan")}
+                  className="form-control"
+                  defaultChecked={true}
+                />
               </div>
 
               <div className="mb-3">
-                <label htmlFor="recipeStatus" className="form-label">
-                  Recipe Status:
-                </label>
-                <input type="text" id="recipeStatus" name="recipeStatus" />
+                <input
+                  type="hidden"
+                  {...register("errorMessage")}
+                  value="a"
+                  className="form-control"
+                ></input>
               </div>
 
-              <div className="mb-3">
-                <label htmlFor="vegan" className="form-label">
-                  Vegan:
-                </label>
-                <input type="checkbox" id="vegan" name="vegan" />
-              </div>
-
-              <button type="submit">Submit</button>
+              <button type="submit" id="btnsubmit" className="btn btn-info">
+                Submit
+              </button>
+              <button type="button" id="btndelete" className="btn btn-warning">
+                Delete
+              </button>
             </form>
           </div>
         </div>

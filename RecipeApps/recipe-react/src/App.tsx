@@ -7,13 +7,38 @@ import CuisineSidebar from "./CuisineSidebar";
 import RecipeMainScrean from "./RecipeMainScrean";
 import { useState } from "react";
 import RecipeEdit from "./RecipeEdit";
+import { IRecipe } from "./DataInterfaces";
 
 function App() {
   const [selectedCuisineId, setSelectedCuisineId] = useState(0);
   const [isRecipeEdit, setIsRecipeEdit] = useState(false);
 
+  const blankrecipe: IRecipe = {
+    recipeId: 0,
+    usersId: 0,
+    cuisineId: 0,
+    userName: "",
+    cuisineType: "",
+    recipeName: "",
+    calories: 0,
+    dateCreated: "",
+    datePublished: "",
+    dateArchived: "",
+    recipeStatus: "",
+    vegan: false,
+    errorMessage: "",
+  };
+
+  const [recipeForEdit, setRecipeForEdit] = useState(blankrecipe);
+
   const handleSelectedCuisin = (cuisineid: number) => {
     setSelectedCuisineId(cuisineid);
+    setIsRecipeEdit(false);
+  };
+
+  const handleRecipeSelectedForEdit = (recipe: IRecipe) => {
+    setRecipeForEdit(recipe);
+    setIsRecipeEdit(true);
   };
 
   return (
@@ -31,18 +56,22 @@ function App() {
             className="col-md-10 col-9 border border-dark"
           >
             {isRecipeEdit ? (
-              <RecipeEdit />
+              <RecipeEdit recipe={recipeForEdit} />
             ) : (
               <div>
                 <div className="row">
                   <button
                     className="col-3 mt-2 btn btn-outline-primary"
                     style={{ marginLeft: "30px" }}
+                    onClick={() => handleRecipeSelectedForEdit(blankrecipe)}
                   >
                     Add New Recipe
                   </button>
                 </div>
-                <RecipeMainScrean cuisineid={selectedCuisineId} />
+                <RecipeMainScrean
+                  cuisineid={selectedCuisineId}
+                  onRecipeSelectedForEdit={handleRecipeSelectedForEdit}
+                />
               </div>
             )}
           </div>
