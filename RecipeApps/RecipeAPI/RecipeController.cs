@@ -73,12 +73,12 @@ namespace RecipeAPI
             try
             {
                 r.Delete(id);
-                return Ok(new { message = "Recipe Deleted." });//new { message = "Recipe Deleted."}
+                return Ok(r );//new { message = "Recipe Deleted."}
             }
             catch (Exception ex)
             {
-                //r.ErrorMessage = ex.Message; 
-                return BadRequest(new { ex.Message });
+                r.ErrorMessage = ex.Message; 
+                return BadRequest(r);
             }
         }
 

@@ -36,6 +36,37 @@ async function postData<T>(url:string, form:FieldValues): Promise<T>{
     return data;
 }
 
+async function deleteData<T>(url:string): Promise<T>{
+    url = baseurl + url;
+    const r = await fetch(url, {
+        method: "DELETE"
+    });
+    const data = await r.json();
+    return data;
+}
+
 export async function postRecipe(form:FieldValues) {
     return postData<IRecipe>("Recipe", form);
 }
+
+export async function deleteRecipe(recipeid:number){
+    return deleteData<IRecipe>(`recipe?id=${recipeid}`);
+
+}
+
+
+export const blankrecipe: IRecipe = {
+    recipeId: 0,
+    usersId: 0,
+    cuisineId: 0,
+    userName: "",
+    cuisineType: "",
+    recipeName: "",
+    calories: 0,
+    dateCreated: "",
+    datePublished: "",
+    dateArchived: "",
+    recipeStatus: "",
+    vegan: false,
+    errorMessage: "",
+  };

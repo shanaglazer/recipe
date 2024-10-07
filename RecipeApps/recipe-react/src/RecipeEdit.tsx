@@ -1,7 +1,13 @@
 import { useEffect, useState } from "react";
 import { FieldValues, useForm } from "react-hook-form";
 import { ICuisine, IRecipe, IUsers } from "./DataInterfaces";
-import { fetchCuisine, fetchUsers, postRecipe } from "./DataUtil";
+import {
+  blankrecipe,
+  deleteRecipe,
+  fetchCuisine,
+  fetchUsers,
+  postRecipe,
+} from "./DataUtil";
 
 interface Props {
   recipe: IRecipe;
@@ -24,9 +30,9 @@ export default function RecipeEdit({ recipe }: Props) {
     fetchData();
   }, []);
 
-  useEffect(() => {
-    console.log(users); // Logs the updated users whenever users state changes
-  }, [users]);
+  // useEffect(() => {
+  //   console.log(users); // Logs the updated users whenever users state changes
+  // }, [users]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -47,6 +53,14 @@ export default function RecipeEdit({ recipe }: Props) {
     //console.log(data);
   };
 
+  const handleDelete = async () => {
+    const r = await deleteRecipe(recipe.recipeId);
+    setErrormsg(r.errorMessage);
+    if (r.errorMessage == "") {
+      reset(blankrecipe);
+    }
+  };
+
   return (
     <>
       <div className="container">
@@ -65,7 +79,12 @@ export default function RecipeEdit({ recipe }: Props) {
                 <label htmlFor="recipeId" className="form-label">
                   Recipe ID:
                 </label>
-                <input type="number" className="form-control" required />
+                <input
+                  type="number"
+                  {...register("recipeId")}
+                  className="form-control"
+                  required
+                />
               </div>
 
               <div className="mb-3">
@@ -173,7 +192,12 @@ export default function RecipeEdit({ recipe }: Props) {
               <button type="submit" id="btnsubmit" className="btn btn-info">
                 Submit
               </button>
-              <button type="button" id="btndelete" className="btn btn-warning">
+              <button
+                onClick={handleDelete}
+                type="button"
+                id="btndelete"
+                className="btn btn-warning"
+              >
                 Delete
               </button>
             </form>

@@ -8,26 +8,11 @@ import RecipeMainScrean from "./RecipeMainScrean";
 import { useState } from "react";
 import RecipeEdit from "./RecipeEdit";
 import { IRecipe } from "./DataInterfaces";
+import { blankrecipe } from "./DataUtil";
 
 function App() {
   const [selectedCuisineId, setSelectedCuisineId] = useState(0);
   const [isRecipeEdit, setIsRecipeEdit] = useState(false);
-
-  const blankrecipe: IRecipe = {
-    recipeId: 0,
-    usersId: 0,
-    cuisineId: 0,
-    userName: "",
-    cuisineType: "",
-    recipeName: "",
-    calories: 0,
-    dateCreated: "",
-    datePublished: "",
-    dateArchived: "",
-    recipeStatus: "",
-    vegan: false,
-    errorMessage: "",
-  };
 
   const [recipeForEdit, setRecipeForEdit] = useState(blankrecipe);
 
