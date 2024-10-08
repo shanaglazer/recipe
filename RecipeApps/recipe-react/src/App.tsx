@@ -1,68 +1,71 @@
-import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap/dist/js/bootstrap.bundle.min";
+// import Navbar from "./Navbar";
+// import CuisineSidebar from "./CuisineSidebar";
+// import RecipeMainScrean from "./RecipeMainScrean";
+// import { useState } from "react";
+// import RecipeEdit from "./RecipeEdit";
+// import { IRecipe } from "./DataInterfaces";
+// import { blankrecipe } from "./DataUtil";
 
-import "./assets/css/bootstrap.min.css";
+import { Outlet } from "react-router-dom";
 import Navbar from "./Navbar";
-import CuisineSidebar from "./CuisineSidebar";
-import RecipeMainScrean from "./RecipeMainScrean";
-import { useState } from "react";
-import RecipeEdit from "./RecipeEdit";
-import { IRecipe } from "./DataInterfaces";
-import { blankrecipe } from "./DataUtil";
 
 function App() {
-  const [selectedCuisineId, setSelectedCuisineId] = useState(0);
-  const [isRecipeEdit, setIsRecipeEdit] = useState(false);
+  // const [selectedCuisineId, setSelectedCuisineId] = useState(0);
+  // const [isRecipeEdit, setIsRecipeEdit] = useState(false);
 
-  const [recipeForEdit, setRecipeForEdit] = useState(blankrecipe);
+  // const [recipeForEdit, setRecipeForEdit] = useState(blankrecipe);
 
-  const handleSelectedCuisin = (cuisineid: number) => {
-    setSelectedCuisineId(cuisineid);
-    setIsRecipeEdit(false);
-  };
+  // const handleSelectedCuisin = (cuisineid: number) => {
+  //   setSelectedCuisineId(cuisineid);
+  //   setIsRecipeEdit(false);
+  // };
 
-  const handleRecipeSelectedForEdit = (recipe: IRecipe) => {
-    setRecipeForEdit(recipe);
-    setIsRecipeEdit(true);
-  };
+  // const handleRecipeSelectedForEdit = (recipe: IRecipe) => {
+  //   setRecipeForEdit(recipe);
+  //   setIsRecipeEdit(true);
+  // };
 
   return (
     <>
-      <div className="container-fluid">
-        <div className="row">
-          <Navbar />
-        </div>
-        <div className="row">
-          <div className="col-md-2 col-3 border border-dark">
-            <CuisineSidebar onCuisineSelected={handleSelectedCuisin} />
-          </div>
-          <div
-            style={{ backgroundColor: "#D3D3D3" }}
-            className="col-md-10 col-9 border border-dark"
-          >
-            {isRecipeEdit ? (
-              <RecipeEdit recipe={recipeForEdit} />
-            ) : (
-              <div>
-                <div className="row">
-                  <button
-                    className="col-3 mt-2 btn btn-outline-primary"
-                    style={{ marginLeft: "30px" }}
-                    onClick={() => handleRecipeSelectedForEdit(blankrecipe)}
-                  >
-                    Add New Recipe
-                  </button>
-                </div>
-                <RecipeMainScrean
-                  cuisineid={selectedCuisineId}
-                  onRecipeSelectedForEdit={handleRecipeSelectedForEdit}
-                />
-              </div>
-            )}
-          </div>
-        </div>
-      </div>
+      <Navbar />
+      <Outlet />
     </>
+    // <>
+    //   <div className="container-fluid">
+    //     <div className="row">
+    //       <Navbar />
+    //     </div>
+    //     <div className="row">
+    //       <div className="col-md-2 col-3 border border-dark">
+    //         <CuisineSidebar onCuisineSelected={handleSelectedCuisin} />
+    //       </div>
+    //       <div
+    //         style={{ backgroundColor: "#D3D3D3" }}
+    //         className="col-md-10 col-9 border border-dark"
+    //       >
+    //         {isRecipeEdit ? (
+    //           <RecipeEdit recipe={recipeForEdit} />
+    //         ) : (
+    //           <div>
+    //             <div className="row">
+    //               <button
+    //                 className="col-3 mt-2 btn btn-outline-primary"
+    //                 style={{ marginLeft: "30px" }}
+    //                 onClick={() => handleRecipeSelectedForEdit(blankrecipe)}
+    //               >
+    //                 Add New Recipe
+    //               </button>
+    //             </div>
+    //             <RecipeMainScrean
+    //               cuisineid={selectedCuisineId}
+    //               onRecipeSelectedForEdit={handleRecipeSelectedForEdit}
+    //             />
+    //           </div>
+    //         )}
+    //       </div>
+    //     </div>
+    //   </div>
+    // </>
   );
 }
 
