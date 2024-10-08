@@ -43,10 +43,18 @@ namespace RecipeAPI
             return lst;
         }
 
+        [HttpGet("blank/cuisineget")]
+        public List<bizCuisine> GetCuisineWithBlank()
+        {
+            var lst = new bizCuisine().GetList(true);
+            return lst;
+        }
+        
+
         [HttpGet("users")]
         public List<bizUsers> UserGet()
         {
-            return new bizUsers().GetList();
+            return new bizUsers().GetList(true);
         }
 
 

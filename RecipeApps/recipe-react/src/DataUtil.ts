@@ -1,7 +1,7 @@
 import { FieldValues } from "react-hook-form";
 import {ICuisine, IRecipe, IUsers} from "./DataInterfaces";
 
-const baseurl='http://localhost:5166/api/';  //'https://sgrecipeapi.azurewebsites.net/api/';
+const baseurl=import.meta.env.VITE_API_URL;
 
 async function fetchData<T>(url:string):Promise<T> {
     url = baseurl + url;
@@ -14,6 +14,9 @@ export async function fetchCuisine() {
     return await fetchData<ICuisine[]>('recipe/cuisineget')
 }
 
+export async function fetchCuisineWithBlank() {
+    return await fetchData<ICuisine[]>('recipe/blank/cuisineget')
+}
 
 export async function fetchRecipe(id: number) {
     return await fetchData<IRecipe[]>(`Recipe/searchbycuisine/${id}`)

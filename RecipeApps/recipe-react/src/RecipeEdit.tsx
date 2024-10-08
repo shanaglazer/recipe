@@ -5,6 +5,7 @@ import {
   blankrecipe,
   deleteRecipe,
   fetchCuisine,
+  fetchCuisineWithBlank,
   fetchUsers,
   postRecipe,
 } from "./DataUtil";
@@ -19,25 +20,19 @@ export default function RecipeEdit({ recipe }: Props) {
   const { register, handleSubmit, reset } = useForm({ defaultValues: recipe });
   const [errormsg, setErrormsg] = useState("");
 
-  // const [loading, setLoading] = useState(true);
-
   useEffect(() => {
     const fetchData = async () => {
       const data = await fetchUsers();
       setUsers(data);
-      // setLoading(false);
     };
     fetchData();
   }, []);
 
-  // useEffect(() => {
-  //   console.log(users); // Logs the updated users whenever users state changes
-  // }, [users]);
-
   useEffect(() => {
     const fetchData = async () => {
-      const data = await fetchCuisine();
+      const data = await fetchCuisineWithBlank();
       setCuisines(data);
+      reset(recipe);
     };
     fetchData();
   }, []);
@@ -170,13 +165,13 @@ export default function RecipeEdit({ recipe }: Props) {
                 />
               </div>
 
-              <div className="mb-3 col-1">
+              <div className="mb-3 col-1 form-check">
                 <label htmlFor="vegan">Vegan:</label>
                 <input
                   type="checkbox"
                   {...register("vegan")}
-                  className="form-control"
-                  defaultChecked={true}
+                  className="form-check-input"
+                  // defaultChecked={true}
                 />
               </div>
 
