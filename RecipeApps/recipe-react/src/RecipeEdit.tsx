@@ -4,7 +4,6 @@ import { ICuisine, IRecipe, IUsers } from "./DataInterfaces";
 import {
   blankrecipe,
   deleteRecipe,
-  fetchCuisine,
   fetchCuisineWithBlank,
   fetchUsers,
   postRecipe,
